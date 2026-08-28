@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+---
+<Layout title="Calculadoras financieras para España" description="Calculadoras financieras, fiscales, de vivienda y ahorro para particulares en España.">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="kicker">Gratis · Sin registro</span>
+        <h1>Calcula tus números. Sin complicaciones.</h1>
+        <p>Herramientas sencillas para estimar hipotecas, nóminas, impuestos, préstamos y ahorro. Diseñadas para entender el resultado en segundos.</p>
+      </div>
+      <aside class="hero-panel" aria-label="Qué encontrarás">
+        <div class="panel-row"><span class="panel-label">Vivienda</span><span class="panel-value">Hipotecas y gastos</span></div>
+        <div class="panel-row"><span class="panel-label">Nómina</span><span class="panel-value">Bruto y neto</span></div>
+        <div class="panel-row"><span class="panel-label">Impuestos</span><span class="panel-value">IVA e ITP</span></div>
+        <div class="panel-row"><span class="panel-label">Inversión</span><span class="panel-value">Ahorro e interés</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Empieza por una categoría</h2>
+          <p class="section-intro">La web crecerá alrededor de herramientas prácticas y actualizables.</p>
+        </div>
+      </div>
+      <div class="card-grid">
+        <Card title="Vivienda" description="Hipoteca, compra de vivienda, ITP y rentabilidad del alquiler." href="/vivienda/" eyebrow="Vivienda" />
+        <Card title="Nómina" description="Sueldo neto, retenciones, pagas y estimaciones laborales." href="/nomina/" eyebrow="Trabajo" />
+        <Card title="Impuestos" description="IVA, ITP y otras herramientas fiscales para particulares." href="/impuestos/" eyebrow="Fiscalidad" />
+        <Card title="Préstamos" description="Cuotas, intereses, TIN, TAE y amortización." href="/prestamos/" eyebrow="Financiación" />
+        <Card title="Ahorro e inversión" description="Interés compuesto, ahorro periódico, inflación y rentabilidad." href="/ahorro-inversion/" eyebrow="Finanzas" />
+      </div>
+    </div>
+  </section>
+</Layout>
