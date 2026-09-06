@@ -1,3 +1,5 @@
+﻿import { calculateFrenchAmortization } from './french-amortization.ts';
+
 export type MortgageInput = {
   propertyPrice: number;
   downPayment: number;
@@ -60,24 +62,22 @@ export function calculateMortgage(input: MortgageInput): MortgageResult {
   validateMortgageInput(input);
 
   const financedAmount = input.propertyPrice - input.downPayment;
-  const numberOfPayments = input.years * 12;
-  const monthlyRate = input.annualInterestRate / 100 / 12;
-  const monthlyPayment = monthlyRate === 0
-    ? financedAmount / numberOfPayments
-    : financedAmount * monthlyRate / (1 - (1 + monthlyRate) ** -numberOfPayments);
-  const totalPaid = monthlyPayment * numberOfPayments;
-  const totalInterest = totalPaid - financedAmount;
+  const amortization = calculateFrenchAmortization({
+    principal: financedAmount,
+    annualInterestRate: input.annualInterestRate,
+    years: input.years,
+  });
 
   return {
     ...input,
     financedAmount,
-    numberOfPayments,
-    monthlyRate,
-    monthlyPayment,
-    totalPaid,
-    totalInterest,
-    totalLoanCost: totalPaid,
+    numberOfPayments: amortization.numberOfPayments,
+    monthlyRate: amortization.monthlyRate,
+    monthlyPayment: amortization.monthlyPayment,
+    totalPaid: amortization.totalPaid,
+    totalInterest: amortization.totalInterest,
+    totalLoanCost: amortization.totalPaid,
     loanToValuePercent: financedAmount / input.propertyPrice * 100,
-    paymentToIncomePercent: input.monthlyNetIncome === undefined ? undefined : monthlyPayment / input.monthlyNetIncome * 100,
+    paymentToIncomePercent: input.monthlyNetIncome === undefined ? undefined : amortization.monthlyPayment / input.monthlyNetIncome * 100,
   };
 }

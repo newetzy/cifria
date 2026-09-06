@@ -1,3 +1,3 @@
 ﻿import type { APIRoute } from 'astro';
-const paths = ['/', '/vivienda/', '/vivienda/calculadora-hipoteca/', '/nomina/', '/impuestos/', '/prestamos/', '/ahorro-inversion/', '/ahorro-inversion/interes-compuesto/', '/aviso-legal/', '/privacidad/', '/cookies/', '/fuentes-metodologia/'];
+const paths = ['/', '/vivienda/', '/vivienda/calculadora-hipoteca/', '/nomina/', '/impuestos/', '/prestamos/', '/prestamos/calculadora-cuota-prestamo/', '/ahorro-inversion/', '/ahorro-inversion/interes-compuesto/', '/aviso-legal/', '/privacidad/', '/cookies/', '/fuentes-metodologia/'];
 export const GET: APIRoute = () => new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${paths.map((path) => `<url><loc>https://cifria.es${path}</loc></url>`).join('')}</urlset>`, { headers: { 'Content-Type': 'application/xml' } });
