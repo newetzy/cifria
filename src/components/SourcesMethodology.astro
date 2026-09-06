@@ -1,0 +1,5 @@
+---
+interface Props { updated?: string; }
+const { updated } = Astro.props;
+---
+<section class="sources-methodology"><h2>Fuentes y metodología</h2><slot />{updated && <p class="muted">Última revisión: {updated}.</p>}</section>

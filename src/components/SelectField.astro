@@ -1,0 +1,5 @@
+---
+interface Props { id: string; label: string; hint?: string; }
+const { id, label, hint } = Astro.props;
+---
+<div class="field"><label for={id}>{label}</label><select id={id} name={id} aria-describedby={hint ? `${id}-hint` : undefined}><slot /></select>{hint && <small id={`${id}-hint`}>{hint}</small>}</div>

@@ -1,21 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Card from '../../components/Card.astro';
+import Layout from '../../layouts/Layout.astro'; import CategoryPage from '../../components/CategoryPage.astro'; import { categories } from '../../data/categories';
+const category = categories.find(({ slug }) => slug === 'vivienda')!;
 ---
-<Layout title="Calculadoras de vivienda | Calculadoras ES" description="Herramientas de hipoteca, compra de vivienda, ITP, amortización y alquiler para España.">
-  <div class="container category-page">
-    <section class="category-hero">
-      <span class="kicker">Vivienda</span>
-      <h1>Calculadoras para comprar, financiar o alquilar una vivienda.</h1>
-      <p>Una sección preparada para crecer alrededor de las preguntas que más dinero mueven en una compra o una inversión inmobiliaria.</p>
-    </section>
-    <div class="card-grid">
-      <Card title="Calculadora de hipoteca" description="Cuota mensual, intereses y coste total según importe, tipo y plazo." href="/vivienda/calculadora-hipoteca/" eyebrow="Próximamente" />
-      <Card title="Gastos de comprar vivienda" description="Estimación de impuestos y gastos asociados a la compra." href="#" eyebrow="Próximamente" />
-      <Card title="Calculadora ITP" description="Estimación del ITP según la comunidad autónoma y el tipo de vivienda." href="#" eyebrow="Próximamente" />
-      <Card title="Amortización de hipoteca" description="Compara reducir cuota frente a reducir plazo." href="#" eyebrow="Próximamente" />
-      <Card title="Rentabilidad del alquiler" description="Rentabilidad bruta, neta y flujo de caja de una vivienda." href="#" eyebrow="Próximamente" />
-      <Card title="Comprar o alquilar" description="Compara escenarios a largo plazo con supuestos personalizables." href="#" eyebrow="Próximamente" />
-    </div>
-  </div>
-</Layout>
+<Layout title="Calculadoras de vivienda | Cifria" description="Calculadoras de vivienda para compra, alquiler e hipoteca en España."><CategoryPage {category} /></Layout>

@@ -1,0 +1,5 @@
+---
+interface Props { title?: string; actionLabel?: string; }
+const { title = 'Datos para el cálculo', actionLabel = 'Calcular' } = Astro.props;
+---
+<form class="calculator-form"><fieldset><legend>{title}</legend><slot /></fieldset><button type="submit">{actionLabel}</button></form>

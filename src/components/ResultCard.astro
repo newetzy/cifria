@@ -1,0 +1,5 @@
+---
+interface Props { label: string; value: string; }
+const { label, value } = Astro.props;
+---
+<section class="result-card"><p>{label}</p><strong>{value}</strong><slot /></section>

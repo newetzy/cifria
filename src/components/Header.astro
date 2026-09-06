@@ -1,15 +1,5 @@
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Calculadoras ES, inicio">
-      <span class="brand-mark" aria-hidden="true">⌁</span>
-      <span>Calculadoras <strong>ES</strong></span>
-    </a>
-    <nav class="main-nav" aria-label="Navegación principal">
-      <a href="/vivienda/">Vivienda</a>
-      <a href="/nomina/">Nómina</a>
-      <a href="/impuestos/">Impuestos</a>
-      <a href="/prestamos/">Préstamos</a>
-      <a href="/ahorro-inversion/">Ahorro e inversión</a>
-    </nav>
-  </div>
-</header>
+---
+import { navigation } from '../data/categories';
+const pathname = Astro.url.pathname;
+---
+<header class="site-header"><div class="container header-inner"><a class="brand" href="/" aria-label="Cifria, inicio"><span class="brand-mark" aria-hidden="true">C</span><span>Cifria</span></a><nav aria-label="Navegación principal"><ul class="main-nav">{navigation.map(({ href, name }) => <li><a href={href} aria-current={pathname === href ? 'page' : undefined}>{name}</a></li>)}</ul></nav></div></header>

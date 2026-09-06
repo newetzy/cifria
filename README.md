@@ -1,31 +1,19 @@
-# Calculadoras ES
+# Cifria
 
-Primer MVP de un portal de calculadoras financieras, fiscales y de vivienda para España.
+Portal estático de calculadoras financieras para particulares en España.
 
-## Estado actual
+## Desarrollo
 
-- Astro + TypeScript, sin backend ni base de datos.
-- Diseño responsive y mobile-first con CSS propio.
-- Layout, header, footer y tarjetas reutilizables.
-- Categorías: Vivienda, Nómina, Impuestos, Préstamos y Ahorro e inversión.
-- Primera calculadora funcional: interés compuesto.
-- Páginas base para aviso legal, privacidad, cookies y fuentes/metodología.
-- No se han añadido reglas fiscales ni datos normativos todavía.
+- `npm run dev`: inicia el servidor de desarrollo.
+- `npm run check`: valida Astro y TypeScript.
+- `npm run build`: genera el sitio estático en `dist/`.
 
-## Ejecutar en Windows
+## Estructura
 
-```powershell
-npm install
-npm run dev
-```
+- `src/components/`: piezas reutilizables de interfaz y calculadoras.
+- `src/layouts/`: estructura común y metadatos SEO.
+- `src/pages/`: portada, categorías, páginas legales y rutas técnicas.
+- `src/lib/`: lógica de cálculos, formato y validación; separada de la interfaz.
+- `src/data/`: futuros datos normativos estructurados y actualizables.
 
-Después abrir `http://localhost:4321`.
-
-## Próximo desarrollo
-
-1. Mejorar identidad visual y navegación.
-2. Añadir calculadora de hipoteca.
-3. Añadir calculadora de IVA.
-4. Añadir metodología y fuentes oficiales.
-5. Crear SEO específico por herramienta.
-6. Añadir analítica y, cuando exista tráfico, monetización.
+La primera calculadora se implementará en una fase posterior. Los cálculos normativos se incorporarán únicamente tras contrastar fuentes oficiales.

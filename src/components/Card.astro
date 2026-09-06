@@ -1,18 +1,5 @@
 ---
-interface Props {
-  title: string;
-  description: string;
-  href: string;
-  eyebrow?: string;
-  icon?: string;
-}
-const { title, description, href, eyebrow, icon = '→' } = Astro.props;
+export interface Props { as?: 'article' | 'div'; class?: string; }
+const { as: Tag = 'article', class: className = '' } = Astro.props as Props;
 ---
-<a class="tool-card" href={href}>
-  <div class="tool-card-top">
-    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
-    <span class="card-arrow" aria-hidden="true">{icon}</span>
-  </div>
-  <h3>{title}</h3>
-  <p>{description}</p>
-</a>
+<Tag class:list={['card', className]}><slot /></Tag>
