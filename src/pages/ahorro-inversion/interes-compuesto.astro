@@ -1,0 +1,47 @@
+﻿---
+import CalculatorShell from '../../components/CalculatorShell.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Calculadora de interés compuesto | Cifria" description="Calcula cómo podría evolucionar tu ahorro con capital inicial, aportaciones mensuales y una rentabilidad anual hipotética.">
+  <section class="calculator-page-section">
+    <CalculatorShell title="Calculadora de interés compuesto" description="Simula la evolución de tu capital con una aportación mensual y una rentabilidad anual que tú decides como hipótesis.">
+      <div class="calculator-layout">
+        <form id="compound-interest-form" class="calculator-form" novalidate>
+          <fieldset>
+            <legend>Datos de la simulación</legend>
+            <div class="calculator-fields">
+              <div class="field"><label for="initialCapital">Capital inicial</label><div class="input-with-suffix"><input id="initialCapital" name="initialCapital" type="number" inputmode="decimal" min="0" step="0.01" value="10000" aria-describedby="initialCapital-hint initialCapital-error" /><span aria-hidden="true">€</span></div><small id="initialCapital-hint">Importe con el que empiezas.</small><p class="field-error" id="initialCapital-error" hidden></p></div>
+              <div class="field"><label for="monthlyContribution">Aportación mensual</label><div class="input-with-suffix"><input id="monthlyContribution" name="monthlyContribution" type="number" inputmode="decimal" min="0" step="0.01" value="200" aria-describedby="monthlyContribution-hint monthlyContribution-error" /><span aria-hidden="true">€</span></div><small id="monthlyContribution-hint">Se añade al final de cada mes.</small><p class="field-error" id="monthlyContribution-error" hidden></p></div>
+              <div class="field"><label for="annualReturnPercent">Rentabilidad anual</label><div class="input-with-suffix"><input id="annualReturnPercent" name="annualReturnPercent" type="number" inputmode="decimal" min="0" max="100" step="0.01" value="5" aria-describedby="annualReturnPercent-hint annualReturnPercent-error" /><span aria-hidden="true">%</span></div><small id="annualReturnPercent-hint">Hipótesis anual entre 0 % y 100 %.</small><p class="field-error" id="annualReturnPercent-error" hidden></p></div>
+              <div class="field"><label for="years">Plazo</label><div class="input-with-suffix"><input id="years" name="years" type="number" inputmode="numeric" min="1" max="100" step="1" value="20" aria-describedby="years-hint years-error" /><span aria-hidden="true">años</span></div><small id="years-hint">Entre 1 y 100 años completos.</small><p class="field-error" id="years-error" hidden></p></div>
+            </div>
+          </fieldset>
+          <button type="submit">Calcular evolución</button>
+          <p class="calculator-privacy">El cálculo se realiza en tu navegador. No guardamos estos datos.</p>
+        </form>
+        <div class="calculator-results" id="compound-results" hidden>
+          <p class="eyebrow">Resultado estimado</p>
+          <section class="result-card result-card-primary" aria-labelledby="final-capital-title"><p id="final-capital-title">Capital final</p><strong data-result="finalCapital">—</strong><span>Incluye tus aportaciones y los intereses estimados.</span></section>
+          <div class="result-grid">
+            <section class="result-card"><p>Capital inicial</p><strong data-result="initialCapital">—</strong></section>
+            <section class="result-card"><p>Total aportado</p><strong data-result="totalContributions">—</strong></section>
+            <section class="result-card result-card-interest"><p>Intereses generados</p><strong data-result="interestEarned">—</strong></section>
+          </div>
+        </div>
+      </div>
+      <p class="sr-only" id="calculator-announcement" aria-live="polite" aria-atomic="true"></p>
+      <section class="evolution-section" id="compound-evolution" aria-labelledby="evolution-title">
+        <div class="section-heading"><div><p class="eyebrow">Evolución anual</p><h2 id="evolution-title">Tu capital a lo largo del tiempo</h2></div><p>La línea verde muestra el capital estimado; la dorada, el dinero que habrías aportado.</p></div>
+        <div class="chart-frame" id="compound-chart"></div>
+        <div class="chart-legend" aria-label="Leyenda del gráfico"><span><i class="legend-total" aria-hidden="true"></i>Capital estimado</span><span><i class="legend-contributions" aria-hidden="true"></i>Dinero aportado</span></div>
+        <div class="table-wrap"><table><caption>Detalle anual de la simulación</caption><thead><tr><th scope="col">Año</th><th scope="col">Aportado</th><th scope="col">Intereses</th><th scope="col">Capital estimado</th></tr></thead><tbody id="compound-table-body"></tbody></table></div>
+      </section>
+      <section class="content-section prose"><p class="eyebrow">Cómo interpretarlo</p><h2>¿Qué es el interés compuesto?</h2><p>Es el efecto por el que los intereses de un periodo se incorporan al capital y pueden generar nuevos intereses en los periodos siguientes. Esta herramienta combina ese efecto con tus aportaciones mensuales.</p><h2>Qué calcula esta herramienta</h2><p>El resultado separa el dinero introducido por ti del crecimiento atribuido a la rentabilidad elegida. La rentabilidad es una hipótesis que introduces para explorar escenarios: no es una garantía ni una previsión.</p><h2>Metodología</h2><p>La simulación convierte la rentabilidad anual introducida en una tasa mensual, calcula el crecimiento cada mes y añade la aportación al final de ese mes. La tabla resume el resultado al cierre de cada año completo.</p></section>
+      <Disclaimer>Los resultados son orientativos. No incorporan comisiones, fiscalidad, inflación, variaciones de rentabilidad ni otros costes que puedan afectar al resultado real.</Disclaimer>
+    </CalculatorShell>
+  </section>
+</Layout>
+<script>
+  import '../../scripts/compound-interest';
+</script>

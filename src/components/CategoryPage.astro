@@ -1,6 +1,6 @@
----
+﻿---
 import type { Category } from '../data/categories';
 interface Props { category: Category; }
 const { category } = Astro.props;
 ---
-<section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Categoría {category.accent}</p><h1>{category.name}</h1><p class="lead">{category.description}</p></div></section><section class="section"><div class="container narrow"><div class="section-heading"><div><p class="eyebrow">Próximamente</p><h2>Calculadoras de {category.name.toLowerCase()}</h2></div><p>Publicaremos cada herramienta con su metodología, limitaciones y fuentes cuando corresponda.</p></div><div class="tool-list">{category.tools.map((tool) => <article class="card tool-card"><h3>{tool}</h3><p>En preparación</p></article>)}</div></div></section>
+<section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Categoría {category.accent}</p><h1>{category.name}</h1><p class="lead">{category.description}</p></div></section><section class="section"><div class="container narrow"><div class="section-heading"><div><p class="eyebrow">Próximamente</p><h2>Calculadoras de {category.name.toLowerCase()}</h2></div><p>Publicaremos cada herramienta con su metodología, limitaciones y fuentes cuando corresponda.</p></div><div class="tool-list">{category.tools.map((tool) => { const href = category.slug === 'ahorro-inversion' && tool === 'Interés compuesto' ? '/ahorro-inversion/interes-compuesto/' : undefined; return <article class="card tool-card"><h3>{href ? <a href={href}>{tool}</a> : tool}</h3><p>{href ? 'Disponible' : 'En preparación'}</p></article>; })}</div></div></section>
