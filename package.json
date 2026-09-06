@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "node --test src/lib/calculations/compound-interest.test.ts"
+    "test": "node --test src/lib/calculations/compound-interest.test.ts src/lib/calculations/mortgage.test.ts"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",

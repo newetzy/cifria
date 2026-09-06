@@ -1,0 +1,45 @@
+---
+import CalculatorShell from '../../components/CalculatorShell.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Calculadora de hipoteca: cuota mensual y coste total | Cifria" description="Calcula la cuota mensual, los intereses y el coste total estimado de una hipoteca fija con amortización francesa.">
+  <section class="calculator-page-section">
+    <CalculatorShell title="Calculadora de hipoteca" description="Calcula una estimación de cuota e intereses para una hipoteca a tipo fijo. El importe financiado se obtiene al restar la entrada al precio de la vivienda.">
+      <div class="calculator-layout mortgage-form-layout">
+        <form id="mortgage-form" class="calculator-form" novalidate>
+          <fieldset>
+            <legend>Datos de la hipoteca</legend>
+            <div class="calculator-fields">
+              <div class="field"><label for="propertyPrice">Precio de la vivienda</label><div class="input-with-suffix"><input id="propertyPrice" name="propertyPrice" type="number" inputmode="decimal" min="0.01" max="10000000" step="0.01" value="250000" aria-describedby="propertyPrice-hint propertyPrice-error" /><span aria-hidden="true">€</span></div><small id="propertyPrice-hint">Precio acordado de la vivienda.</small><p class="field-error" id="propertyPrice-error" hidden></p></div>
+              <div class="field"><label for="downPayment">Entrada inicial</label><div class="input-with-suffix"><input id="downPayment" name="downPayment" type="number" inputmode="decimal" min="0" step="0.01" value="50000" aria-describedby="downPayment-hint downPayment-error" /><span aria-hidden="true">€</span></div><small id="downPayment-hint">Debe ser inferior al precio de la vivienda.</small><p class="field-error" id="downPayment-error" hidden></p></div>
+              <div class="field"><label for="annualInterestRate">Tipo de interés anual</label><div class="input-with-suffix"><input id="annualInterestRate" name="annualInterestRate" type="number" inputmode="decimal" min="0" max="100" step="0.01" value="3" aria-describedby="annualInterestRate-hint annualInterestRate-error" /><span aria-hidden="true">%</span></div><small id="annualInterestRate-hint">Hipoteca fija; entre 0 % y 100 %.</small><p class="field-error" id="annualInterestRate-error" hidden></p></div>
+              <div class="field"><label for="years">Plazo</label><div class="input-with-suffix"><input id="years" name="years" type="number" inputmode="numeric" min="1" max="50" step="1" value="25" aria-describedby="years-hint years-error" /><span aria-hidden="true">años</span></div><small id="years-hint">Entre 1 y 50 años completos.</small><p class="field-error" id="years-error" hidden></p></div>
+              <div class="field field-full"><label for="monthlyNetIncome">Ingresos netos mensuales <span class="muted">(opcional)</span></label><div class="input-with-suffix"><input id="monthlyNetIncome" name="monthlyNetIncome" type="number" inputmode="decimal" min="0.01" max="1000000" step="0.01" aria-describedby="monthlyNetIncome-hint monthlyNetIncome-error" /><span aria-hidden="true">€</span></div><small id="monthlyNetIncome-hint">Solo se usa para calcular el ratio cuota/ingresos.</small><p class="field-error" id="monthlyNetIncome-error" hidden></p></div>
+            </div>
+          </fieldset>
+          <button type="submit">Calcular hipoteca</button>
+          <p class="calculator-privacy">El cálculo se realiza en tu navegador. No guardamos estos datos.</p>
+        </form>
+        <div class="mortgage-results" id="mortgage-results" hidden>
+          <p class="eyebrow">Resultado estimado</p>
+          <section class="result-card result-card-primary" aria-labelledby="monthly-payment-title"><p id="monthly-payment-title">Cuota mensual</p><strong data-result="monthlyPayment">—</strong><span>Estimación de cada cuota mensual con tipo fijo.</span></section>
+          <div class="result-grid">
+            <section class="result-card"><p>Importe financiado</p><strong data-result="financedAmount">—</strong></section>
+            <section class="result-card result-card-interest"><p>Intereses totales</p><strong data-result="totalInterest">—</strong></section>
+            <section class="result-card"><p>Porcentaje financiado (LTV)</p><strong data-result="loanToValue">—</strong></section>
+          </div>
+          <div class="mortgage-composition" id="mortgage-composition"><h2>Capital e intereses</h2></div>
+          <div class="result-grid mortgage-secondary-results"><section class="result-card"><p>Coste total del préstamo</p><strong data-result="totalLoanCost">—</strong><small>Total de cuotas; no incluye costes adicionales.</small></section><section class="result-card"><p>Total pagado</p><strong data-result="totalPaid">—</strong><small>Capital financiado más intereses.</small></section></div>
+          <aside class="mortgage-ratio" id="income-ratio" hidden><p>Tu cuota representa <strong data-result="incomeRatio">—</strong> de tus ingresos netos.</p><p class="muted">Es una comparación matemática, no una recomendación personalizada.</p></aside>
+        </div>
+      </div>
+      <p class="sr-only" id="mortgage-announcement" aria-live="polite" aria-atomic="true"></p>
+      <section class="content-section prose"><p class="eyebrow">Cómo interpretarlo</p><h2>Qué calcula esta herramienta</h2><p>Una hipoteca es un préstamo destinado habitualmente a financiar una vivienda. El importe financiado es la parte del precio que queda después de restar la entrada inicial.</p><h2>Cuota, intereses y porcentaje financiado</h2><p>La cuota es el pago mensual estimado. Los intereses totales son el coste de financiar el importe prestado según el tipo y el plazo introducidos. El porcentaje financiado, o LTV, compara el importe financiado con el precio de la vivienda.</p><h2>Ratio cuota/ingresos</h2><p>Si añades tus ingresos netos mensuales, mostramos qué porcentaje representan las cuotas estimadas. Es una referencia aritmética y no evalúa tu situación financiera ni tu capacidad de pago.</p><h2>Metodología</h2><p>La simulación utiliza el sistema de amortización francés con tipo fijo: calcula cuotas mensuales iguales durante el plazo, aplicando los intereses al capital pendiente. Considera pagos mensuales y el primer pago un mes después de la formalización.</p><p class="mortgage-source">Referencia metodológica: <a href="https://clientebancario.bde.es/pcb/es/menu-horizontal/podemosayudarte/simuladores/simulador_prestamo_hipotecario_personal.html" rel="external">simulador de préstamo hipotecario o personal del Banco de España</a>.</p></section>
+      <Disclaimer>Esta estimación matemática no incluye gastos de compraventa, seguros, comisiones, fiscalidad ni otras condiciones de un contrato. No constituye una oferta bancaria ni asesoramiento financiero.</Disclaimer>
+    </CalculatorShell>
+  </section>
+</Layout>
+<script>
+  import '../../scripts/mortgage';
+</script>
