@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GuidePage from '../../components/GuidePage.astro';
+---
+<Layout title="Inflación y poder adquisitivo: cómo calcularlo | Cifria" description="Entiende cómo la inflación afecta al valor del dinero y calcula cuánto necesitarías en el futuro para mantener un poder adquisitivo equivalente.">
+  <GuidePage title="Inflación y poder adquisitivo" description="La inflación hace que una misma cantidad de dinero pueda comprar menos bienes y servicios con el paso del tiempo." intro="Pensar en euros futuros sin tener en cuenta la inflación puede llevar a subestimar cuánto necesitarás para mantener el mismo nivel de gasto." calculatorHref="/ahorro-inversion/calculadora-inflacion/" calculatorLabel="Calcular inflación" sections={[
+    { title: 'Qué significa perder poder adquisitivo', paragraphs: ['Si los precios suben de forma general, una cantidad fija de dinero permite comprar menos con el paso del tiempo. La inflación mide ese aumento de precios mediante índices y periodos concretos.', 'La calculadora de Cifria simplifica el problema utilizando una tasa media introducida por el usuario para construir un escenario.'] },
+    { title: 'Inflación acumulada', paragraphs: ['La inflación de varios años no se suma de manera lineal cuando quieres estimar el precio futuro de una cantidad: cada periodo parte de un nivel de precios ya modificado.', 'Por eso pequeñas tasas mantenidas durante muchos años pueden producir diferencias significativas.'] },
+    { title: 'Cómo usar una estimación', paragraphs: ['Una proyección de inflación es un escenario, no una predicción exacta. Puedes utilizarla para estudiar objetivos de ahorro, presupuestos a largo plazo o el poder de compra de una cantidad que mantendrás en el tiempo.', 'Conviene revisar periódicamente el escenario si cambian tus supuestos sobre ingresos, gastos o precios.'] }
+  ]} faqs={[
+    { question: '¿La inflación reduce directamente mi saldo bancario?', answer: 'No necesariamente reduce el número de euros de una cuenta; lo que puede reducir es lo que esos euros permiten comprar si los precios aumentan.' },
+    { question: '¿La inflación de un año se suma a la del siguiente?', answer: 'Para estimar el efecto acumulado sobre precios, cada periodo se aplica sobre el nivel ya aumentado, por lo que el efecto compuesto importa.' },
+    { question: '¿La calculadora predice la inflación futura?', answer: 'No. Calcula un escenario matemático a partir de la tasa que introduzcas.' }
+  ]} />
+</Layout>

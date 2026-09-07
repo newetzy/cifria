@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GuidePage from '../../components/GuidePage.astro';
+---
+<Layout title="Amortizar hipoteca: reducir cuota o plazo | Cifria" description="Qué cambia al amortizar una hipoteca reduciendo cuota o plazo y cómo comparar el ahorro de intereses de cada opción.">
+  <GuidePage title="Amortizar hipoteca: reducir cuota o plazo" description="Las dos opciones reducen deuda, pero no producen el mismo calendario de pagos." intro="Cuando amortizas anticipadamente, puedes buscar una cuota más cómoda o terminar antes la hipoteca. La mejor opción depende de tu objetivo y de los costes de la operación." calculatorHref="/prestamos/amortizacion-anticipada/" calculatorLabel="Simular amortización" sections={[
+    { title: 'Reducir cuota', paragraphs: ['Mantienes aproximadamente el plazo restante, pero reduces la cantidad que pagarás en cada cuota. Es una opción que prioriza liquidez mensual y puede tener sentido cuando quieres aliviar tus gastos fijos.', 'El ahorro de intereses suele ser menor que con una reducción equivalente del plazo porque mantienes la deuda durante más tiempo.'] },
+    { title: 'Reducir plazo', paragraphs: ['Mantienes una cuota similar y terminas antes de pagar el préstamo. Al desaparecer meses de amortización, normalmente reduces el importe total de intereses futuros de forma más intensa.', 'Esta alternativa exige que tu presupuesto pueda soportar una cuota que no baje de forma significativa.'] },
+    { title: 'Qué debes comparar', paragraphs: ['Para tomar una decisión, compara saldo pendiente, meses restantes, cuota, intereses futuros y coste de la amortización anticipada. Si existe comisión o algún coste contractual, intégralo en la comparación.', 'La decisión financiera no depende solo del ahorro matemático. Mantener un colchón de emergencia y una liquidez suficiente también forma parte del análisis.'] },
+  ]} faqs={[{ question: '¿Es mejor reducir cuota o plazo?', answer: 'Depende del objetivo. Reducir cuota prioriza liquidez mensual; reducir plazo suele buscar una reducción mayor de intereses futuros.' }, { question: '¿Debo tener en cuenta la comisión de amortización?', answer: 'Sí. Si existe, conviene incorporarla al comparar el ahorro de intereses con el coste de la operación.' }]} />
+</Layout>

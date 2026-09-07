@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GuidePage from '../../components/GuidePage.astro';
+---
+<Layout title="Cómo ahorrar 10.000 euros paso a paso | Cifria" description="Calcula cuánto necesitas ahorrar cada mes para alcanzar 10.000 euros y cómo cambia el plazo si modificas tu aportación.">
+  <GuidePage title="Cómo ahorrar 10.000 €" description="Convertir una meta grande en una aportación mensual concreta puede hacer mucho más fácil planificar el ahorro." intro="La pregunta útil no es solo cuánto quieres ahorrar, sino cuánto puedes apartar cada mes y cuánto tiempo estás dispuesto a mantener el plan." calculatorHref="/ahorro-inversion/escenarios/ahorrar-10000-euros/" calculatorLabel="Ver escenario de 10.000 €" sections={[
+    { title: 'Empieza por una aportación mensual', paragraphs: ['Divide el objetivo entre una cantidad mensual realista para obtener una primera estimación del plazo. Es una aproximación sencilla que ignora rentabilidad e imprevistos.', 'La constancia suele ser más importante que fijar una cifra que no puedas mantener durante varios meses.'] },
+    { title: 'Qué cambia si aportas más', paragraphs: ['Aumentar la aportación mensual acorta el tiempo necesario para alcanzar el objetivo. La calculadora de objetivo de ahorro permite estudiar varios escenarios.', 'También puedes plantear aportaciones distintas según tus meses con más o menos gastos, aunque una cifra mensual uniforme es más fácil de seguir.'] },
+    { title: 'Ahorro frente a rentabilidad', paragraphs: ['Con una rentabilidad hipotética, parte del crecimiento puede venir del capital acumulado. Pero la rentabilidad no está garantizada y puede fluctuar.', 'Para una meta cercana en el tiempo, conviene prestar especial atención al riesgo y a la disponibilidad del dinero antes de asumir una rentabilidad esperada.'] }
+  ]} faqs={[
+    { question: '¿Cuánto tengo que ahorrar al mes para llegar a 10.000 € en un año?', answer: 'Sin considerar rentabilidad ni variaciones, necesitas una media de aproximadamente 833,33 € al mes durante 12 meses.' },
+    { question: '¿Es mejor ahorrar todos los meses?', answer: 'Una aportación periódica puede facilitar la constancia y hacer más sencillo controlar el objetivo.' },
+    { question: '¿La rentabilidad acelera siempre el objetivo?', answer: 'Una rentabilidad positiva puede hacerlo, pero no está garantizada y conlleva riesgo según el producto utilizado.' }
+  ]} />
+</Layout>

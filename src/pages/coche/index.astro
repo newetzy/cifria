@@ -1,0 +1,7 @@
+---
+import CategoryPage from '../../components/CategoryPage.astro';
+import Layout from '../../layouts/Layout.astro';
+import { categories } from '../../data/categories';
+const category = categories.find(({ slug }) => slug === 'coche')!;
+---
+<Layout title="Calculadoras de coche y combustible | Cifria" description="Calculadoras para estimar el coste de combustible, viajes y otros gastos relacionados con el coche."><CategoryPage category={category} /></Layout>

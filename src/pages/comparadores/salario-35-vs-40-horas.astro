@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+---
+<Layout title='Salario por hora con 35 o 40 horas semanales | Cifria' description='Compara el valor bruto por hora de una jornada de 35 horas frente a una de 40 horas.'>
+  <SeoLandingPage title='Salario por hora con 35 o 40 horas semanales' description='Compara el valor bruto por hora de una jornada de 35 horas frente a una de 40 horas.' intro='Si el salario anual es el mismo, trabajar menos horas semanales eleva el valor bruto aproximado de cada hora.' calculatorHref='/nomina/salario-por-hora/' calculatorLabel='Calcular salario por hora' sections={[
+    { title: 'Mismo salario anual', paragraphs: ['Si el salario anual es el mismo, trabajar menos horas semanales eleva el valor bruto aproximado de cada hora.'] },
+    { title: 'Mismo horario anual', paragraphs: ['La comparación debe usar una misma metodología de horas trabajadas y tener en cuenta vacaciones, festivos y la distribución real de la jornada si buscas máxima precisión.'] },
+    { title: 'Cómo utilizarlo', paragraphs: ['Calcula primero 35 horas y después 40 horas manteniendo el mismo salario anual. La diferencia muestra el efecto de la jornada sobre el valor horario.'] }
+  ]} faqs={[
+    { question: '¿Es salario neto por hora?', answer: 'No. La herramienta parte del salario bruto y no descuenta IRPF ni cotizaciones.' },
+    { question: '¿Puedo comparar dos trabajos distintos?', answer: 'Sí, como referencia matemática, siempre que uses una metodología de horas comparable.' }
+  ]} />
+</Layout>

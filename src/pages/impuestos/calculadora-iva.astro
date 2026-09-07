@@ -1,0 +1,21 @@
+---
+import CalculatorShell from '../../components/CalculatorShell.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Calculadora de IVA: añadir o quitar IVA | Cifria" description="Calcula el IVA, el precio final y la base imponible. Elige entre añadir IVA a un precio neto o quitarlo de un precio final.">
+  <section class="calculator-page-section"><CalculatorShell title="Calculadora de IVA" description="Calcula rápidamente cuanto IVA corresponde a un importe y cuál es el precio final. Tambien puedes quitar el IVA de un precio que ya lo incluye.">
+    <div class="calculator-layout"><form id="vat-form" class="calculator-form" novalidate><fieldset><legend>Datos del cálculo</legend><div class="calculator-fields">
+      <div class="field"><label for="amount">Importe</label><div class="input-with-suffix"><input id="amount" type="number" min="0" step="0.01" value="100" /><span>€</span></div></div>
+      <div class="field"><label for="ratePercent">Tipo de IVA</label><select id="ratePercent"><option value="21">21 % - general</option><option value="10">10 % - reducido</option><option value="4">4 % - superreducido</option><option value="0">0 %</option></select></div>
+      <div class="field field-full"><label for="mode">Operación</label><select id="mode"><option value="add">Añadir IVA a un precio neto</option><option value="remove">Quitar IVA de un precio final</option></select></div>
+    </div></fieldset><button type="submit">Calcular IVA</button></form>
+    <div class="calculator-results" id="vat-results" hidden><p class="eyebrow">Resultado</p><section class="result-card result-card-primary"><p>Precio final</p><strong data-result="total">-</strong></section><div class="result-grid"><section class="result-card"><p>Base imponible</p><strong data-result="base">-</strong></section><section class="result-card"><p>IVA</p><strong data-result="vat">-</strong></section></div></div></div>
+    <p class="sr-only" id="vat-announcement" aria-live="polite"></p>
+    <section class="content-section prose"><h2>Tipos habituales</h2><p>En España, el tipo general es del 21 %. Tambien existen operaciónes que pueden tributar a tipos reducidos o superreducidos, como el 10 % o el 4 %. No todos los bienes y servicios pueden usar libremente cuálquiera de estos tipos.</p><h2>Añadir IVA y quitar IVA no son operaciónes iguales</h2><p>Para añadir IVA se aplica el porcentaje sobre la base. Para quitarlo de un precio final se calcula primero la base imponible dividiendo el total entre 1 mas el tipo.</p><p class="mortgage-source">Fuente oficial: <a href="https://sede.agenciatributaria.gob.es/static_files/Sede/Tema/IVA/IVA_reperc/Tipos_IVA_2026.pdf" rel="external">Agencia Tributaria - Tipos impositivos en el IVA 2026</a>.</p></section>
+    <Disclaimer>Esta calculadora sirve para operaciónes generales. La aplicación de un tipo concreto depende de la operación y sus circunstancias.</Disclaimer>
+    <RelatedTools tools={[{ href: '/impuestos/', title: 'Todas las herramientas de impuestos', description: 'Consulta las herramientas fiscales disponibles.' }, { href: '/ahorro-inversion/calculadora-inflacion/', title: 'Inflacion', description: 'Calcula el efecto de la subida de precios.' }]} />
+  </CalculatorShell></section>
+</Layout>
+<script>import '../../scripts/vat';</script>

@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+---
+<Layout title="Calculadora de coste de viaje en gasolina | Cifria" description="Calcula cuánto cuesta un viaje en gasolina a partir de kilómetros, consumo y precio por litro.">
+  <SeoLandingPage title="Calculadora de coste de viaje en gasolina" description="Estima el gasto de combustible de un viaje con tus kilómetros, consumo y precio por litro." intro="El coste de combustible de un viaje depende de tres datos básicos: distancia, consumo del coche y precio del combustible. Con ellos puedes obtener una estimación rápida antes de salir." exampleTitle="Introduce tus datos reales" exampleText="Utiliza el consumo medio que marca tu coche o una media reciente y el precio por litro que realmente pagarás. Cuanto más ajustadas sean las entradas, más útil será la estimación." calculatorHref="/coche/coste-viaje/" calculatorLabel="Calcular coste del viaje" sections={[
+    { title: 'Cómo se obtiene el coste', paragraphs: ['Primero se estima cuántos litros necesita el coche para recorrer la distancia indicada. Después se multiplica esa cantidad por el precio por litro.', 'La herramienta puede servir para comparar dos rutas si introduces la misma base de precios y consumo.'] },
+    { title: 'Ida y vuelta', paragraphs: ['Si vas a volver por la misma ruta, calcula el viaje completo como el doble de la distancia de ida o introduce directamente los kilómetros totales.', 'Recuerda que tráfico, velocidad, climatización, desnivel y carga pueden cambiar el consumo real.'] },
+    { title: 'Combustible no es el coste total del coche', paragraphs: ['Este cálculo se centra en el combustible. El coste real de desplazarte también puede incluir peajes, mantenimiento, neumáticos, seguro y depreciación.', 'Para una visión más completa puedes utilizar la calculadora de coste por kilómetro de Cifria.'] },
+  ]} faqs={[
+    { question: '¿Cómo se calcula el coste de gasolina de un viaje?', answer: 'Se estima el combustible consumido a partir de distancia y consumo y después se multiplica por el precio por litro.' },
+    { question: '¿Debo introducir los kilómetros de ida o de ida y vuelta?', answer: 'Introduce la distancia total que quieras presupuestar. Para un viaje de ida y vuelta, usa los kilómetros de ambos trayectos.' },
+    { question: '¿Incluye peajes?', answer: 'No. La estimación se centra en el combustible; los peajes deben analizarse aparte.' },
+  ]} />
+</Layout>

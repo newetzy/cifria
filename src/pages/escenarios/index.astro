@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+const scenarios = [
+  ['Hipoteca de 100.000 € a 30 años','/vivienda/escenarios/hipoteca-100000-30-anos/','Una referencia rápida para estudiar una cuota hipotecaria larga.'],
+  ['Hipoteca de 150.000 € a 30 años','/vivienda/escenarios/hipoteca-150000-30-anos/','Compara cuota, plazo e intereses con un importe habitual.'],
+  ['Hipoteca de 200.000 € a 30 años','/vivienda/escenarios/hipoteca-200000-30-anos/','Un escenario práctico para una vivienda de precio medio.'],
+  ['Préstamo de 10.000 € a 5 años','/prestamos/escenarios/prestamo-10000-5-anos/','Consulta cómo cambia la cuota al financiar 10.000 €.'],
+  ['Préstamo de 20.000 € a 5 años','/prestamos/escenarios/prestamo-20000-5-anos/','Un ejemplo para comparar financiación y coste total.'],
+  ['Ahorrar 100 € al mes','/ahorro-inversion/escenarios/ahorrar-100-euros-mes/','Calcula cuánto suma una aportación pequeña y constante.'],
+  ['Ahorrar 10.000 €','/ahorro-inversion/escenarios/ahorrar-10000-euros/','Estima la aportación mensual necesaria para llegar a una meta.'],
+  ['Salario por hora con 35 horas semanales','/nomina/escenarios/salario-35-horas/','Convierte un salario anual en una referencia por hora.'],
+  ['IVA del 10 %','/impuestos/escenarios/iva-10-por-ciento/','Calcula cómo separar base imponible e IVA reducido.'],
+  ['IVA del 4 %','/impuestos/escenarios/iva-4-por-ciento/','Escenario para productos y servicios al tipo superreducido.'],
+];
+---
+<Layout title="Escenarios financieros y laborales | Cifria" description="Ejemplos prácticos de hipotecas, préstamos, ahorro, salarios e IVA para entender rápidamente distintos escenarios.">
+  <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Ejemplos prácticos</p><h1>Escenarios financieros</h1><p class="lead">Páginas de referencia para comparar cantidades y plazos concretos. Úsalas como punto de partida y cambia los datos en la calculadora.</p></div></section>
+  <section class="section"><div class="container"><div class="scenario-grid">{scenarios.map(([title, href, desc]) => <Card class="scenario-card"><h2 style="font-size:1.25rem"><a href={href}>{title}</a></h2><p>{desc}</p><a class="text-link" href={href}>Ver escenario →</a></Card>)}</div></div></section>
+  <section class="section section-tint"><div class="container feature-grid"><div><p class="eyebrow">Comparaciones</p><h2>¿Quieres cambiar una variable?</h2></div><div><p>Compara dos plazos, aportaciones o estructuras antes de abrir la calculadora.</p><a class="text-link" href="/comparadores/">Ver comparadores →</a></div></div></section>
+</Layout>

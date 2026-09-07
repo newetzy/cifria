@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+---
+<Layout title='Ahorrar o invertir: qué estás comparando | Cifria' description='Una guía breve para distinguir entre acumular dinero sin asumir rentabilidad y buscar crecimiento con una inversión.'>
+  <SeoLandingPage title='Ahorrar o invertir: qué estás comparando' description='Una guía breve para distinguir entre acumular dinero sin asumir rentabilidad y buscar crecimiento con una inversión.' intro='Ahorrar prioriza acumular una cantidad objetivo y mantener disponibilidad. La herramienta de objetivo de ahorro permite calcular cuánto aportar para alcanzar una meta sin depender de una rentabilidad.' calculatorHref='/ahorro-inversion/objetivo-ahorro/' calculatorLabel='Calcular objetivo de ahorro' sections={[
+    { title: 'Ahorrar', paragraphs: ['Ahorrar prioriza acumular una cantidad objetivo y mantener disponibilidad. La herramienta de objetivo de ahorro permite calcular cuánto aportar para alcanzar una meta sin depender de una rentabilidad.'] },
+    { title: 'Invertir', paragraphs: ['Invertir introduce riesgo y una rentabilidad incierta. Para estudiar escenarios, la calculadora de interés compuesto permite introducir una hipótesis de rentabilidad y ver su efecto a largo plazo.'] },
+    { title: 'No son excluyentes', paragraphs: ['En la práctica puedes combinar ambos enfoques: ahorro para objetivos cercanos y una inversión acorde a tu horizonte y tolerancia al riesgo.'] }
+  ]} faqs={[
+    { question: '¿Invertir siempre da más dinero?', answer: 'No. Una inversión puede perder valor y la rentabilidad futura no está garantizada.' },
+    { question: '¿Puedo usar Cifria para decidir cuánto invertir?', answer: 'Cifria puede ayudarte a explorar escenarios matemáticos, pero no sustituye una evaluación financiera personalizada.' }
+  ]} />
+</Layout>

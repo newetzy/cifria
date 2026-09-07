@@ -1,5 +1,7 @@
 ---
-import Layout from '../../layouts/Layout.astro'; import CategoryPage from '../../components/CategoryPage.astro'; import { categories } from '../../data/categories';
+import CategoryPage from '../../components/CategoryPage.astro';
+import Layout from '../../layouts/Layout.astro';
+import { categories } from '../../data/categories';
 const category = categories.find(({ slug }) => slug === 'vivienda')!;
 ---
-<Layout title="Calculadoras de vivienda | Cifria" description="Calculadoras de vivienda para compra, alquiler e hipoteca en España."><CategoryPage {category} /></Layout>
+<Layout title="Calculadoras de vivienda e hipoteca | Cifria" description="Calculadoras para estimar cuotas de hipoteca, financiación y otros costes relacionados con la vivienda."><CategoryPage category={category} /></Layout>

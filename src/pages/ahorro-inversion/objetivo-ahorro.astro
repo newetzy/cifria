@@ -1,0 +1,22 @@
+---
+import CalculatorShell from '../../components/CalculatorShell.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Calculadora de objetivo de ahorro | Cifria" description="Calcula cuánto tiempo necesitas para alcanzar un objetivo de ahorro con aportaciones mensuales y una rentabilidad hipotética.">
+  <section class="calculator-page-section"><CalculatorShell title="Calculadora de objetivo de ahorro" description="Descubre cuánto tiempo podrías tardar en alcanzar una cantidad concreta según tu ahorro mensual y una rentabilidad anual hipotética.">
+    <div class="calculator-layout"><form id="savings-goal-form" class="calculator-form" novalidate><fieldset><legend>Tu objetivo</legend><div class="calculator-fields">
+      <div class="field"><label for="initialCapital">Capital inicial</label><div class="input-with-suffix"><input id="initialCapital" type="number" min="0" step="0.01" value="5000" /><span>€</span></div></div>
+      <div class="field"><label for="monthlyContribution">Aportación mensual</label><div class="input-with-suffix"><input id="monthlyContribution" type="number" min="0.01" step="0.01" value="300" /><span>€</span></div></div>
+      <div class="field"><label for="annualReturnPercent">Rentabilidad anual</label><div class="input-with-suffix"><input id="annualReturnPercent" type="number" min="0" max="100" step="0.01" value="4" /><span>%</span></div><small>Hipótesis, no una garantía de rentabilidad.</small></div>
+      <div class="field"><label for="targetAmount">Objetivo de ahorro</label><div class="input-with-suffix"><input id="targetAmount" type="number" min="0.01" step="0.01" value="25000" /><span>€</span></div></div>
+    </div></fieldset><button type="submit">Calcular tiempo</button><p class="calculator-privacy">El cálculo se realiza en tu navegador.</p></form>
+    <div class="calculator-results" id="savings-goal-results"><p class="eyebrow">Resultado estimado</p><section class="result-card result-card-primary"><p>Tiempo para alcanzar el objetivo</p><strong data-result="time">—</strong><span>El cálculo añade la aportación al final de cada mes.</span></section><div class="result-grid"><section class="result-card"><p>Capital final</p><strong data-result="finalCapital">—</strong></section><section class="result-card"><p>Dinero aportado</p><strong data-result="investedCapital">—</strong></section><section class="result-card"><p>Intereses estimados</p><strong data-result="interest">—</strong></section></div></div></div>
+    <p class="sr-only" id="savings-goal-announcement" aria-live="polite"></p>
+    <section class="content-section prose"><p class="eyebrow">Cómo interpretarlo</p><h2>La aportación mensual es la clave</h2><p>La herramienta permite ver cuánto puede acelerar un objetivo aumentar la cantidad que aportas cada mes. La rentabilidad elegida es solo un escenario matemático.</p><h2>Qué no tiene en cuenta</h2><p>No se incorporan impuestos, comisiones, inflación ni variaciones de rentabilidad.</p></section>
+    <Disclaimer>El resultado es una simulación y no constituye una previsión de rentabilidad ni asesoramiento financiero.</Disclaimer>
+    <RelatedTools tools={[{ href: '/ahorro-inversion/interes-compuesto/', title: 'Calculadora de interés compuesto', description: 'Consulta la evolución anual de tu capital.' }, { href: '/ahorro-inversion/calculadora-inflacion/', title: 'Calculadora de inflación', description: 'Comprueba cómo cambia el poder adquisitivo.' }]} />
+  </CalculatorShell></section>
+</Layout>
+<script>import '../../scripts/savings-goal';</script>

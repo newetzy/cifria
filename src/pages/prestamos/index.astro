@@ -1,5 +1,7 @@
 ---
-import Layout from '../../layouts/Layout.astro'; import CategoryPage from '../../components/CategoryPage.astro'; import { categories } from '../../data/categories';
+import CategoryPage from '../../components/CategoryPage.astro';
+import Layout from '../../layouts/Layout.astro';
+import { categories } from '../../data/categories';
 const category = categories.find(({ slug }) => slug === 'prestamos')!;
 ---
-<Layout title="Calculadoras de préstamos | Cifria" description="Calculadoras de cuotas, intereses y coste de préstamos."><CategoryPage {category} /></Layout>
+<Layout title="Calculadoras de préstamos | Cifria" description="Calculadoras para estimar cuotas, intereses y coste total de préstamos a tipo fijo."><CategoryPage category={category} /></Layout>

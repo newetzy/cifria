@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+import { calculateFuelTrip } from '../../lib/calculations/fuel-trip.ts';
+import { formatEuro, formatNumber } from '../../lib/formatters/currency.ts';
+const result = calculateFuelTrip({ distanceKm: 500, consumptionLitersPer100Km: 6.5, fuelPricePerLiter: 1.6, tolls: 0 });
+---
+<Layout title="Coste de un viaje de 500 km en gasolina | Cifria" description="Calcula el coste de un viaje de 500 km en gasolina usando consumo y precio por litro. Incluye litros y coste del combustible.">
+  <SeoLandingPage title="Coste de un viaje de 500 km en gasolina" description="Calcula una referencia del combustible necesario y del coste para recorrer 500 km." intro={`Con 500 km de distancia, un consumo supuesto de 6,5 l/100 km y gasolina a 1,60 €/l, el viaje necesita unos ${formatNumber(result.litersNeeded)} litros y cuesta aproximadamente ${formatEuro(result.fuelCost)} en combustible.`} exampleTitle="Supuesto del ejemplo" exampleText={`Distancia: 500 km · consumo: 6,5 l/100 km · precio: 1,60 €/l · combustible: ${formatEuro(result.fuelCost)} · coste por km: ${formatEuro(result.costPerKm)}.`} calculatorHref="/coche/coste-viaje-gasolina/" calculatorLabel="Calcular coste del viaje" sections={[
+    { title: 'La distancia no es suficiente', paragraphs: ['Dos coches pueden recorrer los mismos 500 km y gastar importes diferentes porque el consumo y el precio del combustible cambian.', 'Por eso la herramienta usa kilómetros, litros por 100 km y precio por litro.'] },
+    { title: 'Añade peajes cuando existan', paragraphs: ['El ejemplo usa 0 € de peajes para aislar el combustible. Si tu ruta tiene peajes, puedes introducirlos y obtener un coste total más cercano a tu viaje.', 'También puedes calcular el coste por kilómetro del trayecto.'] },
+    { title: 'Un ejemplo no es un precio actual', paragraphs: ['El precio de 1,60 €/l es únicamente un supuesto estático. Para una previsión real, introduce el precio que estés observando antes del viaje.', 'La herramienta no obtiene precios de gasolineras en tiempo real.'] },
+  ]} faqs={[
+    { question: '¿Cuántos litros hacen falta para 500 km con 6,5 l/100 km?', answer: `La simulación necesita aproximadamente ${formatNumber(result.litersNeeded)} litros.` },
+    { question: '¿Cuánto cuesta el combustible en este ejemplo?', answer: `A 1,60 €/l, el coste estimado es de ${formatEuro(result.fuelCost)}.` },
+    { question: '¿Incluye peajes?', answer: 'El ejemplo no incluye ninguno, pero la calculadora permite añadir el importe de los peajes al coste total.' },
+  ]} />
+</Layout>

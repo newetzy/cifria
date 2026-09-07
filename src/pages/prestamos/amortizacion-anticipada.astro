@@ -1,0 +1,23 @@
+---
+import CalculatorShell from '../../components/CalculatorShell.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Calculadora de amortización anticipada | Cifria" description="Simula cuanto puedes ahorrar en intereses al amortizar anticipadamente parte de un préstamo o hipoteca.">
+  <section class="calculator-page-section"><CalculatorShell title="Calculadora de amortización anticipada" description="Compara que ocurre al amortizar una cantidad de tu deuda y elegir entre reducir la cuota o reducir el plazo.">
+    <div class="calculator-layout"><form id="early-repayment-form" class="calculator-form" novalidate><fieldset><legend>Datos del préstamo</legend><div class="calculator-fields">
+      <div class="field"><label for="principal">Capital pendiente</label><div class="input-with-suffix"><input id="principal" type="number" min="1" step="0.01" value="150000" /><span>€</span></div></div>
+      <div class="field"><label for="annualRatePercent">Tipo anual</label><div class="input-with-suffix"><input id="annualRatePercent" type="number" min="0" max="100" step="0.01" value="3" /><span>%</span></div></div>
+      <div class="field"><label for="remainingYears">Plazo restante</label><div class="input-with-suffix"><input id="remainingYears" type="number" min="1" max="100" step="1" value="20" /><span>años</span></div></div>
+      <div class="field"><label for="extraPayment">Cantidad a amortizar</label><div class="input-with-suffix"><input id="extraPayment" type="number" min="0.01" step="0.01" value="10000" /><span>€</span></div></div>
+      <div class="field field-full"><label for="mode">Qué quieres reducir?</label><select id="mode"><option value="reduce-term">Reducir plazo</option><option value="reduce-payment">Reducir cuota</option></select></div>
+    </div></fieldset><button type="submit">Simular amortización</button></form>
+    <div class="calculator-results" id="early-repayment-results" hidden><p class="eyebrow">Resultado estimado</p><section class="result-card result-card-primary"><p>Intereses que puedes ahorrar</p><strong data-result="interestSaved">-</strong><span>Comparacion matemática con las condiciones introducidas.</span></section><div class="result-grid"><section class="result-card"><p>Cuota antes</p><strong data-result="oldPayment">-</strong></section><section class="result-card"><p>Cuota después</p><strong data-result="newPayment">-</strong></section><section class="result-card"><p>Meses que ahorras</p><strong data-result="monthsSaved">-</strong></section></div></div></div>
+    <p class="sr-only" id="early-repayment-announcement" aria-live="polite"></p>
+    <section class="content-section prose"><h2>Reducir cuota o reducir plazo</h2><p>Reducir cuota baja el pago mensual y mantiene el plazo. Reducir plazo mantiene la cuota aproximada y termina antes la deuda. En igualdad de condiciones, acortar el plazo suele reducir mas los intereses totales.</p><h2>Qué no incluye</h2><p>Esta simulación no incorpora comisiones de amortización, cambios de tipo, seguros, impuestos ni otras condiciones contractuales.</p></section>
+    <Disclaimer>Es una simulación matemática. Comprueba las condiciones de tu contrato y las comisiones aplicables antes de tomar una decisión financiera.</Disclaimer>
+    <RelatedTools tools={[{ href: '/vivienda/calculadora-hipoteca/', title: 'Calculadora de hipoteca', description: 'Simula cuota, intereses y capital financiado.' }, { href: '/prestamos/calculadora-cuota-prestamo/', title: 'Cuota de préstamo', description: 'Calcula la cuota de un préstamo amortizable.' }]} />
+  </CalculatorShell></section>
+</Layout>
+<script>import '../../scripts/early-repayment';</script>

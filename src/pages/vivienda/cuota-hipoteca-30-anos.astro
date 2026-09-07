@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+---
+<Layout title="Calculadora de hipoteca a 30 años | Cifria" description="Simula la cuota de una hipoteca a 30 años y comprueba el efecto del plazo sobre la mensualidad y los intereses.">
+  <SeoLandingPage title="Calculadora de hipoteca a 30 años" description="Simula una financiación hipotecaria de 30 años y compara cuota mensual, intereses y coste total." intro="Treinta años permiten repartir el capital entre muchas cuotas. El resultado suele ser una mensualidad más baja que en plazos cortos, a cambio de mantener la deuda más tiempo." exampleTitle="Cómo hacer una comparación limpia" exampleText="Calcula primero 30 años y después repite con 20 o 25 años, sin cambiar el capital ni el tipo. La diferencia te enseña el precio de elegir una cuota más baja." calculatorHref="/vivienda/calculadora-hipoteca/" calculatorLabel="Calcular hipoteca" sections={[
+    { title: 'Por qué puede interesar un plazo largo', paragraphs: ['Repartir la devolución durante 30 años suele reducir la cuota mensual frente a amortizar la misma deuda en menos tiempo.', 'La contrapartida es que la deuda permanece durante más años y, con el mismo tipo, normalmente aumenta el importe total de intereses.'] },
+    { title: 'La cuota no es el único dato', paragraphs: ['Al comparar hipotecas conviene mirar la mensualidad y, al mismo tiempo, el total de intereses y el total pagado durante toda la vida del préstamo.', 'Una diferencia pequeña de cuota puede traducirse en una diferencia importante de intereses cuando se acumula durante cientos de mensualidades.'] },
+    { title: 'Prueba distintos escenarios', paragraphs: ['La herramienta permite cambiar capital, entrada, tipo y plazo. Utiliza esos controles para ver qué combinación encaja mejor con el presupuesto que estás estudiando.', 'Recuerda que la cuota calculada no incluye automáticamente todos los costes de una operación inmobiliaria real.'] },
+  ]} faqs={[
+    { question: '¿Una hipoteca a 30 años tiene una cuota más baja?', answer: 'Con el mismo importe y tipo, normalmente sí frente a plazos más cortos porque el capital se reparte entre más cuotas.' },
+    { question: '¿Pagaré más intereses a 30 años?', answer: 'En igualdad de capital y tipo, normalmente sí, porque la deuda se mantiene durante más periodos.' },
+    { question: '¿Puedo comparar 20, 25 y 30 años con la misma herramienta?', answer: 'Sí. Mantén constantes el importe y el tipo y cambia únicamente el plazo para comparar los efectos del vencimiento.' },
+  ]} />
+</Layout>

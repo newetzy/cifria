@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+import { tools } from '../../data/tools';
+
+const groups = [
+  { key: 'calculadora', label: 'Calculadoras', intro: 'Herramientas interactivas para hacer el cálculo directamente.' },
+  { key: 'guia', label: 'Guías', intro: 'Explicaciones prácticas para entender mejor los resultados.' },
+  { key: 'comparador', label: 'Comparadores', intro: 'Compara alternativas antes de tomar una decisión.' },
+  { key: 'escenario', label: 'Escenarios', intro: 'Referencias concretas para búsquedas frecuentes.' },
+  { key: 'glosario', label: 'Glosario', intro: 'Conceptos financieros explicados de forma sencilla.' },
+];
+---
+<Layout title="Todas las herramientas financieras | Cifria" description="Directorio de calculadoras, guías, comparadores, escenarios y conceptos financieros de Cifria.">
+  <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Directorio Cifria</p><h1>Todas las herramientas</h1><p class="lead">Un punto de entrada para explorar las calculadoras y recursos disponibles en Cifria.</p><a class="button" href="/buscar/">Buscar una herramienta</a></div></section>
+  {groups.map((group) => { const items = tools.filter((tool) => tool.type === group.key); return items.length ? <section class="section"><div class="container"><div class="section-heading"><div><p class="eyebrow">{group.label}</p><h2>{group.label}</h2></div><p>{group.intro}</p></div><div class="category-grid">{items.map((tool) => <Card class="category-card"><p class="card-number">{tool.category}</p><h3><a href={tool.href}>{tool.title}</a></h3><p>{tool.description}</p><a class="text-link" href={tool.href}>Abrir →</a></Card>)}</div></div></section> : null; })}
+</Layout>
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Herramientas de Cifria',
+  itemListElement: tools.map((tool, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: tool.title,
+    url: `https://cifria.es${tool.href}`
+  }))
+})} />
+

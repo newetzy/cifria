@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AdSlot from '../components/AdSlot.astro';
 interface Props { title: string; description: string; noindex?: boolean; }
 const { title, description, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString();
@@ -11,6 +13,35 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).to
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} /><meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
   <link rel="canonical" href={canonical} /><link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta property="og:type" content="website" /><meta property="og:site_name" content="Cifria" /><meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+  <meta name="theme-color" content="#17342d" />
+  <meta property="og:site_name" content="Cifria" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
   <title>{title}</title>
-</head><body><a class="skip-link" href="#contenido">Saltar al contenido principal</a><Header /><main id="contenido"><slot /></main><Footer /></body></html>
+  {import.meta.env.PUBLIC_ADSENSE_CLIENT && import.meta.env.PUBLIC_ADSENSE_TOP_SLOT && <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={import.meta.env.PUBLIC_ADSENSE_CLIENT}" crossorigin="anonymous"></script>}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url: canonical,
+    inLanguage: 'es-ES',
+    isPartOf: { '@type': 'WebSite', name: 'Cifria', url: 'https://cifria.es/' },
+    publisher: { '@type': 'Organization', name: 'Cifria' }
+  })} />
+  {Astro.url.pathname === '/' && <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Cifria',
+    url: 'https://cifria.es/',
+    inLanguage: 'es-ES',
+    publisher: { '@type': 'Organization', name: 'Cifria' },
+    potentialAction: { '@type': 'SearchAction', target: 'https://cifria.es/buscar/?q={search_term_string}', 'query-input': 'required name=search_term_string' }
+  })} />}
+</head><body><a class="skip-link" href="#contenido">Saltar al contenido principal</a><Header />{Astro.url.pathname !== '/' && <Breadcrumbs />}<main id="contenido"><AdSlot slot={import.meta.env.PUBLIC_ADSENSE_TOP_SLOT} /> <slot /></main><Footer /></body></html>

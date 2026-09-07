@@ -1,5 +1,39 @@
 ---
+import AdSlot from './AdSlot.astro';
+import { tools } from '../data/tools';
 interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
+const currentPath = Astro.url.pathname;
+const segments = currentPath.split('/').filter(Boolean);
+const category = segments[0] ?? '';
+const current = tools.find((tool) => tool.href === currentPath);
+const currentKeywords = new Set(current?.keywords ?? []);
+const related = tools
+  .filter((tool) => tool.href !== currentPath && tool.href !== '/' && tool.type !== 'glosario')
+  .map((tool) => {
+    const shared = tool.keywords.reduce((score, keyword) => score + (currentKeywords.has(keyword) ? 1 : 0), 0);
+    const sameCategory = tool.href.startsWith(`/${category}/`) ? 3 : 0;
+    const usefulType = tool.type === 'guia' || tool.type === 'comparador' || tool.type === 'escenario' ? 1 : 0;
+    return { tool, score: shared * 4 + sameCategory + usefulType };
+  })
+  .filter(({ score }) => score > 0)
+  .sort((a, b) => b.score - a.score)
+  .slice(0, 4)
+  .map(({ tool }) => tool);
 ---
-<article class="calculator-shell"><header><h1>{title}</h1><p class="lead">{description}</p></header><div class="calculator-content"><slot /></div></article>
+<article class="calculator-shell">
+  <header><h1>{title}</h1><p class="lead">{description}</p></header>
+  <div class="calculator-content"><slot /></div>
+  {related.length > 0 && (
+    <section class="related-tools calculator-related" aria-labelledby="calculator-related-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">Sigue explorando</p><h2 id="calculator-related-title">Herramientas relacionadas</h2></div>
+        <p>Continúa con recursos que comparten tema o intención de búsqueda.</p>
+      </div>
+      <div class="related-tools-grid">
+        {related.map((tool) => <a class="related-tool" href={tool.href}><strong>{tool.title}</strong><span>{tool.description}</span></a>)}
+      </div>
+    </section>
+  )}
+  <AdSlot slot={import.meta.env.PUBLIC_ADSENSE_BOTTOM_SLOT} label="Publicidad" />
+</article>

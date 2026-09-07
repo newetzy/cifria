@@ -1,0 +1,22 @@
+---
+import CalculatorShell from '../../components/CalculatorShell.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Calculadora de coste de viaje en coche | Cifria" description="Calcula litros necesarios, coste de combustible, peajes y coste total de un viaje en coche.">
+  <section class="calculator-page-section"><CalculatorShell title="Calculadora de coste de viaje" description="Estima cuánto te costará un trayecto con la distancia, el consumo real de tu coche, el precio del combustible y los peajes.">
+    <div class="calculator-layout"><form id="fuel-trip-form" class="calculator-form" novalidate><fieldset><legend>Datos del viaje</legend><div class="calculator-fields">
+      <div class="field"><label for="distanceKm">Distancia</label><div class="input-with-suffix"><input id="distanceKm" type="number" min="0.1" step="0.1" value="500" /><span>km</span></div><small>Distancia total del trayecto.</small></div>
+      <div class="field"><label for="consumptionLitersPer100Km">Consumo</label><div class="input-with-suffix"><input id="consumptionLitersPer100Km" type="number" min="0.1" max="50" step="0.1" value="5.5" /><span>L/100 km</span></div><small>Consumo medio que marca tu coche o que hayas observado.</small></div>
+      <div class="field"><label for="fuelPricePerLiter">Precio del combustible</label><div class="input-with-suffix"><input id="fuelPricePerLiter" type="number" min="0.01" max="10" step="0.001" value="1.50" /><span>€/L</span></div></div>
+      <div class="field"><label for="tolls">Peajes</label><div class="input-with-suffix"><input id="tolls" type="number" min="0" step="0.01" value="0" /><span>€</span></div><small>Pon 0 si no tienes peajes.</small></div>
+    </div></fieldset><button type="submit">Calcular coste del viaje</button><p class="calculator-privacy">El cálculo se realiza en tu navegador.</p></form>
+    <div class="calculator-results" id="fuel-trip-results"><p class="eyebrow">Resultado estimado</p><section class="result-card result-card-primary"><p>Coste total del viaje</p><strong data-result="totalCost">—</strong><span>Combustible más peajes.</span></section><div class="result-grid"><section class="result-card"><p>Combustible necesario</p><strong data-result="litersNeeded">—</strong></section><section class="result-card"><p>Coste del combustible</p><strong data-result="fuelCost">—</strong></section><section class="result-card"><p>Peajes</p><strong data-result="tolls">—</strong></section><section class="result-card"><p>Coste por kilómetro</p><strong data-result="costPerKm">—</strong></section></div></div></div>
+    <p class="sr-only" id="fuel-trip-announcement" aria-live="polite"></p>
+    <section class="content-section prose"><p class="eyebrow">Cómo se calcula</p><h2>¿Cuánto cuesta realmente un viaje?</h2><p>El consumo indicado se aplica a la distancia total para estimar los litros necesarios. Después se multiplican por el precio del combustible y se suman los peajes.</p><h2>Úsalo con tu consumo real</h2><p>Para que la estimación sea útil, introduce un consumo medio cercano al que ves en tus trayectos habituales. La velocidad, tráfico, desnivel, carga y temperatura pueden cambiar el consumo real.</p></section>
+    <Disclaimer>El resultado no incluye desgaste, mantenimiento, aparcamiento, seguro, depreciación ni otros costes del vehículo.</Disclaimer>
+    <RelatedTools tools={[{ href: '/coche/', title: 'Calculadoras de coche', description: 'Consulta el resto de herramientas de movilidad.' }, { href: '/prestamos/calculadora-cuota-prestamo/', title: 'Cuota de préstamo', description: 'Calcula la financiación de una compra.' }]} />
+  </CalculatorShell></section>
+</Layout>
+<script>import '../../scripts/fuel-trip';</script>

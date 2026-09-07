@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+import { calculateLoan } from '../../lib/calculations/loan.ts';
+import { formatEuro } from '../../lib/formatters/currency.ts';
+const result = calculateLoan({ principal: 20000, annualInterestRate: 7, years: 7 });
+---
+<Layout title="Préstamo de 20.000 euros a 7 años | Cifria" description="Simulación de un préstamo de 20.000 euros a 7 años con un 7 % hipotético. Consulta cuota, intereses y coste total.">
+  <SeoLandingPage title="Préstamo de 20.000 € a 7 años" description="Consulta una simulación de cuota e intereses para un préstamo de 20.000 € a 7 años." intro={`Con 20.000 € financiados a 7 años y un tipo hipotético del 7 %, la cuota matemática estimada es de ${formatEuro(result.monthlyPayment)} al mes.`} exampleTitle="Ejemplo con 7 %" exampleText={`Cuota estimada: ${formatEuro(result.monthlyPayment)} · intereses: ${formatEuro(result.totalInterest)} · total de cuotas: ${formatEuro(result.totalInstallments)}.`} calculatorHref="/prestamos/calculadora-cuota-prestamo/" calculatorLabel="Calcular préstamo" sections={[
+    { title: 'Plazo largo y coste total', paragraphs: ['Siete años reparten 20.000 € entre 84 cuotas. Eso puede aliviar la mensualidad frente a plazos más cortos.', 'A cambio, mantener el préstamo durante más tiempo suele incrementar los intereses acumulados si el tipo permanece igual.'] },
+    { title: 'Compara escenarios iguales', paragraphs: ['Una comparación útil cambia solo el plazo: 5, 7 y 8 años, por ejemplo, manteniendo capital y tipo.', 'Así puedes identificar cuánto cuesta reducir la cuota mensual.'] },
+    { title: 'Qué no contempla este ejemplo', paragraphs: ['No se incluyen seguros, productos vinculados ni gastos que no formen parte de la cuota matemática.', 'Para una oferta real, comprueba el coste total y la documentación facilitada por la entidad.'] },
+  ]} faqs={[
+    { question: '¿Cuál sería la cuota de 20.000 € a 7 años?', answer: `Con un 7 % hipotético, la cuota estimada es de ${formatEuro(result.monthlyPayment)} al mes.` },
+    { question: '¿Cuánto se paga de intereses?', answer: `La simulación acumula aproximadamente ${formatEuro(result.totalInterest)} de intereses.` },
+    { question: '¿Alargar el plazo siempre reduce el coste?', answer: 'No. Normalmente reduce la cuota mensual, pero puede aumentar los intereses totales.' },
+  ]} />
+</Layout>

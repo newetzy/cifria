@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+---
+<Layout title="Calculadora de hipoteca a 20 años | Cifria" description="Calcula una cuota hipotecaria a 20 años y compara cómo influyen el capital y el tipo de interés en el coste total.">
+  <SeoLandingPage title="Calculadora de hipoteca a 20 años" description="Una forma rápida de explorar qué cuota puede resultar de financiar una vivienda durante 20 años." intro="Un plazo de 20 años suele situarse a medio camino entre una cuota más alta y un coste de intereses menor que el de plazos muy largos." exampleTitle="Ejemplo orientativo" exampleText="Para comparar escenarios, mantén el importe y el tipo constantes y cambia solo el plazo. Así podrás ver cuánto cambia la cuota y el total de intereses." calculatorHref="/vivienda/calculadora-hipoteca/" calculatorLabel="Calcular cuota de hipoteca" sections={[
+    { title: 'Qué cambia al elegir 20 años', paragraphs: ['Con el mismo capital y tipo de interés, 20 años implica menos cuotas que 25 o 30 años. Eso suele elevar la cuota mensual, pero reduce el tiempo durante el que se generan intereses.', 'El efecto exacto depende del capital financiado y del tipo que introduzcas en la calculadora. Por eso conviene probar varios escenarios antes de comparar ofertas.'] },
+    { title: 'Cómo comparar 20, 25 y 30 años', paragraphs: ['Usa el mismo importe financiado y el mismo tipo de interés en cada simulación. Después compara cuota mensual, intereses totales y total pagado.', 'Una cuota más baja puede facilitar el presupuesto mensual, pero no significa necesariamente que el préstamo sea más barato en total.'] },
+    { title: 'Qué no incluye esta simulación', paragraphs: ['El cálculo se centra en la amortización matemática del préstamo. No incorpora por defecto seguros, comisiones, productos vinculados, impuestos ni gastos de compraventa.', 'Para una decisión real, revisa la documentación de la entidad y utiliza la simulación como una herramienta para comparar escenarios, no como una oferta bancaria.'] },
+  ]} faqs={[
+    { question: '¿Una hipoteca a 20 años suele tener una cuota mayor?', answer: 'Con el mismo capital y tipo de interés, normalmente sí, porque el capital se devuelve en menos mensualidades.' },
+    { question: '¿20 años significa pagar menos intereses que 30 años?', answer: 'En igualdad de capital y tipo, normalmente sí, porque la deuda permanece menos tiempo y se pagan menos periodos de intereses.' },
+    { question: '¿La calculadora sirve para una hipoteca variable?', answer: 'La simulación matemática de la herramienta parte de un tipo fijo introducido por el usuario; una hipoteca variable real puede cambiar su cuota con las revisiones.' },
+  ]} />
+</Layout>

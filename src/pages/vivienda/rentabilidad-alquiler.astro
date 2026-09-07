@@ -1,0 +1,48 @@
+---
+import CalculatorShell from '../../components/CalculatorShell.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Calculadora de rentabilidad de alquiler | Cifria" description="Calcula la rentabilidad bruta y neta estimada de una vivienda alquilada según el precio de compra, el alquiler y los gastos anuales.">
+  <section class="calculator-page-section">
+    <CalculatorShell title="Calculadora de rentabilidad de alquiler" description="Estima la rentabilidad anual de una vivienda destinada al alquiler y compara el rendimiento bruto con el neto.">
+      <div class="calculator-layout">
+        <form id="rent-yield-form" class="calculator-form" novalidate>
+          <fieldset>
+            <legend>Datos de la vivienda</legend>
+            <div class="calculator-fields">
+              <div class="field"><label for="purchasePrice">Precio de compra</label><div class="input-with-suffix"><input id="purchasePrice" name="purchasePrice" type="number" min="0.01" step="0.01" value="180000" /><span>€</span></div><small>Precio pagado por la vivienda, sin añadir otros costes.</small></div>
+              <div class="field"><label for="monthlyRent">Alquiler mensual</label><div class="input-with-suffix"><input id="monthlyRent" name="monthlyRent" type="number" min="0" step="0.01" value="900" /><span>€</span></div><small>Importe mensual de alquiler que esperas cobrar.</small></div>
+              <div class="field field-full"><label for="annualExpenses">Gastos anuales</label><div class="input-with-suffix"><input id="annualExpenses" name="annualExpenses" type="number" min="0" step="0.01" value="1800" /><span>€</span></div><small>Incluye los gastos que quieras descontar de la renta anual para obtener una estimación neta.</small></div>
+            </div>
+          </fieldset>
+          <button type="submit">Calcular rentabilidad</button>
+          <p class="calculator-privacy">El cálculo se realiza en tu navegador.</p>
+        </form>
+
+        <div class="calculator-results" id="rent-yield-results" hidden>
+          <p class="eyebrow">Resultado estimado</p>
+          <section class="result-card result-card-primary"><p>Rentabilidad bruta</p><strong data-result="grossYield">—</strong><span>Renta anual dividida entre el precio de compra.</span></section>
+          <div class="result-grid">
+            <section class="result-card"><p>Rentabilidad neta</p><strong data-result="netYield">—</strong><span>Después de restar los gastos anuales indicados.</span></section>
+            <section class="result-card"><p>Ingresos brutos anuales</p><strong data-result="annualRent">—</strong></section>
+            <section class="result-card"><p>Ingreso anual tras gastos</p><strong data-result="netAnnualIncome">—</strong></section>
+          </div>
+        </div>
+      </div>
+
+      <p class="sr-only" id="rent-yield-announcement" aria-live="polite"></p>
+      <section class="content-section prose">
+        <p class="eyebrow">Cómo se calcula</p>
+        <h2>Rentabilidad bruta y neta</h2>
+        <p>La rentabilidad bruta compara el alquiler anual con el precio de compra de la vivienda. La rentabilidad neta descuenta los gastos anuales que introduzcas antes de dividir el resultado entre el precio de compra.</p>
+        <h2>Qué gastos puedes considerar</h2>
+        <p>Puedes introducir una estimación anual de gastos como comunidad, mantenimiento, seguros, periodos sin alquilar u otros costes que quieras tener en cuenta. Para una comparación más completa también conviene considerar impuestos, financiación y los gastos iniciales de adquisición.</p>
+      </section>
+      <Disclaimer>Esta es una estimación matemática. No incluye automáticamente impuestos, financiación, gastos de compra, vacantes ni todos los costes asociados a una vivienda en alquiler.</Disclaimer>
+      <RelatedTools tools={[{ href: '/vivienda/calculadora-hipoteca/', title: 'Calculadora de hipoteca', description: 'Simula cuota, intereses y capital financiado.' }, { href: '/ahorro-inversion/roi/', title: 'Calculadora de ROI', description: 'Calcula el retorno porcentual de una inversión.' }]} />
+    </CalculatorShell>
+  </section>
+</Layout>
+<script>import '../../scripts/rent-yield';</script>

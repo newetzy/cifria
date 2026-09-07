@@ -1,0 +1,22 @@
+---
+import CalculatorShell from '../../components/CalculatorShell.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Calculadora de aportaciones periódicas | Cifria" description="Calcula cuanto puedes acumular aportando una cantidad cada mes y separa el dinero que aportas de los intereses generados.">
+  <section class="calculator-page-section"><CalculatorShell title="Calculadora de aportaciones periódicas" description="Simula cuanto podría crecer tu ahorro con una aportación mensual, un capital inicial y una rentabilidad anual hipotética.">
+    <div class="calculator-layout"><form id="periodic-savings-form" class="calculator-form" novalidate><fieldset><legend>Datos de la simulación</legend><div class="calculator-fields">
+      <div class="field"><label for="initialCapital">Capital inicial</label><div class="input-with-suffix"><input id="initialCapital" type="number" min="0" step="0.01" value="1000" /><span>€</span></div></div>
+      <div class="field"><label for="monthlyContribution">Aportación mensual</label><div class="input-with-suffix"><input id="monthlyContribution" type="number" min="0" step="0.01" value="200" /><span>€/mes</span></div></div>
+      <div class="field"><label for="annualRatePercent">Rentabilidad anual estimada</label><div class="input-with-suffix"><input id="annualRatePercent" type="number" min="0" max="100" step="0.01" value="5" /><span>%</span></div></div>
+      <div class="field"><label for="years">Plazo</label><div class="input-with-suffix"><input id="years" type="number" min="1" max="100" step="1" value="20" /><span>años</span></div></div>
+    </div></fieldset><button type="submit">Calcular ahorro</button><p class="calculator-privacy">El cálculo se realiza en tu navegador.</p></form>
+    <div class="calculator-results" id="periodic-savings-results" hidden><p class="eyebrow">Resultado estimado</p><section class="result-card result-card-primary"><p>Capital final</p><strong data-result="finalCapital">-</strong><span>Valor teórico tras el plazo indicado.</span></section><div class="result-grid"><section class="result-card"><p>Capital aportado</p><strong data-result="contributedCapital">-</strong></section><section class="result-card"><p>Intereses generados</p><strong data-result="interestEarned">-</strong></section></div></div></div>
+    <p class="sr-only" id="periodic-savings-announcement" aria-live="polite"></p>
+    <section class="content-section prose"><p class="eyebrow">Cómo interpretarlo</p><h2>La aportación también trabaja a largo plazo</h2><p>Esta herramienta combina un capital inicial con aportaciones mensuales y capitalización mensual. Una rentabilidad constante es solo un escenario matemático y no implica que una inversión vaya a obtener ese resultado.</p><h2>Qué parte has puesto tu</h2><p>El capital aportado muestra cuanto dinero procede de tus entradas de capital. La diferencia frente al capital final es el crecimiento matemático del escenario.</p></section>
+    <Disclaimer>La rentabilidad introducida es una hipótesis. No incluye impuestos, comisiones ni variaciones de mercado y no constituye una recomendación de inversión.</Disclaimer>
+    <RelatedTools tools={[{ href: '/ahorro-inversion/interes-compuesto/', title: 'Interés compuesto', description: 'Simula el crecimiento de un capital con interés compuesto.' }, { href: '/ahorro-inversion/objetivo-ahorro/', title: 'Objetivo de ahorro', description: 'Calcula el esfuerzo mensual necesario para alcanzar una meta.' }, { href: '/ahorro-inversion/calculadora-inflacion/', title: 'Inflacion', description: 'Mide el efecto de la subida de precios sobre una cantidad.' }]} />
+  </CalculatorShell></section>
+</Layout>
+<script>import '../../scripts/periodic-savings';</script>

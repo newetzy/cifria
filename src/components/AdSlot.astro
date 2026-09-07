@@ -1,0 +1,24 @@
+---
+interface Props {
+  slot: string | undefined;
+  format?: 'auto' | 'fluid' | 'rectangle';
+  label?: string;
+}
+const { slot, format = 'auto', label = 'Publicidad' } = Astro.props;
+const client = import.meta.env.PUBLIC_ADSENSE_CLIENT;
+const enabled = Boolean(client && slot);
+---
+{enabled && (
+  <aside class="ad-slot" aria-label={label}>
+    <span class="ad-slot-label">{label}</span>
+    <ins
+      class="adsbygoogle"
+      style="display:block;min-height:100px"
+      data-ad-client={client}
+      data-ad-slot={slot}
+      data-ad-format={format}
+      data-full-width-responsive="true"
+    ></ins>
+    <script is:inline>{`window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.push({});`}</script>
+  </aside>
+)}

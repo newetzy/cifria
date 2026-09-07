@@ -1,0 +1,20 @@
+---
+interface Props {
+  term: string;
+  definition: string;
+  details: string[];
+  related: { href: string; title: string; description: string }[];
+}
+const { term, definition, details, related } = Astro.props;
+---
+<article class="guide-page glossary-page">
+  <header class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Glosario financiero</p><h1>{term}</h1><p class="lead">{definition}</p></div></header>
+  <section class="section"><div class="container narrow prose">
+    {details.map((paragraph) => <p>{paragraph}</p>)}
+    <section class="related-tools" aria-labelledby="glossary-related-title">
+      <div class="section-heading"><div><p class="eyebrow">Relacionado</p><h2 id="glossary-related-title">Herramientas de Cifria</h2></div><p>Aplica el concepto con una calculadora o sigue explorando el mismo tema.</p></div>
+      <div class="related-tools-grid">{related.map((item) => <a class="related-tool" href={item.href}>{item.title}<span>{item.description}</span></a>)}</div>
+    </section>
+  </div></section>
+</article>
+<script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'DefinedTerm', name: term, description: definition, inDefinedTermSet: { '@type': 'DefinedTermSet', name: 'Glosario financiero de Cifria', url: 'https://cifria.es/glosario/' } })} />

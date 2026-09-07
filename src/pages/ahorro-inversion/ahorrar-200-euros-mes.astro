@@ -1,0 +1,19 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+import { calculateCompoundInterest } from '../../lib/calculations/compound-interest.ts';
+import { formatEuro } from '../../lib/formatters/currency.ts';
+const plain = calculateCompoundInterest({ initialCapital: 0, monthlyContribution: 200, annualReturnPercent: 0, years: 10 });
+const invested = calculateCompoundInterest({ initialCapital: 0, monthlyContribution: 200, annualReturnPercent: 5, years: 10 });
+---
+<Layout title="Ahorrar 200 euros al mes | Cifria" description="Simulación de cuánto acumulas ahorrando 200 euros al mes durante 5 y 10 años, con y sin una rentabilidad hipotética.">
+  <SeoLandingPage title="Ahorrar 200 € al mes" description="Descubre cuánto puedes acumular aportando 200 € al mes y compara ahorro puro con una rentabilidad hipotética." intro={`Ahorrar 200 € al mes supone ${formatEuro(2400)} al año. En 10 años, sin rentabilidad, habrías aportado ${formatEuro(plain.totalContributions)}. Con una rentabilidad hipotética del 5 % anual, la simulación alcanza ${formatEuro(invested.finalCapital)}.`} exampleTitle="Dos referencias a 10 años" exampleText={`Sin rentabilidad: ${formatEuro(plain.finalCapital)} acumulados. Con un 5 % hipotético: ${formatEuro(invested.finalCapital)}, de los que ${formatEuro(invested.interestEarned)} provienen del crecimiento simulado.`} calculatorHref="/ahorro-inversion/aportaciones-periodicas/" calculatorLabel="Simular aportaciones" sections={[
+    { title: '200 € al mes sin rentabilidad', paragraphs: ['La referencia más sencilla es sumar las aportaciones. Con 200 € mensuales, cada año añades 2.400 € al capital.', 'Este escenario es útil para saber cuánto depende el resultado de tu propio ahorro.'] },
+    { title: 'Qué ocurre con una rentabilidad hipotética', paragraphs: ['Si el capital obtiene rentabilidad y los rendimientos se mantienen invertidos, el resultado puede superar la suma de tus aportaciones.', 'La rentabilidad utilizada en una simulación es una hipótesis, no una previsión ni una garantía de rendimiento.'] },
+    { title: 'Prueba distintos horizontes', paragraphs: ['Compara 5, 10, 15 y 20 años. El tiempo modifica tanto las aportaciones acumuladas como el posible efecto de la capitalización.', 'También puedes cambiar la aportación mensual para encontrar una cifra compatible con tu presupuesto.'] },
+  ]} faqs={[
+    { question: '¿Cuánto son 200 € al mes en un año?', answer: 'Son 2.400 € de aportaciones en 12 meses.' },
+    { question: '¿Cuánto tendría en 10 años sin rentabilidad?', answer: `Con 200 € mensuales y partiendo de cero, serían ${formatEuro(plain.finalCapital)}.` },
+    { question: '¿El 5 % está garantizado?', answer: 'No. Es un supuesto utilizado únicamente para comparar un escenario con rentabilidad frente al ahorro sin rendimiento.' },
+  ]} />
+</Layout>

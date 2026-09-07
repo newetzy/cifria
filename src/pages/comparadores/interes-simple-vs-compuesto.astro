@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+---
+<Layout title='Interés simple o compuesto: diferencias | Cifria' description='Entiende cómo cambia el crecimiento cuando los intereses se incorporan al capital y vuelven a generar rendimiento.'>
+  <SeoLandingPage title='Interés simple o compuesto: diferencias' description='Entiende cómo cambia el crecimiento cuando los intereses se incorporan al capital y vuelven a generar rendimiento.' intro='El interés se calcula sobre el capital de referencia sin incorporar los intereses anteriores al principal. Es un modelo sencillo para determinados escenarios.' calculatorHref='/ahorro-inversion/interes-compuesto/' calculatorLabel='Calcular interés compuesto' sections={[
+    { title: 'Interés simple', paragraphs: ['El interés se calcula sobre el capital de referencia sin incorporar los intereses anteriores al principal. Es un modelo sencillo para determinados escenarios.'] },
+    { title: 'Interés compuesto', paragraphs: ['Los rendimientos acumulados pasan a formar parte del capital que puede generar nuevos rendimientos. El efecto crece con el tiempo.'] },
+    { title: 'Qué debes comparar', paragraphs: ['Usa el mismo capital, tipo y plazo para aislar la diferencia entre ambas formas de cálculo.'] }
+  ]} faqs={[
+    { question: '¿Cuál crece más?', answer: 'Con una rentabilidad positiva y el mismo capital y plazo, el modelo compuesto genera un crecimiento superior.' },
+    { question: '¿Las inversiones reales siguen exactamente este modelo?', answer: 'No necesariamente. La rentabilidad real puede variar y puede haber comisiones, impuestos y pérdidas.' }
+  ]} />
+</Layout>

@@ -1,0 +1,22 @@
+---
+import CalculatorShell from '../../components/CalculatorShell.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Calculadora de salario por hora | Cifria" description="Calcula cuánto ganas por hora a partir de tu salario bruto anual, jornada semanal y semanas de vacaciones.">
+  <section class="calculator-page-section"><CalculatorShell title="Calculadora de salario por hora" description="Convierte tu salario bruto anual en un valor aproximado por hora de trabajo. Puedes ajustar jornada, vacaciones y horas adicionales.">
+    <div class="calculator-layout"><form id="hourly-wage-form" class="calculator-form" novalidate><fieldset><legend>Datos de tu trabajo</legend><div class="calculator-fields">
+      <div class="field"><label for="annualGrossSalary">Salario bruto anual</label><div class="input-with-suffix"><input id="annualGrossSalary" type="number" min="0" step="0.01" value="32000" /><span>€</span></div><small>Introduce tu salario bruto anual.</small></div>
+      <div class="field"><label for="weeklyHours">Horas semanales</label><div class="input-with-suffix"><input id="weeklyHours" type="number" min="0.1" max="80" step="0.5" value="40" /><span>h</span></div><small>Tu jornada semanal habitual.</small></div>
+      <div class="field"><label for="vacationWeeks">Semanas de vacaciones</label><div class="input-with-suffix"><input id="vacationWeeks" type="number" min="0" max="51" step="1" value="4" /><span>sem.</span></div><small>Semanas sin trabajo efectivo que quieres descontar.</small></div>
+      <div class="field"><label for="extraAnnualHours">Horas adicionales al año</label><div class="input-with-suffix"><input id="extraAnnualHours" type="number" min="0" step="1" value="0" /><span>h</span></div><small>Horas extra u otras horas anuales que quieras incluir.</small></div>
+    </div></fieldset><button type="submit">Calcular salario por hora</button><p class="calculator-privacy">El cálculo se realiza en tu navegador.</p></form>
+    <div class="calculator-results" id="hourly-wage-results"><p class="eyebrow">Resultado estimado</p><section class="result-card result-card-primary"><p>Salario bruto por hora</p><strong data-result="hourlyGross">—</strong><span>Es un valor bruto, antes de impuestos y cotizaciones.</span></section><div class="result-grid"><section class="result-card"><p>Horas trabajadas al año</p><strong data-result="annualHours">—</strong></section><section class="result-card"><p>Semanas de trabajo</p><strong data-result="workingWeeks">—</strong></section><section class="result-card"><p>Bruto mensual medio</p><strong data-result="monthlyGrossAverage">—</strong></section></div></div></div>
+    <p class="sr-only" id="hourly-wage-announcement" aria-live="polite"></p>
+    <section class="content-section prose"><p class="eyebrow">Cómo se calcula</p><h2>¿Cuánto cobras realmente por cada hora?</h2><p>La herramienta divide el salario bruto anual entre las horas de trabajo que has indicado. No convierte el salario bruto en neto y no sustituye un cálculo de nómina.</p><h2>Vacaciones y horas anuales</h2><p>Por defecto se descuentan cuatro semanas del calendario anual. Puedes cambiar este valor para adaptar la estimación a tu caso.</p></section>
+    <Disclaimer>El resultado es una estimación matemática. El salario por hora real puede variar según festivos, permisos retribuidos, pausas, distribución de jornada y otros conceptos.</Disclaimer>
+    <RelatedTools tools={[{ href: '/nomina/', title: 'Todas las calculadoras de nómina', description: 'Consulta el resto de herramientas disponibles y próximas.' }, { href: '/ahorro-inversion/interes-compuesto/', title: 'Interés compuesto', description: 'Simula cómo puede crecer un ahorro con el tiempo.' }]} />
+  </CalculatorShell></section>
+</Layout>
+<script>import '../../scripts/hourly-wage';</script>

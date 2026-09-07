@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+---
+<Layout title='Hipoteca a 20 o 30 años: qué cambia | Cifria' description='Compara el efecto del plazo sobre la cuota mensual y los intereses totales de una hipoteca.'>
+  <SeoLandingPage title='Hipoteca a 20 o 30 años: qué cambia' description='Compara el efecto del plazo sobre la cuota mensual y los intereses totales de una hipoteca.' intro='Con el mismo capital y tipo, un plazo de 30 años suele producir una cuota mensual menor porque el importe se reparte entre más pagos.' calculatorHref='/vivienda/calculadora-hipoteca/' calculatorLabel='Calcular hipoteca' sections={[
+    { title: 'Cuota mensual', paragraphs: ['Con el mismo capital y tipo, un plazo de 30 años suele producir una cuota mensual menor porque el importe se reparte entre más pagos.'] },
+    { title: 'Intereses totales', paragraphs: ['La cuota más baja no significa necesariamente un coste menor. Al mantener la deuda durante más tiempo, normalmente se pagan intereses durante más años.'] },
+    { title: 'Cómo compararlo', paragraphs: ['Introduce el mismo importe, tipo y entrada en la calculadora y prueba primero 20 años y después 30. Mira la cuota y los intereses totales a la vez.'] }
+  ]} faqs={[
+    { question: '¿Siempre es mejor 20 años?', answer: 'No. Depende de tu capacidad de pago, tus objetivos y el coste de oportunidad del dinero. La comparación debe tener en cuenta cuota y coste total.' },
+    { question: '¿Por qué baja la cuota a 30 años?', answer: 'Porque el capital se devuelve en un número mayor de mensualidades.' }
+  ]} />
+</Layout>

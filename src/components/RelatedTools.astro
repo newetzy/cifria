@@ -1,0 +1,14 @@
+---
+interface Tool { href: string; title: string; description: string; }
+interface Props { tools: Tool[]; }
+const { tools } = Astro.props;
+---
+<section class="related-tools" aria-labelledby="related-tools-title">
+  <div class="section-heading">
+    <div><p class="eyebrow">Sigue calculando</p><h2 id="related-tools-title">Herramientas relacionadas</h2></div>
+    <p>Otras calculadoras de Cifria que pueden ayudarte con esta decisión.</p>
+  </div>
+  <div class="related-tools-grid">
+    {tools.map((tool) => <a class="related-tool" href={tool.href}>{tool.title}<span>{tool.description}</span></a>)}
+  </div>
+</section>

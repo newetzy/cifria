@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+---
+<Layout title='Préstamo a 5 o 7 años: cuota frente a coste | Cifria' description='Compara cómo cambia la cuota y el coste total cuando alargas el plazo de un préstamo.'>
+  <SeoLandingPage title='Préstamo a 5 o 7 años: cuota frente a coste' description='Compara cómo cambia la cuota y el coste total cuando alargas el plazo de un préstamo.' intro='Un plazo menor suele implicar una cuota mensual mayor, pero reduce el número de meses durante los que se generan intereses.' calculatorHref='/prestamos/calculadora-cuota-prestamo/' calculatorLabel='Calcular préstamo' sections={[
+    { title: 'Plazo más corto', paragraphs: ['Un plazo menor suele implicar una cuota mensual mayor, pero reduce el número de meses durante los que se generan intereses.'] },
+    { title: 'Plazo más largo', paragraphs: ['Alargar el préstamo puede aliviar la cuota mensual, pero normalmente aumenta el coste total de intereses si el tipo y el resto de condiciones se mantienen.'] },
+    { title: 'Qué mirar', paragraphs: ['Compara siempre cuota, intereses y coste total. Una cuota baja por sí sola no indica que la financiación sea más barata.'] }
+  ]} faqs={[
+    { question: '¿El plazo de 7 años es siempre peor?', answer: 'No necesariamente. Puede ser útil por liquidez, pero debes valorar el coste total y tu capacidad de pago.' },
+    { question: '¿Qué pasa si el tipo cambia?', answer: 'La comparación depende del tipo introducido y de las condiciones concretas del préstamo.' }
+  ]} />
+</Layout>

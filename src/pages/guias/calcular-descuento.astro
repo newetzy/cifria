@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GuidePage from '../../components/GuidePage.astro';
+---
+<Layout title="Cómo calcular un descuento y el precio final | Cifria" description="Aprende a calcular cuánto ahorras con un descuento y cuál es el precio final de una compra.">
+  <GuidePage title="Cómo calcular un descuento" description="Un descuento reduce el precio original en un porcentaje determinado. La clave es calcular primero cuánto se descuenta y después restarlo del precio inicial." intro="Antes de comprar, es útil saber no solo el porcentaje del descuento, sino también cuánto pagarás realmente después de aplicarlo." calculatorHref="/calculadoras/descuento/" calculatorLabel="Calcular un descuento" sections={[
+    { title: 'Calcula primero el importe descontado', paragraphs: ['Para aplicar un descuento, convierte el porcentaje a decimal y multiplícalo por el precio original. Esa cifra representa el ahorro.', 'Después resta el descuento al precio inicial para obtener el importe final.'] },
+    { title: 'Cuidado con descuentos sucesivos', paragraphs: ['Dos descuentos del mismo porcentaje aplicados uno detrás de otro no equivalen a multiplicar una sola vez por el doble del porcentaje. El segundo descuento se calcula sobre un precio ya reducido.', 'Cuando veas promociones encadenadas, conviene calcular cada paso por separado.'] },
+    { title: 'Descuento frente a precio final', paragraphs: ['En una tienda suele ser más útil conocer directamente cuánto vas a pagar. Por eso la calculadora de Cifria muestra tanto el importe del descuento como el precio final.', 'Si además intervienen impuestos, comprueba si el descuento se aplica antes o después del impuesto según las condiciones de la compra.'] }
+  ]} faqs={[
+    { question: '¿Cuánto es un 20 % de descuento sobre 100 €?', answer: 'El ahorro es de 20 € y el precio final sería 80 €.' },
+    { question: '¿Dos descuentos del 10 % equivalen a un 20 %?', answer: 'No. Tras el primer descuento, el segundo 10 % se aplica sobre una cantidad más baja.' },
+    { question: '¿Puedo usar la calculadora con decimales?', answer: 'Sí. La herramienta de Cifria admite importes y porcentajes decimales.' }
+  ]} />
+</Layout>

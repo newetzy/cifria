@@ -1,0 +1,9 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SeoLandingPage from "../../../components/SeoLandingPage.astro";
+---
+<Layout title='Hipoteca de 200.000 € a 30 años | Cifria' description='Analiza una financiación hipotecaria de 200.000 € a 30 años y compara cuota e intereses.'>
+  <SeoLandingPage title='Hipoteca de 200.000 € a 30 años' description='Analiza una financiación hipotecaria de 200.000 € a 30 años y compara cuota e intereses.' intro='Una hipoteca de 200.000 € es un buen ejemplo para entender cómo el plazo y el tipo afectan al coste financiero.' exampleTitle="Ejemplo de uso" exampleText='Calcula el escenario con tus condiciones y repítelo a 20 y 25 años. No cambies capital ni tipo para que la comparación sea limpia.' calculatorHref='/vivienda/calculadora-hipoteca/' calculatorLabel='Calcular hipoteca' sections={[{ title: 'Más plazo no significa menor coste', paragraphs: ['La cuota mensual suele ser inferior, pero el total de intereses puede aumentar por mantener la deuda durante más tiempo.'] },
+    { title: 'Entrada y capital financiado', paragraphs: ['Una entrada mayor reduce el importe financiado y, por tanto, cambia la cuota y los intereses del préstamo.'] }]} faqs={[{ question: '¿La entrada afecta a la cuota?', answer: 'Sí. Reducir el capital financiado suele reducir la cuota manteniendo iguales el tipo y el plazo.' },
+    { question: '¿Incluye todos los gastos de comprar una casa?', answer: 'No. Esta calculadora se centra en la financiación; los gastos de la operación deben analizarse por separado.' }]} />
+</Layout>

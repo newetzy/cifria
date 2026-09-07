@@ -1,5 +1,7 @@
 ---
-import Layout from '../../layouts/Layout.astro'; import CategoryPage from '../../components/CategoryPage.astro'; import { categories } from '../../data/categories';
+import CategoryPage from '../../components/CategoryPage.astro';
+import Layout from '../../layouts/Layout.astro';
+import { categories } from '../../data/categories';
 const category = categories.find(({ slug }) => slug === 'ahorro-inversion')!;
 ---
-<Layout title="Calculadoras de ahorro e inversión | Cifria" description="Herramientas para entender el ahorro, la inversión y la evolución del capital."><CategoryPage {category} /></Layout>
+<Layout title="Calculadoras de ahorro e inversión | Cifria" description="Calculadoras gratuitas para ahorrar, invertir y entender el efecto del tiempo, la rentabilidad y la inflación."><CategoryPage category={category} /></Layout>

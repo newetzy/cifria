@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+import { calculateLoan } from '../../lib/calculations/loan.ts';
+import { formatEuro } from '../../lib/formatters/currency.ts';
+const result = calculateLoan({ principal: 15000, annualInterestRate: 6.5, years: 5 });
+---
+<Layout title="Préstamo de 15.000 euros a 5 años | Cifria" description="Simulación de un préstamo de 15.000 euros a 5 años con un tipo hipotético del 6,5 %. Consulta cuota e intereses.">
+  <SeoLandingPage title="Préstamo de 15.000 € a 5 años" description="Calcula una referencia de cuota e intereses para financiar 15.000 € durante 5 años." intro={`En una simulación de 15.000 € a 5 años y un tipo hipotético del 6,5 %, la cuota matemática estimada es de ${formatEuro(result.monthlyPayment)} al mes. El ejemplo no representa una oferta de financiación.`} exampleTitle="Ejemplo con 6,5 %" exampleText={`Cuota estimada: ${formatEuro(result.monthlyPayment)} · intereses: ${formatEuro(result.totalInterest)} · total de cuotas: ${formatEuro(result.totalInstallments)}.`} calculatorHref="/prestamos/calculadora-cuota-prestamo/" calculatorLabel="Calcular préstamo" sections={[
+    { title: 'Cómo influye el plazo', paragraphs: ['Con el mismo capital y tipo, ampliar el plazo suele reducir la cuota mensual, pero puede aumentar los intereses acumulados.', 'Por eso conviene comparar siempre mensualidad y coste total del préstamo.'] },
+    { title: 'El tipo es un supuesto', paragraphs: ['El 6,5 % utilizado aquí es únicamente una hipótesis para construir un ejemplo reproducible.', 'Una financiación real puede añadir comisiones, seguros u otros costes que no forman parte de este cálculo básico.'] },
+    { title: 'Qué puedes cambiar', paragraphs: ['Introduce el importe, el tipo y el plazo de una oferta concreta en la calculadora para crear una comparación homogénea.', 'Si una entidad comunica TAE, úsala para comparar el coste financiero global y revisa las condiciones contractuales.'] },
+  ]} faqs={[
+    { question: '¿Cuál es la cuota de 15.000 € a 5 años?', answer: `Con un 6,5 % hipotético, la cuota matemática estimada es de ${formatEuro(result.monthlyPayment)} al mes.` },
+    { question: '¿Cuántos intereses se pagan en el ejemplo?', answer: `El cálculo estima ${formatEuro(result.totalInterest)} de intereses durante las 60 cuotas.` },
+    { question: '¿Incluye comisiones?', answer: 'No en el ejemplo. Puedes introducir una comisión inicial en la calculadora para estimar el coste total incluyendo esa cantidad.' },
+  ]} />
+</Layout>

@@ -1,5 +1,7 @@
 ---
-import Layout from '../../layouts/Layout.astro'; import CategoryPage from '../../components/CategoryPage.astro'; import { categories } from '../../data/categories';
+import CategoryPage from '../../components/CategoryPage.astro';
+import Layout from '../../layouts/Layout.astro';
+import { categories } from '../../data/categories';
 const category = categories.find(({ slug }) => slug === 'impuestos')!;
 ---
-<Layout title="Calculadoras de impuestos | Cifria" description="Herramientas orientativas para cálculos de impuestos frecuentes en España."><CategoryPage {category} /></Layout>
+<Layout title="Calculadoras de impuestos | Cifria" description="Herramientas para realizar cálculos tributarios habituales y consultar su metodología y fuentes."><CategoryPage category={category} /></Layout>

@@ -1,0 +1,16 @@
+---
+import CalculatorShell from '../../components/CalculatorShell.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Calculadora de propina | Cifria" description="Calcula cuánto dejar de propina y cuánto paga cada persona al dividir la cuenta.">
+<section class="calculator-page-section"><CalculatorShell title="Calculadora de propina" description="Calcula cuánto dejar de propina y cuánto paga cada persona al dividir la cuenta.">
+<div class="calculator-layout"><form id="tip-form" class="calculator-form" novalidate><fieldset><legend>Datos del cálculo</legend><div class="calculator-fields"><div class="field"><label for="amount">Importe de la cuenta</label><div class="input-with-suffix"><input id="amount" type="number" min="0" step="0.01" value="80" /><span>€</span></div></div><div class="field"><label for="tipPercent">Propina</label><div class="input-with-suffix"><input id="tipPercent" type="number" min="0" max="100" step="0.5" value="10" /><span>%</span></div></div><div class="field"><label for="people">Personas</label><input id="people" type="number" min="1" step="1" value="4" /></div></div></fieldset><button type="submit">Calcular</button><p class="calculator-privacy">El cálculo se realiza en tu navegador.</p></form>
+<div class="calculator-results"><p class="eyebrow">Resultado</p><section class="result-card result-card-primary"><p>Total con propina</p><strong data-result="total">—</strong><span>Importe final de la cuenta.</span></section><div class="result-grid"><section class="result-card"><p>Propina</p><strong data-result="tipAmount">—</strong></section><section class="result-card"><p>Por persona</p><strong data-result="perPerson">—</strong></section></div></div></div>
+<section class="content-section prose"><p class="eyebrow">Cómo se calcula</p><h2>¿Cuánto dejar de propina?</h2>Indica el porcentaje que quieres dejar y cuántas personas comparten la cuenta. La calculadora añade la propina al total y reparte el resultado.</section>
+<Disclaimer>El resultado es una estimación matemática y no sustituye asesoramiento profesional.</Disclaimer>
+<RelatedTools tools={[{ href: "/calculadoras/porcentaje/", title: "Calculadora de porcentajes", description: "Calcula rápidamente un porcentaje." }, { href: "/calculadoras/descuento/", title: "Calculadora de descuentos", description: "Calcula rebajas y precios finales." }]} />
+</CalculatorShell></section>
+</Layout>
+<script>import tip from '../../scripts/tip';</script>

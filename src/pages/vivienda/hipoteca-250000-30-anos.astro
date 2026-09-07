@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+import { calculateMortgage } from '../../lib/calculations/mortgage.ts';
+import { formatEuro, formatNumber } from '../../lib/formatters/currency.ts';
+const result = calculateMortgage({ propertyPrice: 250000, downPayment: 0, annualInterestRate: 3, years: 30 });
+---
+<Layout title="Hipoteca de 250.000 euros a 30 años | Cifria" description="Simulación de una hipoteca de 250.000 euros a 30 años. Consulta cuota mensual, intereses y coste total con un tipo hipotético del 3 %.">
+  <SeoLandingPage title="Hipoteca de 250.000 € a 30 años" description="Consulta una simulación de cuota, intereses y coste total para una hipoteca de 250.000 € a 30 años." intro={`En una simulación matemática de 250.000 € financiados a 30 años y un tipo hipotético del 3 %, la cuota estimada es de ${formatEuro(result.monthlyPayment)} al mes. El resultado sirve para entender el orden de magnitud y no representa una oferta bancaria.`} exampleTitle="Ejemplo con 3 % de interés" exampleText={`Capital financiado: ${formatEuro(result.financedAmount)} · ${result.numberOfPayments} cuotas · cuota estimada: ${formatEuro(result.monthlyPayment)} · intereses estimados: ${formatEuro(result.totalInterest)} · total de cuotas: ${formatEuro(result.totalPaid)}.`} calculatorHref="/vivienda/calculadora-hipoteca/" calculatorLabel="Calcular mi hipoteca" sections={[
+    { title: 'Qué cambia al elegir 30 años', paragraphs: ['Con un capital y un tipo constantes, repartir la deuda entre más mensualidades reduce la cuota frente a un plazo más corto.', 'La contrapartida es que el préstamo permanece más tiempo y, en igualdad de condiciones, se pagan más intereses acumulados.'] },
+    { title: 'El tipo utilizado es solo una hipótesis', paragraphs: ['El ejemplo usa un 3 % anual únicamente para mostrar cómo funciona el cálculo. Una oferta real puede tener otro tipo, comisiones, productos vinculados y condiciones distintas.', 'Para comparar propuestas concretas, introduce en la calculadora el tipo y el plazo que figuren en cada oferta.'] },
+    { title: 'No mires solo la cuota', paragraphs: ['Una cuota baja puede ser atractiva para el presupuesto mensual, pero conviene mirar también intereses y total pagado.', 'Puedes comparar este escenario con 20 o 25 años manteniendo el mismo capital y tipo.'] },
+  ]} faqs={[
+    { question: '¿Cuánto se paga al mes por una hipoteca de 250.000 € a 30 años?', answer: `Con un tipo hipotético del 3 % y 250.000 € financiados, la cuota matemática estimada es de ${formatEuro(result.monthlyPayment)} al mes.` },
+    { question: '¿Cuántos intereses se pagarían en este ejemplo?', answer: `En esta simulación, los intereses acumulados son aproximadamente ${formatEuro(result.totalInterest)}.` },
+    { question: '¿La cifra es una oferta bancaria real?', answer: 'No. Es una simulación matemática con los supuestos indicados y no incluye comisiones, seguros, impuestos ni otros gastos.' },
+  ]} />
+</Layout>

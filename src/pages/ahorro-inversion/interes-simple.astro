@@ -1,0 +1,23 @@
+---
+import CalculatorShell from '../../components/CalculatorShell.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Calculadora de interés simple | Cifria" description="Calcula los intereses generados por un capital usando un tipo anual y un plazo determinados.">
+  <section class="calculator-page-section"><CalculatorShell title="Calculadora de interés simple" description="Calcula cuanto interés generaria un capital cuando el interés no se reinvierte y se mantiene constante sobre el principal.">
+    <div class="calculator-layout"><form id="simple-interest-form" class="calculator-form" novalidate><fieldset><legend>Datos del cálculo</legend><div class="calculator-fields">
+      <div class="field"><label for="principal">Capital inicial</label><div class="input-with-suffix"><input id="principal" type="number" min="0" step="0.01" value="10000" /><span>€</span></div></div>
+      <div class="field"><label for="annualRatePercent">Interés anual</label><div class="input-with-suffix"><input id="annualRatePercent" type="number" min="0" max="100" step="0.01" value="3" /><span>%</span></div></div>
+      <div class="field"><label for="years">Plazo</label><div class="input-with-suffix"><input id="years" type="number" min="0.1" max="100" step="0.1" value="5" /><span>años</span></div></div>
+    </div></fieldset><button type="submit">Calcular interés</button></form>
+    <div class="calculator-results" id="simple-interest-results" hidden><p class="eyebrow">Resultado</p><section class="result-card result-card-primary"><p>Capital final</p><strong data-result="finalAmount">-</strong></section><div class="result-grid"><section class="result-card"><p>Intereses</p><strong data-result="interest">-</strong></section></div></div></div>
+    <p class="sr-only" id="simple-interest-announcement" aria-live="polite"></p>
+    <section class="content-section prose"><h2>Interés simple vs. compuesto</h2><p>En el interés simple, el interés de cada periodo se calcula sobre el capital inicial. En el interés compuesto, los intereses se incorporan al capital y generan nuevos intereses.</p></section>
+    <Disclaimer>La herramienta muestra una formula matemática y no tiene en cuenta impuestos, comisiones u otras condiciones financieras.</Disclaimer>
+    <RelatedTools tools={[{ href: '/ahorro-inversion/interes-compuesto/', title: 'Interés compuesto', description: 'Compara con un escenario donde los intereses se capitalizan.' }, { href: '/ahorro-inversion/aportaciones-periodicas/', title: 'Aportaciones periódicas', description: 'Añade una cantidad cada mes al capital.' }]} />
+  </CalculatorShell></section>
+</Layout>
+<script>
+  import '../../scripts/simple-interest';
+</script>

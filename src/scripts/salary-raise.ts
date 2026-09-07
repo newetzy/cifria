@@ -1,0 +1,5 @@
+import { calculateSalaryRaise } from '../lib/calculations/salary-raise';
+import { formatEuro } from '../lib/formatters/currency';
+const form=document.querySelector<HTMLFormElement>('#salary-raise-form')!; const salary=form.elements.namedItem('currentSalary') as HTMLInputElement; const raise=form.elements.namedItem('raisePercent') as HTMLInputElement;
+const newSalary=document.querySelector<HTMLElement>('[data-result="newSalary"]')!; const increase=document.querySelector<HTMLElement>('[data-result="increase"]')!; const monthly=document.querySelector<HTMLElement>('[data-result="monthlyIncrease"]')!;
+const calc=()=>{try{const r=calculateSalaryRaise({currentSalary:salary.valueAsNumber,raisePercent:raise.valueAsNumber});newSalary.textContent=formatEuro(r.newSalary);increase.textContent=formatEuro(r.increase);monthly.textContent=formatEuro(r.monthlyIncrease);}catch{newSalary.textContent='—';}}; form.addEventListener('submit',e=>{e.preventDefault();calc();});calc();

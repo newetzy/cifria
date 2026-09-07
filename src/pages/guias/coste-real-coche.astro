@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GuidePage from '../../components/GuidePage.astro';
+---
+<Layout title="Cuál es el coste real de tener un coche | Cifria" description="Aprende a calcular el coste real de un coche sumando combustible, seguro, mantenimiento y costes fijos.">
+  <GuidePage title="Cuál es el coste real de tener un coche" description="El combustible es solo una parte del coste de conducir y mantener un coche." intro="Para saber cuánto te cuesta realmente un coche conviene convertir sus gastos anuales y por uso en una única cifra comparable." calculatorHref="/coche/coste-por-kilometro/" calculatorLabel="Calcular coste por kilómetro" sections={[
+    { title: 'Costes variables', paragraphs: ['El combustible es el ejemplo más visible: depende de los kilómetros recorridos, del consumo y del precio por litro. Mantenimiento, neumáticos y algunas reparaciones también crecen con el uso.', 'Para comparar viajes concretos, la herramienta de coste de viaje permite aislar la parte relacionada con el recorrido.'] },
+    { title: 'Costes fijos', paragraphs: ['Seguro, impuestos, financiación y otros gastos existen incluso cuando conduces poco. Si quieres conocer el coste por kilómetro, puedes repartir esos costes entre los kilómetros que esperas hacer al año.', 'El resultado será más útil si utilizas cifras reales de tu propio coche y no solo estimaciones genéricas.'] },
+    { title: 'No confundas coste con precio del viaje', paragraphs: ['Un viaje puede costarte poco en combustible y seguir teniendo un coste económico mayor si incluyes desgaste, mantenimiento y costes fijos. Para decisiones de movilidad, conviene saber qué parte del coste quieres analizar.', 'Separar coste del viaje y coste total del vehículo te permite evitar conclusiones engañosas al comparar coche, transporte público o compartir trayecto.'] },
+  ]} faqs={[{ question: '¿El combustible es el mayor coste de un coche?', answer: 'No necesariamente. Seguro, depreciación, mantenimiento, financiación e impuestos pueden representar una parte importante del coste total.' }, { question: '¿Puedo usar el coste por kilómetro para comparar coches?', answer: 'Sí, siempre que uses una metodología equivalente y datos comparables para cada vehículo.' }]} />
+</Layout>

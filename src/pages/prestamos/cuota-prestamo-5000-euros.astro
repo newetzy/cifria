@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+---
+<Layout title="Cuota de un préstamo de 5.000 euros | Cifria" description="Simula la cuota de un préstamo de 5.000 euros con distintos plazos y tipos de interés.">
+  <SeoLandingPage title="Cuota de un préstamo de 5.000 euros" description="Comprueba cómo cambia la mensualidad y el coste total al financiar 5.000 €." intro="Un préstamo de 5.000 € puede tener cuotas muy distintas según el plazo y el tipo de interés. La mejor comparación no mira solo la mensualidad." exampleTitle="Prueba tres plazos" exampleText="Introduce 5.000 € como capital y compara 12, 24 y 48 meses. Verás cómo una cuota más pequeña puede aumentar el coste total de los intereses." calculatorHref="/prestamos/calculadora-cuota-prestamo/" calculatorLabel="Calcular cuota del préstamo" sections={[
+    { title: 'La importancia del plazo', paragraphs: ['Alargar el plazo suele reducir la cuota mensual porque el capital se reparte entre más pagos.', 'Sin embargo, también puede aumentar el total de intereses. Por eso es mejor comparar cuota e importe total pagado.'] },
+    { title: 'TIN y tipo de interés', paragraphs: ['La simulación utiliza el tipo anual que introduzcas para estimar la cuota matemática. Una oferta real puede incluir comisiones y otros costes.', 'Antes de contratar, revisa la información contractual y compara el coste total, no solo el porcentaje anunciado.'] },
+    { title: 'Cuándo resulta útil esta simulación', paragraphs: ['Puede servir para valorar compras financiadas, comparar plazos o comprobar si una cuota encaja en un presupuesto.', 'También puedes usarla como punto de partida antes de revisar una oferta concreta de una entidad.'] },
+  ]} faqs={[
+    { question: '¿Cuál es la cuota exacta de 5.000 €?', answer: 'No existe una única cuota: depende del tipo de interés y del plazo. La calculadora permite introducir ambos valores.' },
+    { question: '¿Un préstamo más largo siempre es más barato?', answer: 'No. Aunque normalmente reduce la cuota mensual, puede aumentar el importe total de intereses pagados.' },
+    { question: '¿Incluye comisiones?', answer: 'La simulación matemática se centra en capital, tipo y plazo. Las comisiones y otros costes deben añadirse aparte cuando quieras evaluar una oferta real.' },
+  ]} />
+</Layout>

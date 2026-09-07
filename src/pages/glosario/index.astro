@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+const terms = [
+  ['TAE', '/glosario/tae/', 'Tasa que ayuda a comparar el coste o rendimiento efectivo anual de productos financieros.'],
+  ['TIN', '/glosario/tin/', 'Tipo de interés nominal aplicado a un préstamo o producto financiero.'],
+  ['Euríbor', '/glosario/euribor/', 'Índice de referencia utilizado habitualmente en hipotecas a tipo variable.'],
+  ['IRPF', '/glosario/irpf/', 'Impuesto sobre la renta de las personas físicas y su relación con las retenciones salariales.'],
+  ['IVA', '/glosario/iva/', 'Impuesto indirecto que grava el consumo de bienes y servicios.'],
+  ['ITP', '/glosario/itp/', 'Impuesto que puede aplicarse a determinadas transmisiones patrimoniales, entre ellas algunas compras de vivienda usada.'],
+  ['Interés compuesto', '/glosario/interes-compuesto/', 'Sistema en el que los rendimientos se incorporan al capital y pueden generar nuevos rendimientos.'],
+  ['Rentabilidad', '/glosario/rentabilidad/', 'Relación entre el beneficio o rendimiento obtenido y el capital empleado.'],
+  ['ROI', '/glosario/roi/', 'Indicador que relaciona el retorno obtenido con la inversión realizada.'],
+  ['Inflación', '/glosario/inflacion/', 'Aumento generalizado del nivel de precios que reduce el poder adquisitivo del dinero.'],
+  ['Amortización', '/glosario/amortizacion/', 'Proceso de devolución de una deuda o de reducción de su principal mediante pagos.'],
+  ['Cuota mensual', '/glosario/cuota-mensual/', 'Importe que se paga periódicamente para devolver un préstamo o hipoteca.'],
+];
+---
+<Layout title="Glosario financiero | Cifria" description="Conceptos de finanzas personales explicados de forma sencilla: TAE, TIN, Euríbor, IRPF, IVA, rentabilidad y más.">
+  <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Entiende los conceptos</p><h1>Glosario financiero</h1><p class="lead">Definiciones claras para entender mejor préstamos, hipotecas, impuestos, ahorro e inversión.</p></div></section>
+  <section class="section"><div class="container"><div class="category-grid glossary-grid">{terms.map(([term, href, description], index) => <Card class="category-card"><p class="card-number">{String(index + 1).padStart(2, '0')}</p><h2 style="font-size:1.35rem"><a href={href}>{term}</a></h2><p>{description}</p><a class="text-link" href={href}>Ver definición →</a></Card>)}</div></div></section>
+</Layout>

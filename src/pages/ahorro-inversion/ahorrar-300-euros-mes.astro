@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+---
+<Layout title="Qué pasa si ahorro 300 euros al mes | Cifria" description="Simula cuánto puedes acumular ahorrando 300 euros al mes con o sin rentabilidad.">
+  <SeoLandingPage title="Qué pasa si ahorro 300 € al mes" description="Una simulación para ver cuánto podrías acumular con una aportación mensual constante." intro="Ahorrar 300 € al mes son 3.600 € al año antes de tener en cuenta cualquier rentabilidad. El tiempo permite convertir aportaciones pequeñas en un capital mayor." exampleTitle="Dos escenarios que merece la pena comparar" exampleText="Calcula primero 300 € mensuales sin rentabilidad y después introduce una rentabilidad hipotética. Así separas lo que aportas tú del crecimiento de la inversión." calculatorHref="/ahorro-inversion/aportaciones-periodicas/" calculatorLabel="Simular aportaciones" sections={[
+    { title: 'Sin rentabilidad', paragraphs: ['La cantidad acumulada depende directamente del número de meses. A 1, 5 o 10 años, el resultado es simplemente la suma de tus aportaciones.', 'Este escenario sirve como referencia para medir cuánto crecimiento proviene realmente de la rentabilidad y cuánto de tu esfuerzo de ahorro.'] },
+    { title: 'Con rentabilidad hipotética', paragraphs: ['Al añadir una rentabilidad, el capital puede crecer por encima de la suma de aportaciones gracias a la capitalización.', 'El resultado no es una promesa de rentabilidad futura. Cambiar la hipótesis de rentabilidad puede cambiar mucho el resultado final.'] },
+    { title: 'La constancia importa', paragraphs: ['Mantener una aportación mensual estable facilita convertir el ahorro en un hábito medible.', 'Puedes utilizar la calculadora de objetivo de ahorro para invertir el proceso: partir de una cantidad objetivo y estimar qué aportación necesitarías.'] },
+  ]} faqs={[
+    { question: '¿Cuánto son 300 € al mes al año?', answer: 'Son 3.600 € al año si mantienes la aportación durante los 12 meses.' },
+    { question: '¿Qué pasa si añado rentabilidad?', answer: 'El capital puede crecer por encima de tus aportaciones porque los rendimientos se incorporan al capital y pueden generar nuevos rendimientos.' },
+    { question: '¿La calculadora predice lo que ganaré?', answer: 'No. La rentabilidad introducida es una hipótesis para explorar escenarios y no garantiza un resultado futuro.' },
+  ]} />
+</Layout>

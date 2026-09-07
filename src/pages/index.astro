@@ -1,1 +1,100 @@
-C:\Users\Carlos
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import { categories } from '../data/categories';
+---
+<Layout title="Cifria | Calculadoras financieras y laborales" description="Calculadoras gratuitas para entender tu sueldo, hipoteca, préstamos, ahorro y otros gastos cotidianos en España.">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Herramientas financieras para España</p>
+        <h1>Haz números.<br /><em>Decide mejor.</em></h1>
+        <p class="lead">Calculadoras gratuitas y fáciles de entender para tomar decisiones sobre dinero, vivienda, trabajo y ahorro.</p>
+        <a class="button" href="#calculadoras">Ver calculadoras</a>
+      </div>
+      <aside class="hero-note"><strong>Sin registro.</strong><p>Los cálculos se hacen en tu navegador. Tus datos de la calculadora no se envían a ningún servidor.</p></aside>
+    </div>
+  </section>
+
+  <section class="section" id="calculadoras">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Explora Cifria</p><h2>Calculadoras para decisiones reales</h2></div><p>Empezamos por las herramientas que más te pueden ayudar en tu día a día y seguiremos ampliando el catálogo.</p></div>
+      <div class="category-grid">
+        {categories.map((category) => <Card class="category-card"><p class="card-number">{category.accent}</p><h3><a href={`/${category.slug}/`}>{category.name}</a></h3><p>{category.description}</p><a class="text-link" href={`/${category.slug}/`}>Ver herramientas →</a></Card>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Para empezar</p><h2>Herramientas destacadas</h2></div><p>Algunas de las calculadoras que ya puedes usar para tomar decisiones concretas.</p></div>
+      <div class="category-grid">
+        <Card class="category-card"><p class="card-number">01</p><h3><a href="/impuestos/calculadora-iva/">Calculadora de IVA</a></h3><p>Añade o quita IVA de un importe y separa base e impuesto.</p><a class="text-link" href="/impuestos/calculadora-iva/">Calcular IVA →</a></Card>
+        <Card class="category-card"><p class="card-number">02</p><h3><a href="/prestamos/amortizacion-anticipada/">Amortización anticipada</a></h3><p>Compara reducir cuota frente a reducir plazo y estima el ahorro de intereses.</p><a class="text-link" href="/prestamos/amortizacion-anticipada/">Simular amortización →</a></Card>
+        <Card class="category-card"><p class="card-number">03</p><h3><a href="/ahorro-inversion/aportaciones-periodicas/">Aportaciones periódicas</a></h3><p>Simula cómo puede crecer un ahorro con una aportación mensual.</p><a class="text-link" href="/ahorro-inversion/aportaciones-periodicas/">Calcular ahorro →</a></Card>
+        <Card class="category-card"><p class="card-number">04</p><h3><a href="/coche/coste-por-kilometro/">Coste por kilómetro</a></h3><p>Estima el coste real del coche combinando combustible y costes fijos.</p><a class="text-link" href="/coche/coste-por-kilometro/">Calcular coste →</a></Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container feature-grid"><div><p class="eyebrow">Calculadoras rápidas</p><h2>También para los cálculos de cada día.</h2></div><div><p>Porcentajes, descuentos, propinas y subidas salariales son búsquedas sencillas que pueden llevarte a otras herramientas financieras de Cifria.</p><a class="text-link" href="/calculadoras/">Ver todas las calculadoras →</a></div></div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Guías</p><h2>Entiende el cálculo antes de tomar una decisión</h2></div><p>Explicaciones prácticas para sacar más partido a las calculadoras de Cifria.</p></div>
+      <div class="category-grid">
+        <Card class="category-card"><p class="card-number">01</p><h3><a href="/guias/calcular-cuota-hipoteca/">Cómo calcular la cuota de una hipoteca</a></h3><p>Aprende qué variables hacen subir o bajar la cuota y el coste total.</p><a class="text-link" href="/guias/calcular-cuota-hipoteca/">Leer guía →</a></Card>
+        <Card class="category-card"><p class="card-number">02</p><h3><a href="/guias/interes-compuesto/">Cómo funciona el interés compuesto</a></h3><p>Entiende la relación entre aportaciones, rentabilidad y tiempo.</p><a class="text-link" href="/guias/interes-compuesto/">Leer guía →</a></Card>
+        <Card class="category-card"><p class="card-number">03</p><h3><a href="/guias/amortizar-hipoteca/">Amortizar hipoteca: cuota o plazo</a></h3><p>Compara las dos formas habituales de reducir deuda anticipadamente.</p><a class="text-link" href="/guias/amortizar-hipoteca/">Leer guía →</a></Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container feature-grid"><div><p class="eyebrow">Ejemplos concretos</p><h2>Compara escenarios sin empezar de cero.</h2></div><div><p>Hemos preparado referencias para importes y plazos concretos de hipotecas, préstamos, ahorro, salarios e IVA.</p><a class="text-link" href="/escenarios/">Ver escenarios →</a></div></div>
+  </section>
+
+  <section class="section">
+    <div class="container feature-grid"><div><p class="eyebrow">Comparadores</p><h2>Antes de decidir, compara.</h2></div><div><p>Plazo de hipoteca, cuota de préstamo, ahorro mensual, salario por hora o IVA: pequeñas variaciones pueden cambiar el resultado.</p><a class="text-link" href="/comparadores/">Ver comparadores →</a></div></div>
+  </section>
+
+  <section class="section">
+    <div class="container feature-grid">
+      <div><p class="eyebrow">Encuentra rápido</p><h2>Busca por lo que necesitas calcular.</h2></div>
+      <div><p>Prueba términos como hipoteca, salario, IVA, ahorro, préstamo o coche y encuentra la herramienta que encaja con tu situación.</p><a class="text-link" href="/buscar/">Buscar una herramienta →</a><br /><a class="text-link" href="/herramientas/">Ver todas las herramientas →</a><br /><a class="text-link" href="/glosario/">Consultar el glosario financiero →</a></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Búsquedas frecuentes</p><h2>Empieza por una cifra concreta.</h2></div><p>Escenarios pensados para responder a preguntas habituales sobre hipotecas, préstamos, ahorro, salario y coche.</p></div>
+      <div class="category-grid">
+        <Card class="category-card"><p class="card-number">01</p><h3><a href="/vivienda/hipoteca-250000-30-anos/">Hipoteca de 250.000 € a 30 años</a></h3><p>Consulta una referencia de cuota e intereses con un supuesto claramente indicado.</p><a class="text-link" href="/vivienda/hipoteca-250000-30-anos/">Ver simulación →</a></Card>
+        <Card class="category-card"><p class="card-number">02</p><h3><a href="/prestamos/prestamo-15000-5-anos/">Préstamo de 15.000 € a 5 años</a></h3><p>Compara mensualidad e intereses antes de probar tus propios datos.</p><a class="text-link" href="/prestamos/prestamo-15000-5-anos/">Ver simulación →</a></Card>
+        <Card class="category-card"><p class="card-number">03</p><h3><a href="/ahorro-inversion/ahorrar-200-euros-mes/">Ahorrar 200 € al mes</a></h3><p>Separa lo que aportas tú del posible crecimiento por rentabilidad.</p><a class="text-link" href="/ahorro-inversion/ahorrar-200-euros-mes/">Ver simulación →</a></Card>
+        <Card class="category-card"><p class="card-number">04</p><h3><a href="/nomina/salario-30000-40-horas/">Salario de 30.000 € con 40 horas</a></h3><p>Convierte un salario bruto anual en una referencia de valor por hora.</p><a class="text-link" href="/nomina/salario-30000-40-horas/">Ver cálculo →</a></Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Encuentra tu siguiente paso</p><h2>Calcula, compara y entiende.</h2></div><p>Empieza con una cifra concreta y sigue hacia una guía, un escenario o un comparador relacionado.</p></div>
+      <div class="category-grid">
+        <Card class="category-card"><p class="card-number">01</p><h3><a href="/herramientas/">Todas las herramientas</a></h3><p>Explora el catálogo completo de Cifria.</p><a class="text-link" href="/herramientas/">Ver catálogo →</a></Card>
+        <Card class="category-card"><p class="card-number">02</p><h3><a href="/comparadores/">Comparadores</a></h3><p>Contrasta dos opciones antes de decidir.</p><a class="text-link" href="/comparadores/">Comparar →</a></Card>
+        <Card class="category-card"><p class="card-number">03</p><h3><a href="/guias/">Guías</a></h3><p>Entiende los conceptos detrás de cada cálculo.</p><a class="text-link" href="/guias/">Leer guías →</a></Card>
+        <Card class="category-card"><p class="card-number">04</p><h3><a href="/escenarios/">Escenarios</a></h3><p>Parte de un ejemplo concreto y modifícalo.</p><a class="text-link" href="/escenarios/">Ver escenarios →</a></Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container feature-grid">
+      <div><p class="eyebrow">Hecho para entender</p><h2>No solo damos un número.</h2></div>
+      <div><p>Cada herramienta explica qué está calculando, qué supuestos utiliza y cuáles son sus limitaciones. Cuando el cálculo depende de una norma o dato oficial, indicamos la fuente.</p><a class="text-link" href="/fuentes-metodologia/">Cómo trabajamos →</a></div>
+    </div>
+  </section>
+</Layout>

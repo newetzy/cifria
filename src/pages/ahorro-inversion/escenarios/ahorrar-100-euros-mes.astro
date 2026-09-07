@@ -1,0 +1,9 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SeoLandingPage from "../../../components/SeoLandingPage.astro";
+---
+<Layout title='Ahorrar 100 euros al mes | Cifria' description='Calcula cuánto acumulas ahorrando 100 € al mes y separa aportaciones de rentabilidad.'>
+  <SeoLandingPage title='Qué pasa si ahorro 100 € al mes' description='Calcula cuánto acumulas ahorrando 100 € al mes y separa aportaciones de rentabilidad.' intro='Una aportación de 100 € al mes suma 1.200 € al año antes de cualquier rentabilidad.' exampleTitle="Ejemplo de uso" exampleText='Compara el resultado sin rentabilidad con uno o varios escenarios hipotéticos. Así puedes distinguir ahorro realizado de crecimiento de la inversión.' calculatorHref='/ahorro-inversion/aportaciones-periodicas/' calculatorLabel='Simular aportaciones' sections={[{ title: 'Constancia', paragraphs: ['Las aportaciones periódicas permiten medir el esfuerzo de ahorro de forma sencilla.'] },
+    { title: 'Rentabilidad', paragraphs: ['Una rentabilidad hipotética puede aumentar el capital final, pero no garantiza un rendimiento futuro.'] }]} faqs={[{ question: '¿Cuánto ahorro en un año?', answer: '100 € al mes son 1.200 € al año si mantienes las doce aportaciones.' },
+    { question: '¿La rentabilidad está garantizada?', answer: 'No. Los escenarios de rentabilidad son hipótesis y no una promesa de resultados.' }]} />
+</Layout>

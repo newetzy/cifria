@@ -1,0 +1,5 @@
+import { calculateDiscount } from '../lib/calculations/discount';
+import { formatEuro } from '../lib/formatters/currency';
+const form=document.querySelector<HTMLFormElement>('#discount-form')!; const price=form.elements.namedItem('price') as HTMLInputElement; const discount=form.elements.namedItem('discountPercent') as HTMLInputElement;
+const finalPrice=document.querySelector<HTMLElement>('[data-result="finalPrice"]')!; const amount=document.querySelector<HTMLElement>('[data-result="discountAmount"]')!;
+const calc=()=>{try{const r=calculateDiscount({price:price.valueAsNumber,discountPercent:discount.valueAsNumber});finalPrice.textContent=formatEuro(r.finalPrice);amount.textContent=formatEuro(r.discountAmount);}catch{finalPrice.textContent='—';}}; form.addEventListener('submit',e=>{e.preventDefault();calc();});calc();

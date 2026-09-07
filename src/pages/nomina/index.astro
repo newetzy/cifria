@@ -1,5 +1,7 @@
 ---
-import Layout from '../../layouts/Layout.astro'; import CategoryPage from '../../components/CategoryPage.astro'; import { categories } from '../../data/categories';
+import CategoryPage from '../../components/CategoryPage.astro';
+import Layout from '../../layouts/Layout.astro';
+import { categories } from '../../data/categories';
 const category = categories.find(({ slug }) => slug === 'nomina')!;
 ---
-<Layout title="Calculadoras de nómina | Cifria" description="Calculadoras de nómina y salario para particulares en España."><CategoryPage {category} /></Layout>
+<Layout title="Calculadoras de nómina y salario | Cifria" description="Calculadoras para entender el salario, la jornada y otros conceptos relacionados con tu nómina en España."><CategoryPage category={category} /></Layout>

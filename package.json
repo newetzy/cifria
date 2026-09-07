@@ -5,10 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/generate-sitemap.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "node --test src/lib/calculations/compound-interest.test.ts src/lib/calculations/mortgage.test.ts src/lib/calculations/loan.test.ts"
+    "test": "node --experimental-strip-types --test src/lib/calculations/*.test.ts",
+    "seo:audit": "node scripts/seo-audit.mjs",
+    "seo:report": "node scripts/seo-report.mjs"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",

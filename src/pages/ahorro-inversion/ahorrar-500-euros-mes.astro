@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+---
+<Layout title="Qué pasa si ahorro 500 euros al mes | Cifria" description="Calcula cuánto puedes acumular ahorrando 500 euros mensuales y compara ahorro puro con rentabilidad hipotética.">
+  <SeoLandingPage title="Qué pasa si ahorro 500 € al mes" description="Explora cómo evoluciona un ahorro mensual de 500 € a lo largo del tiempo." intro="Una aportación de 500 € al mes equivale a 6.000 € al año antes de cualquier rentabilidad. La duración del ahorro es una de las variables que más cambia el resultado." exampleTitle="Compara ahorro frente a inversión" exampleText="Simula 500 € mensuales con rentabilidad 0 % y después prueba una hipótesis moderada. La diferencia muestra el efecto del tiempo y la capitalización." calculatorHref="/ahorro-inversion/aportaciones-periodicas/" calculatorLabel="Calcular aportaciones" sections={[
+    { title: 'El efecto de mantener la aportación', paragraphs: ['La primera parte del capital procede de tus propias aportaciones: 6.000 € por cada año completo en el que mantengas 500 € mensuales.', 'La regularidad puede ser más importante que acertar un momento puntual de entrada, porque hace que el ahorro se acumule de forma sistemática.'] },
+    { title: 'Qué cambia con una rentabilidad', paragraphs: ['Una rentabilidad positiva puede hacer crecer el capital por encima de las aportaciones acumuladas.', 'Las rentabilidades reales varían y pueden ser negativas. Por eso conviene analizar más de un escenario en lugar de fijarse en una única cifra.'] },
+    { title: 'Cómo interpretar el resultado', paragraphs: ['Separa siempre capital aportado y rendimiento estimado. Así puedes saber qué parte del resultado depende de tus decisiones de ahorro.', 'La inflación, impuestos, comisiones y volatilidad pueden hacer que el resultado real sea diferente al de una simulación simple.'] },
+  ]} faqs={[
+    { question: '¿Cuánto ahorro con 500 € al mes en un año?', answer: 'Si aportas 500 € cada mes durante 12 meses, acumulas 6.000 € de aportaciones.' },
+    { question: '¿La rentabilidad se suma automáticamente?', answer: 'Solo si introduces una hipótesis de rentabilidad. La herramienta permite comparar el crecimiento con y sin rentabilidad.' },
+    { question: '¿Debo usar una rentabilidad determinada?', answer: 'No existe un porcentaje universal. Es más útil probar varios escenarios y recordar que una rentabilidad hipotética no es una garantía.' },
+  ]} />
+</Layout>

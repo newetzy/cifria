@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+const comparisons = [
+  ['Hipoteca a 20 o 30 años: qué cambia', '/comparadores/hipoteca-20-vs-30-anos/', 'Compara el efecto del plazo sobre la cuota mensual y los intereses totales de una hipoteca.'],
+  ['Amortizar hipoteca: reducir cuota o reducir plazo', '/comparadores/amortizar-cuota-vs-plazo/', 'Compara las dos formas más habituales de aplicar una amortización anticipada y qué objetivo persigue cada una.'],
+  ['Ahorrar 300 o 500 € al mes: comparación', '/comparadores/ahorrar-300-vs-500-euros/', 'Mira cómo cambia el ahorro acumulado cuando aumentas la aportación mensual de 300 a 500 euros.'],
+  ['Interés simple o compuesto: diferencias', '/comparadores/interes-simple-vs-compuesto/', 'Entiende cómo cambia el crecimiento cuando los intereses se incorporan al capital y vuelven a generar rendimiento.'],
+  ['IVA añadido o IVA incluido: cómo distinguirlos', '/comparadores/iva-anadido-vs-incluido/', 'Aprende la diferencia entre sumar IVA a un precio neto y extraer el IVA de un precio final.'],
+  ['Salario por hora con 35 o 40 horas semanales', '/comparadores/salario-35-vs-40-horas/', 'Compara el valor bruto por hora de una jornada de 35 horas frente a una de 40 horas.'],
+  ['Préstamo a 5 o 7 años: cuota frente a coste', '/comparadores/prestamo-5-vs-7-anos/', 'Compara cómo cambia la cuota y el coste total cuando alargas el plazo de un préstamo.'],
+  ['Ahorrar o invertir: qué estás comparando', '/comparadores/ahorrar-vs-invertir/', 'Una guía breve para distinguir entre acumular dinero sin asumir rentabilidad y buscar crecimiento con una inversión.'],
+]
+---
+<Layout title="Comparadores financieros y laborales | Cifria" description="Compara escenarios de hipotecas, préstamos, ahorro, IVA y salario con explicaciones sencillas.">
+  <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Compara antes de decidir</p><h1>Comparadores financieros</h1><p class="lead">Páginas prácticas para entender qué cambia cuando modificas una variable importante. Después puedes llevar el escenario a la calculadora.</p></div></section>
+  <section class="section"><div class="container"><div class="scenario-grid">
+<Card class="scenario-card"><p class="card-number">01</p><h2 style="font-size:1.25rem"><a href="/comparadores/hipoteca-20-vs-30-anos/">Hipoteca a 20 o 30 años: qué cambia</a></h2><p>Compara el efecto del plazo sobre la cuota mensual y los intereses totales de una hipoteca.</p><a class="text-link" href="/comparadores/hipoteca-20-vs-30-anos/">Ver comparación →</a></Card>
+<Card class="scenario-card"><p class="card-number">02</p><h2 style="font-size:1.25rem"><a href="/comparadores/amortizar-cuota-vs-plazo/">Amortizar hipoteca: reducir cuota o reducir plazo</a></h2><p>Compara las dos formas más habituales de aplicar una amortización anticipada y qué objetivo persigue cada una.</p><a class="text-link" href="/comparadores/amortizar-cuota-vs-plazo/">Ver comparación →</a></Card>
+<Card class="scenario-card"><p class="card-number">03</p><h2 style="font-size:1.25rem"><a href="/comparadores/ahorrar-300-vs-500-euros/">Ahorrar 300 o 500 € al mes: comparación</a></h2><p>Mira cómo cambia el ahorro acumulado cuando aumentas la aportación mensual de 300 a 500 euros.</p><a class="text-link" href="/comparadores/ahorrar-300-vs-500-euros/">Ver comparación →</a></Card>
+<Card class="scenario-card"><p class="card-number">04</p><h2 style="font-size:1.25rem"><a href="/comparadores/interes-simple-vs-compuesto/">Interés simple o compuesto: diferencias</a></h2><p>Entiende cómo cambia el crecimiento cuando los intereses se incorporan al capital y vuelven a generar rendimiento.</p><a class="text-link" href="/comparadores/interes-simple-vs-compuesto/">Ver comparación →</a></Card>
+<Card class="scenario-card"><p class="card-number">05</p><h2 style="font-size:1.25rem"><a href="/comparadores/iva-anadido-vs-incluido/">IVA añadido o IVA incluido: cómo distinguirlos</a></h2><p>Aprende la diferencia entre sumar IVA a un precio neto y extraer el IVA de un precio final.</p><a class="text-link" href="/comparadores/iva-anadido-vs-incluido/">Ver comparación →</a></Card>
+<Card class="scenario-card"><p class="card-number">06</p><h2 style="font-size:1.25rem"><a href="/comparadores/salario-35-vs-40-horas/">Salario por hora con 35 o 40 horas semanales</a></h2><p>Compara el valor bruto por hora de una jornada de 35 horas frente a una de 40 horas.</p><a class="text-link" href="/comparadores/salario-35-vs-40-horas/">Ver comparación →</a></Card>
+<Card class="scenario-card"><p class="card-number">07</p><h2 style="font-size:1.25rem"><a href="/comparadores/prestamo-5-vs-7-anos/">Préstamo a 5 o 7 años: cuota frente a coste</a></h2><p>Compara cómo cambia la cuota y el coste total cuando alargas el plazo de un préstamo.</p><a class="text-link" href="/comparadores/prestamo-5-vs-7-anos/">Ver comparación →</a></Card>
+<Card class="scenario-card"><p class="card-number">08</p><h2 style="font-size:1.25rem"><a href="/comparadores/ahorrar-vs-invertir/">Ahorrar o invertir: qué estás comparando</a></h2><p>Una guía breve para distinguir entre acumular dinero sin asumir rentabilidad y buscar crecimiento con una inversión.</p><a class="text-link" href="/comparadores/ahorrar-vs-invertir/">Ver comparación →</a></Card>
+  </div></div></section>
+</Layout>

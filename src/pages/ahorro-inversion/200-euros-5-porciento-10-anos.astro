@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+import { calculateCompoundInterest } from '../../lib/calculations/compound-interest.ts';
+import { formatEuro } from '../../lib/formatters/currency.ts';
+const result = calculateCompoundInterest({ initialCapital: 0, monthlyContribution: 200, annualReturnPercent: 5, years: 10 });
+---
+<Layout title="200 euros al mes al 5 % durante 10 años | Cifria" description="Simulación de 200 euros mensuales durante 10 años con un 5 % de rentabilidad anual hipotética.">
+  <SeoLandingPage title="200 € al mes al 5 % durante 10 años" description="Simula el crecimiento de 200 € mensuales durante 10 años usando una rentabilidad anual hipotética del 5 %." intro={`Con 200 € al mes durante 10 años aportarías ${formatEuro(result.totalContributions)}. Usando un 5 % anual hipotético con capitalización mensual, la simulación termina en ${formatEuro(result.finalCapital)}.`} exampleTitle="Resultado de la simulación" exampleText={`Capital aportado: ${formatEuro(result.totalContributions)} · crecimiento simulado: ${formatEuro(result.interestEarned)} · capital final: ${formatEuro(result.finalCapital)}.`} calculatorHref="/ahorro-inversion/interes-compuesto/" calculatorLabel="Calcular interés compuesto" sections={[
+    { title: 'La aportación es la base', paragraphs: ['La primera cifra que conviene mirar son los 200 € mensuales. Durante diez años representan 120 aportaciones, independientemente de que exista o no rentabilidad.', 'Separar aportaciones y crecimiento permite entender de dónde sale el resultado final.'] },
+    { title: 'Qué significa el 5 % del ejemplo', paragraphs: ['El 5 % es un supuesto anual para construir una simulación. El motor capitaliza mensualmente y reinvierte el crecimiento dentro del modelo.', 'No significa que una inversión concreta vaya a obtener exactamente ese rendimiento todos los años.'] },
+    { title: 'Por qué el tiempo importa', paragraphs: ['Con horizontes más largos, una mayor parte del resultado puede proceder del crecimiento acumulado en lugar de las nuevas aportaciones.', 'Puedes cambiar años, aportación y rentabilidad en la calculadora para ver la sensibilidad del escenario.'] },
+  ]} faqs={[
+    { question: '¿Cuánto aporto en 10 años?', answer: `Aportando 200 € cada mes durante 120 meses, el capital aportado es ${formatEuro(result.totalContributions)}.` },
+    { question: '¿Cuánto sería el capital final con un 5 % hipotético?', answer: `En este modelo, el capital final estimado es ${formatEuro(result.finalCapital)}.` },
+    { question: '¿La rentabilidad se mantiene constante?', answer: 'Sí, en esta simulación se usa una tasa anual constante como supuesto matemático. La realidad de una inversión puede ser variable.' },
+  ]} />
+</Layout>

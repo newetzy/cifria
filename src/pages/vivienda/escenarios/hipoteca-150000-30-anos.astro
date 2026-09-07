@@ -1,0 +1,9 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SeoLandingPage from "../../../components/SeoLandingPage.astro";
+---
+<Layout title='Hipoteca de 150.000 € a 30 años | Cifria' description='Simula una hipoteca de 150.000 € a 30 años y aprende qué variables cambian la cuota y el coste total.'>
+  <SeoLandingPage title='Hipoteca de 150.000 € a 30 años' description='Simula una hipoteca de 150.000 € a 30 años y aprende qué variables cambian la cuota y el coste total.' intro='Este escenario sirve como referencia para estudiar una financiación de 150.000 € a tres décadas.' exampleTitle="Ejemplo de uso" exampleText='Mantén el importe en 150.000 € y compara 30, 25 y 20 años con el mismo tipo. La diferencia entre cuotas y el interés total ayuda a visualizar el coste del plazo.' calculatorHref='/vivienda/calculadora-hipoteca/' calculatorLabel='Calcular hipoteca' sections={[{ title: 'El plazo cambia el coste', paragraphs: ['A mayor plazo, normalmente menor cuota y mayor número de periodos de intereses.'] },
+    { title: 'Compara con tu presupuesto', paragraphs: ['La cuota debe encajar con ingresos y otros gastos recurrentes, no solo con el precio de la vivienda.'] }]} faqs={[{ question: '¿30 años siempre es mejor?', answer: 'No. La cuota puede ser más cómoda, pero el coste total suele ser mayor en igualdad de condiciones.' },
+    { question: '¿Qué tipo debo poner?', answer: 'Usa el tipo que estés estudiando y no lo mezcles con escenarios que tengan condiciones distintas.' }]} />
+</Layout>

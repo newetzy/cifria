@@ -1,0 +1,50 @@
+---
+interface Section { title: string; paragraphs: string[]; }
+interface Faq { question: string; answer: string; }
+interface Props { title: string; description: string; intro: string; sections: Section[]; calculatorHref?: string; calculatorLabel?: string; faqs?: Faq[]; }
+const { title, description, intro, sections, calculatorHref, calculatorLabel, faqs = [] } = Astro.props;
+const calculatorCategory = calculatorHref?.split('/').filter(Boolean)[0] ?? '';
+const categoryLabels: Record<string, { href: string; title: string }> = {
+  vivienda: { href: '/vivienda/', title: 'Más calculadoras de vivienda' },
+  prestamos: { href: '/prestamos/', title: 'Más calculadoras de préstamos' },
+  'ahorro-inversion': { href: '/ahorro-inversion/', title: 'Más calculadoras de ahorro e inversión' },
+  nomina: { href: '/nomina/', title: 'Más calculadoras de nómina' },
+  coche: { href: '/coche/', title: 'Más calculadoras de coche' },
+  impuestos: { href: '/impuestos/', title: 'Más calculadoras de impuestos' },
+};
+const categoryLink = categoryLabels[calculatorCategory];
+---
+<article class="guide-page">
+  <header class="page-hero page-hero-compact">
+    <div class="container narrow">
+      <p class="eyebrow">Guía de Cifria</p>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+      {calculatorHref && <a class="button" href={calculatorHref}>{calculatorLabel ?? 'Abrir calculadora'}</a>}
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose">
+      <p><strong>{intro}</strong></p>
+      {sections.map((section) => (
+        <section>
+          <h2>{section.title}</h2>
+          {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </section>
+      ))}
+      {faqs.length > 0 && <section class="faq-section"><p class="eyebrow">Preguntas frecuentes</p><h2>Preguntas habituales</h2>{faqs.map((faq) => <details class="faq-item"><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</section>}
+      {calculatorHref && categoryLink && <section class="related-tools" aria-labelledby="guide-related-title"><div class="section-heading"><div><p class="eyebrow">Sigue explorando</p><h2 id="guide-related-title">Más herramientas</h2></div><p>Relaciona la explicación con el resto de calculadoras del mismo tema.</p></div><div class="related-tools-grid"><a class="related-tool" href={calculatorHref}>{calculatorLabel ?? 'Abrir calculadora'}<span>Prueba tus propios datos.</span></a><a class="related-tool" href={categoryLink.href}>{categoryLink.title}<span>Consulta otras herramientas de la categoría.</span></a></div></section>}
+    </div>
+  </section>
+</article>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  inLanguage: 'es-ES',
+  mainEntityOfPage: { '@type': 'WebPage', '@id': new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString() },
+  publisher: { '@type': 'Organization', name: 'Cifria' }
+})} />
+{faqs.length > 0 && <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) })} />}

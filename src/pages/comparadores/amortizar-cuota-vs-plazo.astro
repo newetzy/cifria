@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoLandingPage from '../../components/SeoLandingPage.astro';
+---
+<Layout title='Amortizar hipoteca: reducir cuota o reducir plazo | Cifria' description='Compara las dos formas más habituales de aplicar una amortización anticipada y qué objetivo persigue cada una.'>
+  <SeoLandingPage title='Amortizar hipoteca: reducir cuota o reducir plazo' description='Compara las dos formas más habituales de aplicar una amortización anticipada y qué objetivo persigue cada una.' intro='Mantienes un plazo parecido y buscas bajar la mensualidad. Puede ser útil si tu prioridad es liberar flujo mensual.' calculatorHref='/prestamos/amortizacion-anticipada/' calculatorLabel='Simular amortización' sections={[
+    { title: 'Reducir cuota', paragraphs: ['Mantienes un plazo parecido y buscas bajar la mensualidad. Puede ser útil si tu prioridad es liberar flujo mensual.'] },
+    { title: 'Reducir plazo', paragraphs: ['Mantienes una cuota similar y terminas antes. Normalmente concentra el ahorro de intereses al reducir el tiempo durante el que existe la deuda.'] },
+    { title: 'Qué comparar', paragraphs: ['No mires solo la nueva cuota. Compara meses restantes, intereses futuros y el efecto sobre tu liquidez.'] }
+  ]} faqs={[
+    { question: '¿Qué opción ahorra más intereses?', answer: 'A igualdad de condiciones, reducir plazo suele generar un ahorro de intereses mayor porque elimina meses de financiación.' },
+    { question: '¿Cuál mejora más mi cuota?', answer: 'Reducir cuota está pensado precisamente para disminuir el pago periódico.' }
+  ]} />
+</Layout>

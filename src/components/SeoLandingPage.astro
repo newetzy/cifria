@@ -1,0 +1,82 @@
+---
+import AdSlot from './AdSlot.astro';
+interface Section { title: string; paragraphs: string[]; }
+interface Faq { question: string; answer: string; }
+interface Props {
+  title: string;
+  description: string;
+  intro: string;
+  sections: Section[];
+  exampleTitle?: string;
+  exampleText?: string;
+  calculatorHref: string;
+  calculatorLabel: string;
+  faqs: Faq[];
+}
+const { title, description, intro, sections, exampleTitle, exampleText, calculatorHref, calculatorLabel, faqs } = Astro.props;
+const category = calculatorHref.split('/').filter(Boolean)[0] ?? '';
+const categoryLinks: Record<string, { href: string; title: string; description: string }> = {
+  vivienda: { href: '/vivienda/', title: 'Calculadoras de vivienda', description: 'Consulta hipotecas y otras herramientas de vivienda.' },
+  prestamos: { href: '/prestamos/', title: 'Calculadoras de préstamos', description: 'Consulta cuotas, intereses y amortización.' },
+  ahorro: { href: '/ahorro-inversion/', title: 'Calculadoras de ahorro e inversión', description: 'Explora ahorro, rentabilidad e inflación.' },
+  'ahorro-inversion': { href: '/ahorro-inversion/', title: 'Calculadoras de ahorro e inversión', description: 'Explora ahorro, rentabilidad e inflación.' },
+  nomina: { href: '/nomina/', title: 'Calculadoras de nómina', description: 'Consulta herramientas para convertir y comparar salarios.' },
+  impuestos: { href: '/impuestos/', title: 'Calculadoras de impuestos', description: 'Consulta IVA y otras herramientas fiscales.' },
+  coche: { href: '/coche/', title: 'Calculadoras de coche', description: 'Consulta costes de viaje y movilidad.' },
+};
+const relatedCategory = categoryLinks[category];
+---
+<article class="guide-page seo-landing-page">
+  <header class="page-hero page-hero-compact">
+    <div class="container narrow">
+      <p class="eyebrow">Cálculo práctico</p>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+      <a class="button" href={calculatorHref}>{calculatorLabel}</a>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container narrow prose">
+      <p><strong>{intro}</strong></p><AdSlot slot={import.meta.env.PUBLIC_ADSENSE_MIDDLE_SLOT} label="Publicidad" />
+      {exampleTitle && exampleText && <aside class="seo-example"><strong>{exampleTitle}</strong><p>{exampleText}</p></aside>}
+      {sections.map((section) => (
+        <section>
+          <h2>{section.title}</h2>
+          {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </section>
+      ))}
+      <section class="faq-section">
+        <p class="eyebrow">Preguntas frecuentes</p>
+        <h2>Preguntas habituales sobre este cálculo</h2>
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </section>
+      {relatedCategory && <section class="related-tools" aria-labelledby="seo-related-title">
+        <div class="section-heading"><div><p class="eyebrow">Sigue explorando</p><h2 id="seo-related-title">Más herramientas de Cifria</h2></div><p>Después de leer este escenario, puedes comparar otros cálculos relacionados.</p></div>
+        <div class="related-tools-grid"><a class="related-tool" href={calculatorHref}>{calculatorLabel}<span>Abre la calculadora y cambia los datos.</span></a><a class="related-tool" href={relatedCategory.href}>{relatedCategory.title}<span>{relatedCategory.description}</span></a></div>
+      </section>}
+    </div>
+  </section>
+</article>
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  inLanguage: 'es-ES',
+  mainEntityOfPage: { '@type': 'WebPage', '@id': new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString() },
+  publisher: { '@type': 'Organization', name: 'Cifria' }
+})} />
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+  }))
+})} />

@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GuidePage from '../../components/GuidePage.astro';
+---
+<Layout title="Cómo calcular un porcentaje fácilmente | Cifria" description="Aprende a calcular porcentajes, aumentos y reducciones con ejemplos sencillos y usa la calculadora de porcentajes de Cifria.">
+  <GuidePage title="Cómo calcular un porcentaje" description="Un porcentaje expresa una parte de una cantidad sobre 100. Con una operación sencilla puedes calcularlo o usarlo para aplicar subidas y descuentos." intro="Los porcentajes aparecen constantemente en descuentos, salarios, impuestos, ahorro y estadísticas. Saber interpretar la operación evita muchos errores al hacer cuentas rápidas." calculatorHref="/calculadoras/porcentaje/" calculatorLabel="Calcular un porcentaje" sections={[
+    { title: 'Calcular un porcentaje de una cantidad', paragraphs: ['Para obtener un porcentaje de una cantidad, convierte el porcentaje a número decimal y multiplícalo por el importe. Por ejemplo, el 15 % equivale a 0,15.', 'Si tienes 200 € y quieres saber cuánto son 15 %, el resultado es 30 €. La calculadora de Cifria evita que tengas que hacer esta conversión a mano.'] },
+    { title: 'Aumentos y reducciones', paragraphs: ['Un aumento del 10 % significa sumar el 10 % de la cantidad original. Una reducción del 10 % significa restarlo. No son operaciones idénticas a aplicar sucesivamente porcentajes sobre una cantidad ya modificada.', 'Esto es especialmente importante cuando encadenas descuentos o subidas: cada porcentaje puede aplicarse sobre una base diferente.'] },
+    { title: 'Porcentajes en la vida diaria', paragraphs: ['Puedes usar porcentajes para estudiar subidas salariales, descuentos, rentabilidades, impuestos o cuánto representa una cantidad respecto de otra.', 'Para decisiones financieras conviene conservar la cifra original y especificar siempre qué cantidad actúa como base del porcentaje.'] }
+  ]} faqs={[
+    { question: '¿Cuánto es el 10 % de 500 €?', answer: 'El 10 % de 500 € son 50 €.' },
+    { question: '¿Es lo mismo subir un precio un 20 % y luego bajarlo un 20 %?', answer: 'No. El segundo 20 % se aplica sobre el precio ya modificado, así que normalmente no vuelves al precio inicial.' },
+    { question: '¿Puedo calcular qué porcentaje representa una cantidad respecto de otra?', answer: 'Sí. Esa operación consiste en comparar la parte con el total y expresarla como porcentaje.' }
+  ]} />
+</Layout>
