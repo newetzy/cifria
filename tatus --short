@@ -1,0 +1,23 @@
+warning: in the working copy of '.env.example', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/CategoryPage.astro', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/Footer.astro', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/Header.astro', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/InputField.astro', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/layouts/Layout.astro', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pages/aviso-legal.astro', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pages/cookies.astro', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pages/herramientas/index.astro', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pages/privacidad.astro', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/styles/global.css', LF will be replaced by CRLF the next time Git touches it
+ .env.example                       |  11 [32m++[m[31m--[m
+ src/components/CategoryPage.astro  |   4 [32m+[m[31m-[m
+ src/components/Footer.astro        |   2 [32m+[m[31m-[m
+ src/components/Header.astro        |  27 [32m+++++++[m[31m-[m
+ src/components/InputField.astro    |   2 [32m+[m[31m-[m
+ src/layouts/Layout.astro           |  86 [32m++++++++++++++[m[31m-----------[m
+ src/pages/aviso-legal.astro        |  58 [32m++++++++++++++++[m[31m-[m
+ src/pages/cookies.astro            |  41 [32m+++++++++++[m[31m-[m
+ src/pages/herramientas/index.astro |   1 [31m-[m
+ src/pages/privacidad.astro         |  57 [32m++++++++++++++++[m[31m-[m
+ src/styles/global.css              | 124 [32m++++++++++++++++++++++++++++++++++++[m[31m-[m
+ 11 files changed, 360 insertions(+), 53 deletions(-)

@@ -1,4 +1,43 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { legal } from '../data/legal';
 ---
-<Layout title="Cookies | Cifria" description="Información sobre cookies en Cifria."><section class="legal-page"><div class="container narrow"><p class="eyebrow">Información legal</p><h1>Cookies</h1><div class="legal-placeholder"><p><strong>Pendiente de completar antes de la publicación.</strong> No se han integrado analítica, publicidad ni cookies no esenciales en esta fase.</p><p>La política definitiva deberá reflejar las tecnologías que realmente se implanten y sus mecanismos de consentimiento.</p></div></div></section></Layout>
+<Layout title="Política de cookies | Cifria" description="Información sobre cookies y tecnologías similares utilizadas en Cifria.">
+  <section class="legal-page">
+    <div class="container narrow">
+      <p class="eyebrow">Cookies</p>
+      <h1>Política de cookies</h1>
+      <p class="legal-intro">Información sobre las tecnologías utilizadas por Cifria y sobre cómo gestionar tu consentimiento.</p>
+
+      <div class="prose legal-prose">
+        <p><strong>Última actualización:</strong> {legal.lastUpdated}</p>
+
+        <h2>1. ¿Qué son las cookies?</h2>
+        <p>Las cookies son pequeños archivos o tecnologías similares que pueden almacenarse en el navegador o dispositivo para recordar información, mantener determinadas funciones o medir el uso de un sitio.</p>
+
+        <h2>2. Tecnologías necesarias</h2>
+        <p>Cifria puede utilizar almacenamiento local del navegador para recordar la preferencia de consentimiento. Esta preferencia se guarda con la clave <code>cifria_analytics_consent</code> y no se utiliza por Cifria para identificar directamente a una persona.</p>
+
+        <h2>3. Analítica</h2>
+        <p>Cifria utiliza Google Tag Manager, mediante el contenedor <code>GTM-N6SL9MLZ</code>, para gestionar etiquetas de medición cuando la persona usuaria ha aceptado la finalidad de analítica.</p>
+        <p>Si dentro del contenedor se activa Google Analytics, este puede utilizar cookies y tecnologías similares para medir visitas, navegación e interacción. Los nombres, duración y finalidad exactos dependen de la configuración de Google Analytics y de las etiquetas publicadas en el contenedor.</p>
+
+        <h2>4. Consentimiento</h2>
+        <p>Las etiquetas de analítica no esencial no se cargan en Cifria antes de que la persona usuaria acepte esa finalidad. El banner permite aceptar o rechazar la analítica.</p>
+        <p>La configuración del consentimiento se comunica a las etiquetas de Google mediante el mecanismo de consentimiento correspondiente.</p>
+
+        <h2>5. Publicidad</h2>
+        <p>La infraestructura de Cifria puede estar preparada para incorporar publicidad en el futuro, pero la política deberá actualizarse cuando se activen servicios publicitarios y sus correspondientes tecnologías de seguimiento.</p>
+
+        <h2>6. Cómo cambiar tu decisión</h2>
+        <p>Puedes cambiar tu decisión desde <a href="#" data-cookie-settings>Gestionar cookies</a> en el pie de página. También puedes borrar el almacenamiento de tu navegador. Después de modificar la preferencia, puede ser necesario recargar la página.</p>
+
+        <h2>7. Terceros</h2>
+        <p>Cuando la analítica está activada, pueden intervenir servicios de Google. Estos terceros pueden tratar información conforme a sus propias políticas y condiciones.</p>
+
+        <h2>8. Más información</h2>
+        <p>Para cualquier consulta sobre privacidad o cookies, escribe a <a href={`mailto:${legal.contactEmail}`}>{legal.contactEmail}</a>.</p>
+      </div>
+    </div>
+  </section>
+</Layout>

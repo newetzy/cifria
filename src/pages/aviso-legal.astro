@@ -1,4 +1,60 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { legal } from '../data/legal';
 ---
-<Layout title="Aviso legal | Cifria" description="Información legal de Cifria."><section class="legal-page"><div class="container narrow"><p class="eyebrow">Información legal</p><h1>Aviso legal</h1><div class="legal-placeholder"><p><strong>Pendiente de completar antes de la publicación.</strong> Esta página deberá incorporar la identidad y datos de contacto reales de la persona o entidad titular, conforme a la normativa aplicable.</p><p>No se han incluido datos identificativos ficticios.</p></div></div></section></Layout>
+<Layout title="Aviso legal | Cifria" description="Información legal, identificación del titular y condiciones de uso de Cifria.">
+  <section class="legal-page">
+    <div class="container narrow">
+      <p class="eyebrow">Información legal</p>
+      <h1>Aviso legal</h1>
+      <p class="legal-intro">Información sobre el titular de Cifria, las condiciones de uso del sitio y las responsabilidades asociadas a sus herramientas.</p>
+
+      <div class="prose legal-prose">
+        <p><strong>Última actualización:</strong> {legal.lastUpdated}</p>
+
+        <h2>1. Identificación del titular</h2>
+        <div class="legal-data">
+          <div><span>Nombre y apellidos</span><strong>{legal.holderName}</strong></div>
+          <div><span>NIF</span><strong>{legal.taxId}</strong></div>
+          <div><span>Domicilio</span><strong>{legal.professionalAddress}</strong></div>
+          <div><span>Correo electrónico</span><strong><a href={`mailto:${legal.contactEmail}`}>{legal.contactEmail}</a></strong></div>
+          <div><span>Sitio web</span><strong>https://{legal.domain}</strong></div>
+        </div>
+
+        <h2>2. Objeto del sitio web</h2>
+        <p>Cifria es un sitio web de carácter divulgativo que ofrece calculadoras, escenarios, comparadores, guías y contenidos relacionados con finanzas personales, vivienda, ahorro, inversión, préstamos, nóminas, impuestos y otros cálculos de uso cotidiano.</p>
+
+        <h2>3. Condiciones de uso</h2>
+        <p>El acceso y uso de Cifria implica la aceptación de este aviso legal y de las demás políticas publicadas en el sitio. La persona usuaria se compromete a utilizar el sitio de forma lícita, diligente y respetuosa con los derechos de terceros.</p>
+        <p>No está permitido utilizar Cifria para realizar actividades ilícitas, introducir código malicioso, intentar obtener acceso no autorizado a sistemas o utilizar medios automatizados que perjudiquen el funcionamiento del sitio.</p>
+
+        <h2>4. Naturaleza de las calculadoras y contenidos</h2>
+        <p>Los resultados de las calculadoras se obtienen a partir de los datos introducidos y de las hipótesis, fórmulas o simplificaciones indicadas en cada herramienta. Salvo que se indique expresamente lo contrario, los resultados son orientativos y no constituyen asesoramiento financiero, fiscal, laboral, jurídico, contable ni de inversión.</p>
+        <p>Antes de tomar una decisión con consecuencias económicas o legales, la persona usuaria debe contrastar la información con fuentes oficiales o con un profesional cualificado.</p>
+
+        <h2>5. Exactitud y disponibilidad</h2>
+        <p>Se procura que las herramientas y contenidos sean claros y estén actualizados, pero no se garantiza que estén libres de errores, omisiones, interrupciones o desactualizaciones. Las normas fiscales, laborales y financieras pueden cambiar con el tiempo.</p>
+        <p>Cifria no garantiza la disponibilidad permanente del sitio ni se responsabiliza de daños derivados de interrupciones, fallos técnicos o del uso que una persona haga de los resultados obtenidos.</p>
+
+        <h2>6. Propiedad intelectual e industrial</h2>
+        <p>El código, diseño, textos, estructura, logotipo, gráficos y demás contenidos de Cifria pertenecen al titular o se utilizan con la correspondiente autorización y están protegidos por la normativa aplicable.</p>
+        <p>Salvo que la ley permita otra cosa, no se autoriza la reproducción, distribución, transformación o explotación del contenido sin consentimiento previo del titular.</p>
+
+        <h2>7. Enlaces de terceros</h2>
+        <p>Cifria puede incluir enlaces a sitios web de terceros cuando sean útiles como fuentes o recursos. Estos sitios disponen de sus propias políticas y condiciones, y Cifria no controla ni garantiza su contenido, disponibilidad o funcionamiento.</p>
+
+        <h2>8. Protección de datos y cookies</h2>
+        <p>El tratamiento de datos personales y el uso de cookies o tecnologías similares se explican en las páginas de <a href="/privacidad/">Política de privacidad</a> y <a href="/cookies/">Política de cookies</a>.</p>
+
+        <h2>9. Modificaciones</h2>
+        <p>El titular puede modificar los contenidos, funcionalidades, condiciones y textos legales de Cifria cuando resulte necesario. La versión vigente será la publicada en el sitio web.</p>
+
+        <h2>10. Legislación aplicable</h2>
+        <p>Con carácter general, este sitio se rige por la legislación española, sin perjuicio de las normas imperativas que puedan resultar aplicables en cada caso.</p>
+
+        <h2>11. Contacto</h2>
+        <p>Para consultas, correcciones, avisos sobre errores o cuestiones relacionadas con el sitio puedes escribir a <a href={`mailto:${legal.contactEmail}`}>{legal.contactEmail}</a>.</p>
+      </div>
+    </div>
+  </section>
+</Layout>

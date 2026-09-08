@@ -1,0 +1,114 @@
+---
+const gtmId = 'GTM-N6SL9MLZ';
+---
+<div class="cookie-consent" data-cookie-consent hidden role="dialog" aria-label="Preferencias de privacidad">
+  <div class="cookie-consent-inner">
+    <div class="cookie-consent-copy">
+      <p class="cookie-consent-title">Tu privacidad importa</p>
+      <p>Utilizamos analítica opcional para saber qué herramientas funcionan mejor y mejorar Cifria. La analítica solo se activa después de tu consentimiento.</p>
+      <a href="/cookies/">Leer la política de cookies</a>
+    </div>
+    <div class="cookie-consent-actions" aria-label="Preferencias de cookies">
+      <button type="button" class="cookie-button cookie-button-secondary" data-cookie-reject>Rechazar</button>
+      <button type="button" class="cookie-button cookie-button-primary" data-cookie-accept>Aceptar analítica</button>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ gtmId }}>
+  const STORAGE_KEY = 'cifria_analytics_consent';
+  const banner = document.querySelector('[data-cookie-consent]');
+  const acceptButton = document.querySelector('[data-cookie-accept]');
+  const rejectButton = document.querySelector('[data-cookie-reject]');
+
+  function ensureDataLayer() {
+    const win = window as typeof window & { dataLayer?: unknown[] };
+    win.dataLayer = win.dataLayer || [];
+    return win.dataLayer;
+  }
+
+  function consentCommand(action, values) {
+    const dataLayer = ensureDataLayer();
+    dataLayer.push(['consent', action, values]);
+  }
+
+  function setDefaultConsent() {
+    consentCommand('default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      wait_for_update: 500,
+    });
+  }
+
+  function setGrantedConsent() {
+    consentCommand('update', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
+  }
+
+  function setDeniedConsent() {
+    consentCommand('update', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
+  }
+
+  function loadGtm() {
+    if (!gtmId || document.querySelector(`script[data-cifria-gtm="${gtmId}"]`)) return;
+    const dataLayer = ensureDataLayer();
+    dataLayer.push({
+      'gtm.start': new Date().getTime(),
+      event: 'gtm.js',
+    });
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(gtmId)}`;
+    script.dataset.cifriaGtm = gtmId;
+    document.head.appendChild(script);
+  }
+
+  function setConsent(value) {
+    localStorage.setItem(STORAGE_KEY, value);
+    if (value === 'granted') {
+      setGrantedConsent();
+      loadGtm();
+    } else {
+      setDeniedConsent();
+    }
+    if (banner) banner.hidden = true;
+  }
+
+  function showBanner() {
+    if (banner) banner.hidden = false;
+  }
+
+  setDefaultConsent();
+  const savedConsent = localStorage.getItem(STORAGE_KEY);
+  if (savedConsent === 'granted') {
+    setGrantedConsent();
+    loadGtm();
+  } else if (savedConsent === 'denied') {
+    setDeniedConsent();
+  } else {
+    showBanner();
+  }
+
+  acceptButton?.addEventListener('click', () => setConsent('granted'));
+  rejectButton?.addEventListener('click', () => setConsent('denied'));
+
+  document.querySelectorAll('[data-cookie-settings]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      showBanner();
+    });
+  });
+</script>

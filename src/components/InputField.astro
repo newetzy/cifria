@@ -2,4 +2,4 @@
 interface Props { id: string; label: string; hint?: string; type?: 'number' | 'text' | 'email' | 'date'; required?: boolean; min?: string; step?: string; }
 const { id, label, hint, type = 'number', required = false, min, step = 'any' } = Astro.props;
 ---
-<div class="field"><label for={id}>{label}</label><input id={id} name={id} type={type} required={required} min={min} step={step} aria-describedby={hint ? `${id}-hint` : undefined} />{hint && <small id={`${id}-hint`}>{hint}</small>}</div>
+<div class="field"><label for={id}>{label}</label><input id={id} name={id} type={type} inputmode={type === 'number' ? 'decimal' : undefined} required={required} min={min} step={step} aria-describedby={hint ? `${id}-hint` : undefined} />{hint && <small id={`${id}-hint`}>{hint}</small>}</div>

@@ -2,4 +2,29 @@
 import { navigation } from '../data/categories';
 const pathname = Astro.url.pathname;
 ---
-<header class="site-header"><div class="container header-inner"><a class="brand" href="/" aria-label="Cifria, inicio"><span class="brand-mark" aria-hidden="true">C</span><span>Cifria</span></a><nav aria-label="Navegación principal"><ul class="main-nav">{navigation.map(({ href, name }) => <li><a href={href} aria-current={pathname === href ? 'page' : undefined}>{name}</a></li>)}<li><a href="/calculadoras/" aria-current={pathname === '/calculadoras/' ? 'page' : undefined}>Más calculadoras</a></li><li><a href="/buscar/" aria-current={pathname === '/buscar/' ? 'page' : undefined}>Buscar</a></li></ul></nav></div></header>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Cifria, inicio">
+      <span class="brand-mark" aria-hidden="true">C</span><span>Cifria</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      <ul class="main-nav">
+        {navigation.map(({ href, name }) => <li><a href={href} aria-current={pathname === href ? 'page' : undefined}>{name}</a></li>)}
+        <li><a href="/calculadoras/" aria-current={pathname === '/calculadoras/' ? 'page' : undefined}>Más calculadoras</a></li>
+        <li><a href="/buscar/" aria-current={pathname === '/buscar/' ? 'page' : undefined}>Buscar</a></li>
+      </ul>
+    </nav>
+
+    <details class="mobile-menu">
+      <summary aria-label="Abrir menú de navegación">Menú</summary>
+      <nav aria-label="Navegación móvil">
+        <ul>
+          {navigation.map(({ href, name }) => <li><a href={href} aria-current={pathname === href ? 'page' : undefined}>{name}</a></li>)}
+          <li><a href="/calculadoras/" aria-current={pathname === '/calculadoras/' ? 'page' : undefined}>Más calculadoras</a></li>
+          <li><a href="/buscar/" aria-current={pathname === '/buscar/' ? 'page' : undefined}>Buscar</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
