@@ -1,5 +1,4 @@
 ---
-const gtmId = 'GTM-N6SL9MLZ';
 ---
 <div class="cookie-consent" data-cookie-consent hidden role="dialog" aria-label="Preferencias de privacidad">
   <div class="cookie-consent-inner">
@@ -15,74 +14,40 @@ const gtmId = 'GTM-N6SL9MLZ';
   </div>
 </div>
 
-<script define:vars={{ gtmId }}>
+<script is:inline>
   const STORAGE_KEY = 'cifria_analytics_consent';
   const banner = document.querySelector('[data-cookie-consent]');
   const acceptButton = document.querySelector('[data-cookie-accept]');
   const rejectButton = document.querySelector('[data-cookie-reject]');
 
   function ensureDataLayer() {
-    const win = window as typeof window & { dataLayer?: unknown[] };
+    const win = window;
     win.dataLayer = win.dataLayer || [];
     return win.dataLayer;
   }
 
-  function consentCommand(action, values) {
+  function consentUpdate(values) {
     const dataLayer = ensureDataLayer();
-    dataLayer.push(['consent', action, values]);
-  }
-
-  function setDefaultConsent() {
-    consentCommand('default', {
-      analytics_storage: 'denied',
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      functionality_storage: 'granted',
-      security_storage: 'granted',
-      wait_for_update: 500,
-    });
-  }
-
-  function setGrantedConsent() {
-    consentCommand('update', {
-      analytics_storage: 'granted',
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-    });
-  }
-
-  function setDeniedConsent() {
-    consentCommand('update', {
-      analytics_storage: 'denied',
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-    });
-  }
-
-  function loadGtm() {
-    if (!gtmId || document.querySelector(`script[data-cifria-gtm="${gtmId}"]`)) return;
-    const dataLayer = ensureDataLayer();
-    dataLayer.push({
-      'gtm.start': new Date().getTime(),
-      event: 'gtm.js',
-    });
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(gtmId)}`;
-    script.dataset.cifriaGtm = gtmId;
-    document.head.appendChild(script);
+    dataLayer.push(['consent', 'update', values]);
   }
 
   function setConsent(value) {
     localStorage.setItem(STORAGE_KEY, value);
     if (value === 'granted') {
-      setGrantedConsent();
-      loadGtm();
+      consentUpdate({
+        analytics_storage: 'granted',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
+      ensureDataLayer().push({ event: 'cifria_consent_granted' });
     } else {
-      setDeniedConsent();
+      consentUpdate({
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
     }
     if (banner) banner.hidden = true;
   }
@@ -91,16 +56,8 @@ const gtmId = 'GTM-N6SL9MLZ';
     if (banner) banner.hidden = false;
   }
 
-  setDefaultConsent();
   const savedConsent = localStorage.getItem(STORAGE_KEY);
-  if (savedConsent === 'granted') {
-    setGrantedConsent();
-    loadGtm();
-  } else if (savedConsent === 'denied') {
-    setDeniedConsent();
-  } else {
-    showBanner();
-  }
+  if (!savedConsent) showBanner();
 
   acceptButton?.addEventListener('click', () => setConsent('granted'));
   rejectButton?.addEventListener('click', () => setConsent('denied'));
