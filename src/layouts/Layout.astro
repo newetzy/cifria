@@ -30,28 +30,35 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).to
     <meta name="twitter:description" content={description} />
     <title>{title}</title>
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ window.dataLayer.push(arguments); }
-      const consentKey = 'cifria_analytics_consent';
-      const savedConsent = window.localStorage.getItem(consentKey);
-      gtag('consent', 'default', {
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        functionality_storage: 'granted',
-        security_storage: 'granted',
-        wait_for_update: 500
-      });
-      if (savedConsent === 'granted') {
-        gtag('consent', 'update', {
-          analytics_storage: 'granted',
+      (() => {
+        window.dataLayer = window.dataLayer || [];
+        function cifriaGtag(){ window.dataLayer.push(arguments); }
+        const cifriaConsentKey = 'cifria_analytics_consent';
+        let cifriaSavedConsent = null;
+        try {
+          cifriaSavedConsent = window.localStorage.getItem(cifriaConsentKey);
+        } catch (_) {
+          cifriaSavedConsent = null;
+        }
+        cifriaGtag('consent', 'default', {
+          analytics_storage: 'denied',
           ad_storage: 'denied',
           ad_user_data: 'denied',
-          ad_personalization: 'denied'
+          ad_personalization: 'denied',
+          functionality_storage: 'granted',
+          security_storage: 'granted',
+          wait_for_update: 500
         });
-        window.dataLayer.push({ event: 'cifria_consent_granted' });
-      }
+        if (cifriaSavedConsent === 'granted') {
+          cifriaGtag('consent', 'update', {
+            analytics_storage: 'granted',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied'
+          });
+          window.dataLayer.push({ event: 'cifria_consent_granted' });
+        }
+      })();
     </script>
     <script is:inline>
       (function(w,d,s,l,i){

@@ -1,5 +1,4 @@
 ---
----
 <div class="cookie-consent" data-cookie-consent hidden role="dialog" aria-label="Preferencias de privacidad">
   <div class="cookie-consent-inner">
     <div class="cookie-consent-copy">
@@ -15,57 +14,69 @@
 </div>
 
 <script is:inline>
-  const STORAGE_KEY = 'cifria_analytics_consent';
-  const banner = document.querySelector('[data-cookie-consent]');
-  const acceptButton = document.querySelector('[data-cookie-accept]');
-  const rejectButton = document.querySelector('[data-cookie-reject]');
+  (() => {
+    const cifriaConsentStorageKey = 'cifria_analytics_consent';
+    const cifriaConsentBanner = document.querySelector('[data-cookie-consent]');
+    const cifriaAcceptButton = document.querySelector('[data-cookie-accept]');
+    const cifriaRejectButton = document.querySelector('[data-cookie-reject]');
 
-  function ensureDataLayer() {
-    const win = window;
-    win.dataLayer = win.dataLayer || [];
-    return win.dataLayer;
-  }
+    const cifriaEnsureDataLayer = () => {
+      window.dataLayer = window.dataLayer || [];
+      return window.dataLayer;
+    };
 
-  function consentUpdate(values) {
-    const dataLayer = ensureDataLayer();
-    dataLayer.push(['consent', 'update', values]);
-  }
+    const cifriaConsentUpdate = (values) => {
+      cifriaEnsureDataLayer().push(['consent', 'update', values]);
+    };
 
-  function setConsent(value) {
-    localStorage.setItem(STORAGE_KEY, value);
-    if (value === 'granted') {
-      consentUpdate({
-        analytics_storage: 'granted',
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied'
-      });
-      ensureDataLayer().push({ event: 'cifria_consent_granted' });
-    } else {
-      consentUpdate({
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied'
-      });
+    const cifriaSetConsent = (value) => {
+      try {
+        localStorage.setItem(cifriaConsentStorageKey, value);
+      } catch (_) {
+        // Ignore storage errors; the consent signal can still be sent for this page view.
+      }
+
+      if (value === 'granted') {
+        cifriaConsentUpdate({
+          analytics_storage: 'granted',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        });
+        cifriaEnsureDataLayer().push({ event: 'cifria_consent_granted' });
+      } else {
+        cifriaConsentUpdate({
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        });
+      }
+
+      if (cifriaConsentBanner) cifriaConsentBanner.hidden = true;
+    };
+
+    const cifriaShowBanner = () => {
+      if (cifriaConsentBanner) cifriaConsentBanner.hidden = false;
+    };
+
+    let cifriaSavedConsent = null;
+    try {
+      cifriaSavedConsent = localStorage.getItem(cifriaConsentStorageKey);
+    } catch (_) {
+      cifriaSavedConsent = null;
     }
-    if (banner) banner.hidden = true;
-  }
 
-  function showBanner() {
-    if (banner) banner.hidden = false;
-  }
+    if (!cifriaSavedConsent) cifriaShowBanner();
 
-  const savedConsent = localStorage.getItem(STORAGE_KEY);
-  if (!savedConsent) showBanner();
+    cifriaAcceptButton?.addEventListener('click', () => cifriaSetConsent('granted'));
+    cifriaRejectButton?.addEventListener('click', () => cifriaSetConsent('denied'));
 
-  acceptButton?.addEventListener('click', () => setConsent('granted'));
-  rejectButton?.addEventListener('click', () => setConsent('denied'));
-
-  document.querySelectorAll('[data-cookie-settings]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      showBanner();
+    document.querySelectorAll('[data-cookie-settings]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        cifriaShowBanner();
+      });
     });
-  });
+  })();
 </script>
