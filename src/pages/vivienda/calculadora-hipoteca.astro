@@ -3,9 +3,9 @@ import CalculatorShell from '../../components/CalculatorShell.astro';
 import Disclaimer from '../../components/Disclaimer.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="Calculadora de hipoteca: cuota mensual y coste total | Cifria" description="Calcula la cuota mensual, los intereses y el coste total estimado de una hipoteca fija con amortización francesa.">
+<Layout title="Calcular cuota de hipoteca mensual | Cifria" description="Calcula cuota de hipoteca mensual, intereses y coste total con precio, entrada, plazo y tipo fijo. Haz tu simulación aquí.">
   <section class="calculator-page-section">
-    <CalculatorShell title="Calculadora de hipoteca" description="Calcula una estimación de cuota e intereses para una hipoteca a tipo fijo. El importe financiado se obtiene al restar la entrada al precio de la vivienda.">
+    <CalculatorShell title="Calcular cuota de hipoteca mensual" description="Calcula cuota de hipoteca mensual e intereses con el precio, la entrada, el plazo y un tipo fijo.">
       <div class="calculator-layout mortgage-form-layout">
         <form id="mortgage-form" class="calculator-form" novalidate>
           <fieldset>
@@ -35,7 +35,13 @@ import Layout from '../../layouts/Layout.astro';
         </div>
       </div>
       <p class="sr-only" id="mortgage-announcement" aria-live="polite" aria-atomic="true"></p>
-      <section class="content-section prose"><p class="eyebrow">Cómo interpretarlo</p><h2>Qué calcula esta herramienta</h2><p>Una hipoteca es un préstamo destinado habitualmente a financiar una vivienda. El importe financiado es la parte del precio que queda después de restar la entrada inicial.</p><h2>Cuota, intereses y porcentaje financiado</h2><p>La cuota es el pago mensual estimado. Los intereses totales son el coste de financiar el importe prestado según el tipo y el plazo introducidos. El porcentaje financiado, o LTV, compara el importe financiado con el precio de la vivienda.</p><h2>Ratio cuota/ingresos</h2><p>Si añades tus ingresos netos mensuales, mostramos qué porcentaje representan las cuotas estimadas. Es una referencia aritmética y no evalúa tu situación financiera ni tu capacidad de pago.</p><h2>Metodología</h2><p>La simulación utiliza el sistema de amortización francés con tipo fijo: calcula cuotas mensuales iguales durante el plazo, aplicando los intereses al capital pendiente. Considera pagos mensuales y el primer pago un mes después de la formalización.</p><p class="mortgage-source">Referencia metodológica: <a href="https://clientebancario.bde.es/pcb/es/menu-horizontal/podemosayudarte/simuladores/simulador_prestamo_hipotecario_personal.html" rel="external">simulador de préstamo hipotecario o personal del Banco de España</a>.</p></section>
+      <section class="content-section prose"><p class="eyebrow">Cómo interpretarlo</p><h2>Qué calcula esta herramienta</h2><p>Calcular cuota de hipoteca mensual te permite estimar el pago periódico antes de solicitar financiación. El importe financiado es la parte del precio que queda después de restar la entrada inicial.</p><h2>Cuota, intereses y porcentaje financiado</h2><p>La cuota es el pago mensual estimado. Los intereses totales son el coste de financiar el importe prestado según el tipo y el plazo introducidos. El porcentaje financiado, o LTV, compara el importe financiado con el precio de la vivienda.</p><h2>Ratio cuota/ingresos</h2><p>Si añades tus ingresos netos mensuales, mostramos qué porcentaje representan las cuotas estimadas. Es una referencia aritmética y no evalúa tu situación financiera ni tu capacidad de pago.</p><h2>Metodología</h2><p>La simulación utiliza el sistema de amortización francés con tipo fijo: calcula cuotas mensuales iguales durante el plazo, aplicando los intereses al capital pendiente. Considera pagos mensuales y el primer pago un mes después de la formalización.</p><p class="mortgage-source">Referencia metodológica: <a href="https://clientebancario.bde.es/pcb/es/menu-horizontal/podemosayudarte/simuladores/simulador_prestamo_hipotecario_personal.html" rel="external">simulador de préstamo hipotecario o personal del Banco de España</a>.</p></section>
+      <section class="content-section prose" aria-labelledby="mortgage-faq-title">
+        <h2 id="mortgage-faq-title">Preguntas frecuentes</h2>
+        <details><summary>¿Qué datos necesito para calcular la cuota de hipoteca mensual?</summary><p>Introduce el precio de la vivienda, la entrada, el tipo de interés y el plazo. Los ingresos netos son opcionales y solo sirven para ver la relación entre cuota e ingresos.</p></details>
+        <details><summary>¿La cuota incluye impuestos y gastos de compra?</summary><p>No. El resultado estima capital e intereses de la financiación. Los gastos de compraventa, seguros, comisiones y tributos dependen de cada operación.</p></details>
+        <details><summary>¿Puedo usarla para una hipoteca variable?</summary><p>La simulación usa un tipo fijo. Para comparar escenarios variables, prueba varios tipos de interés y revisa cómo cambiaría la cuota.</p></details>
+      </section>
       <Disclaimer>Esta estimación matemática no incluye gastos de compraventa, seguros, comisiones, fiscalidad ni otras condiciones de un contrato. No constituye una oferta bancaria ni asesoramiento financiero.</Disclaimer>
     </CalculatorShell>
   </section>
