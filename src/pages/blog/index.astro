@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const categories = [...new Set(posts.map((post) => post.data.category))];
+const visiblePosts = posts.slice(0, 9);
+---
+
+<Layout title="Blog de finanzas personales y vivienda | Cifria" description="Noticias de vivienda, consejos financieros y guías para tomar decisiones con tus números claros.">
+  <section class="blog-index container">
+    <div class="blog-intro">
+      <p class="eyebrow">Blog Cifria</p>
+      <h1>Finanzas y vivienda, con números que puedes comprobar</h1>
+      <p class="lead">Ideas y contexto para entender precios, ahorro e impuestos antes de usar nuestras calculadoras.</p>
+    </div>
+
+    {categories.length > 0 && <nav class="category-list" aria-label="Categorías del blog">
+      {categories.map((category) => <a href={`/blog/categoria/${category}/`}>{category.replace('-', ' ')}</a>)}
+    </nav>}
+
+    {visiblePosts.length > 0 ? <div class="blog-grid">
+      {visiblePosts.map((post) => <PostCard post={post} />)}
+    </div> : <p class="lead">Próximamente publicaremos los primeros artículos.</p>}
+
+    {posts.length > 9 && <nav class="blog-pagination" aria-label="Paginación del blog"><span></span><a href="/blog/pagina/2/">Artículos anteriores →</a></nav>}
+  </section>
+</Layout>

@@ -1,0 +1,31 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import type { GetStaticPaths, Page } from 'astro';
+import Layout from '../../../layouts/Layout.astro';
+import PostCard from '../../../components/PostCard.astro';
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const posts = (await getCollection('blog', ({ data }) => !data.draft))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+  return paginate(posts, { pageSize: 9 }).filter((entry) => entry.params.page !== '1');
+};
+
+const { page } = Astro.props as { page: Page<CollectionEntry<'blog'>> };
+---
+
+<Layout title={`Blog, página ${page.currentPage} | Cifria`} description="Artículos de Cifria sobre vivienda, finanzas personales e impuestos.">
+  <section class="blog-index container">
+    <div class="blog-intro">
+      <p class="eyebrow">Blog Cifria</p>
+      <h1>Todos los artículos</h1>
+    </div>
+    <div class="blog-grid">
+      {page.data.map((post) => <PostCard post={post} />)}
+    </div>
+    <nav class="blog-pagination" aria-label="Paginación del blog">
+      {page.url.prev ? <a href={page.url.prev}>← Artículos recientes</a> : <span></span>}
+      {page.url.next && <a href={page.url.next}>Artículos anteriores →</a>}
+    </nav>
+  </section>
+</Layout>

@@ -1,0 +1,18 @@
+---
+import { getCollection, render } from 'astro:content';
+import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import { tools } from '../../data/tools';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const relatedTools = tools.filter((tool) => post.data.relatedTools.includes(tool.href));
+---
+
+<BlogPostLayout post={post} relatedTools={relatedTools}>
+  <Content />
+</BlogPostLayout>
