@@ -3,13 +3,13 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import { categories } from '../data/categories';
 ---
-<Layout title="Cifria | Calculadoras financieras y laborales" description="Calculadoras gratuitas para entender tu sueldo, hipoteca, préstamos, ahorro y otros gastos cotidianos en España.">
+<Layout title="Calculadoras financieras gratuitas en España | Cifria" description="Calculadoras financieras gratuitas en España para planificar hipoteca, ahorro, impuestos y sueldo con datos claros. Descúbrelo aquí.">
   <section class="hero">
     <div class="container hero-grid">
       <div>
         <p class="eyebrow">Herramientas financieras para España</p>
-        <h1>Haz números.<br /><em>Decide mejor.</em></h1>
-        <p class="lead">Calculadoras gratuitas y fáciles de entender para tomar decisiones sobre dinero, vivienda, trabajo y ahorro.</p>
+        <h1>Calculadoras financieras gratuitas en España</h1>
+        <p class="lead">Las calculadoras financieras gratuitas en España de Cifria te ayudan a tomar decisiones sobre dinero, vivienda, trabajo y ahorro con tus propios datos.</p>
         <a class="button" href="#calculadoras">Ver calculadoras</a>
       </div>
       <aside class="hero-note"><strong>Sin registro.</strong><p>Los cálculos se hacen en tu navegador. Tus datos de la calculadora no se envían a ningún servidor.</p></aside>
@@ -95,6 +95,17 @@ import { categories } from '../data/categories';
     <div class="container feature-grid">
       <div><p class="eyebrow">Hecho para entender</p><h2>No solo damos un número.</h2></div>
       <div><p>Cada herramienta explica qué está calculando, qué supuestos utiliza y cuáles son sus limitaciones. Cuando el cálculo depende de una norma o dato oficial, indicamos la fuente.</p><a class="text-link" href="/fuentes-metodologia/">Cómo trabajamos →</a></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="faq-title">
+    <div class="container narrow">
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2 id="faq-title">Dudas sobre las calculadoras financieras</h2>
+      <details><summary>¿Las calculadoras financieras gratuitas en España tienen coste?</summary><p>No. Puedes usar las herramientas de Cifria sin registro y hacer los cálculos directamente en tu navegador.</p></details>
+      <details><summary>¿Qué puedo calcular?</summary><p>Puedes estimar una cuota de hipoteca o préstamo, revisar impuestos, proyectar ahorro y comparar gastos cotidianos.</p></details>
+      <details><summary>¿Los resultados sustituyen a un profesional?</summary><p>No. Son estimaciones para entender escenarios; contrasta decisiones importantes con la entidad, organismo o profesional correspondiente.</p></details>
+      <p>Empieza por el <a href="/herramientas/">catálogo de herramientas</a>, consulta las <a href="/guias/">guías prácticas</a> o compara alternativas en los <a href="/comparadores/">comparadores</a>.</p>
     </div>
   </section>
 </Layout>
