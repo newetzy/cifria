@@ -25,6 +25,6 @@ const visiblePosts = posts.slice(0, 9);
       {visiblePosts.map((post) => <PostCard post={post} />)}
     </div> : <p class="lead">Próximamente publicaremos los primeros artículos.</p>}
 
-    {posts.length > 9 && <nav class="blog-pagination" aria-label="Paginación del blog"><span></span><a href="/blog/pagina/2/">Artículos anteriores →</a></nav>}
+    {posts.length > 9 && <nav class="blog-pagination" aria-label="Paginación del blog"><span></span><a href={`/blog/pagina/2/`}>Artículos anteriores →</a></nav>}
   </section>
 </Layout>
