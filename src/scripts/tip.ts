@@ -1,5 +1,0 @@
-import { calculateTip } from '../lib/calculations/tip';
-import { formatEuro } from '../lib/formatters/currency';
-const form=document.querySelector<HTMLFormElement>('#tip-form')!; const amountInput=form.elements.namedItem('amount') as HTMLInputElement; const tip=form.elements.namedItem('tipPercent') as HTMLInputElement; const people=form.elements.namedItem('people') as HTMLInputElement;
-const total=document.querySelector<HTMLElement>('[data-result="total"]')!; const tipAmount=document.querySelector<HTMLElement>('[data-result="tipAmount"]')!; const perPerson=document.querySelector<HTMLElement>('[data-result="perPerson"]')!;
-const calc=()=>{try{const r=calculateTip({amount:amountInput.valueAsNumber,tipPercent:tip.valueAsNumber,people:people.valueAsNumber});total.textContent=formatEuro(r.total);tipAmount.textContent=formatEuro(r.tipAmount);perPerson.textContent=formatEuro(r.perPerson);}catch{total.textContent='—';}}; form.addEventListener('submit',e=>{e.preventDefault();calc();});calc();

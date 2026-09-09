@@ -25,7 +25,6 @@ export const paths = [
   "/calculadoras/",
   "/calculadoras/descuento/",
   "/calculadoras/porcentaje/",
-  "/calculadoras/propina/",
   "/calculadoras/subida-salarial/",
   "/coche/",
   "/coche/coste-por-kilometro/",
