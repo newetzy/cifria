@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const formattedDate = post.data.pubDate.toLocaleDateString('es-ES', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<article class="post-card card">
+  {post.data.heroImage && <img class="post-card-image" src={post.data.heroImage} alt="" loading="lazy" />}
+  <div class="post-card-content">
+    <p class="eyebrow">{post.data.category.replace('-', ' ')}</p>
+    <h2><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
+    <p class="post-card-date"><time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time></p>
+    <p>{post.data.description}</p>
+    <a class="text-link" href={`/blog/${post.id}/`}>Leer artículo <span aria-hidden="true">→</span></a>
+  </div>
+</article>

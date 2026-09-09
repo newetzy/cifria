@@ -11,6 +11,7 @@ const pathname = Astro.url.pathname;
     <nav class="desktop-nav" aria-label="Navegación principal">
       <ul class="main-nav">
         {navigation.map(({ href, name }) => <li><a href={href} aria-current={pathname === href ? 'page' : undefined}>{name}</a></li>)}
+        <li><a href="/blog/" aria-current={pathname.startsWith('/blog/') ? 'page' : undefined}>Blog</a></li>
         <li><a href="/calculadoras/" aria-current={pathname === '/calculadoras/' ? 'page' : undefined}>Más calculadoras</a></li>
         <li><a href="/buscar/" aria-current={pathname === '/buscar/' ? 'page' : undefined}>Buscar</a></li>
       </ul>
@@ -21,6 +22,7 @@ const pathname = Astro.url.pathname;
       <nav aria-label="Navegación móvil">
         <ul>
           {navigation.map(({ href, name }) => <li><a href={href} aria-current={pathname === href ? 'page' : undefined}>{name}</a></li>)}
+          <li><a href="/blog/" aria-current={pathname.startsWith('/blog/') ? 'page' : undefined}>Blog</a></li>
           <li><a href="/calculadoras/" aria-current={pathname === '/calculadoras/' ? 'page' : undefined}>Más calculadoras</a></li>
           <li><a href="/buscar/" aria-current={pathname === '/buscar/' ? 'page' : undefined}>Buscar</a></li>
         </ul>

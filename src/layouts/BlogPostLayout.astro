@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Layout from './Layout.astro';
+import RelatedTools from '../components/RelatedTools.astro';
+import type { Tool } from '../data/tools';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  relatedTools: Tool[];
+}
+
+const { post, relatedTools } = Astro.props;
+const words = post.body.split(/\s+/).filter(Boolean).length;
+const readingMinutes = Math.max(1, Math.ceil(words / 200));
+const publishedDate = post.data.pubDate.toLocaleDateString('es-ES', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+const updatedDate = post.data.updatedDate?.toLocaleDateString('es-ES', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<Layout title={`${post.data.title} | Cifria`} description={post.data.description} image={post.data.heroImage} metaType="article">
+  <article class="blog-post">
+    <header class="blog-post-header container narrow">
+      <p class="eyebrow">{post.data.category.replace('-', ' ')}</p>
+      <h1>{post.data.title}</h1>
+      <p class="lead">{post.data.description}</p>
+      <p class="blog-post-meta">
+        <span>Por {post.data.author}</span>
+        <span><time datetime={post.data.pubDate.toISOString()}>Publicado el {publishedDate}</time></span>
+        {updatedDate && <span>Actualizado el {updatedDate}</span>}
+        <span>{readingMinutes} min de lectura</span>
+      </p>
+    </header>
+    {post.data.heroImage && <img class="blog-post-hero" src={post.data.heroImage} alt="" />}
+    <div class="container narrow">
+      <div class="blog-post-content prose"><slot /></div>
+      {relatedTools.length > 0 && <RelatedTools tools={relatedTools} />}
+    </div>
+  </article>
+</Layout>
