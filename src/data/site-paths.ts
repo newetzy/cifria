@@ -17,6 +17,7 @@ export const paths = [
   "/aviso-legal/",
   "/blog/",
   "/blog/cambio-fiscal-reciente-que-comprobar/",
+  "/blog/categoria/",
   "/blog/categoria/finanzas-personales/",
   "/blog/categoria/fiscalidad/",
   "/blog/categoria/vivienda/",
