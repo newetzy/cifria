@@ -1,0 +1,5 @@
+import test from 'node:test'; import assert from 'node:assert/strict'; import { calculateIrpf, type IrpfInput } from './irpf.ts';
+const input: IrpfInput = { salary: 30000, otherIncome: 0, savingsIncome: 0, socialContributions: 1905, pensionContributions: 0, withheld: 4000, age: 35, children: 0, childrenUnder3: 0, dependantsOver65: 0, disability: 'none', filing: 'individual', region: 'madrid' };
+test('calcula una cuota estimada y saldo frente a retenciones', () => { const result = calculateIrpf(input); assert.ok(result.estimatedTax > 0); assert.equal(result.balance, result.estimatedTax - 4000); });
+test('aplica mínimos familiares', () => { const base = calculateIrpf(input); const family = calculateIrpf({ ...input, children: 2, childrenUnder3: 1 }); assert.equal(family.personalMinimum, 13450); assert.ok(family.estimatedTax < base.estimatedTax); });
+test('rechaza importes negativos y datos familiares incoherentes', () => { assert.throws(() => calculateIrpf({ ...input, salary: -1 })); assert.throws(() => calculateIrpf({ ...input, children: 1, childrenUnder3: 2 })); });
