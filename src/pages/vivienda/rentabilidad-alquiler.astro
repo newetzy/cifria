@@ -4,9 +4,9 @@ import Disclaimer from '../../components/Disclaimer.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="Calculadora de rentabilidad de alquiler | Cifria" description="Calcula la rentabilidad bruta y neta estimada de una vivienda alquilada según el precio de compra, el alquiler y los gastos anuales.">
+<Layout title="Calcular rentabilidad de alquiler | Cifria" description="Calcula rentabilidad de alquiler bruta y neta con precio, renta y gastos anuales de una vivienda. Comprueba tu escenario aquí.">
   <section class="calculator-page-section">
-    <CalculatorShell title="Calculadora de rentabilidad de alquiler" description="Estima la rentabilidad anual de una vivienda destinada al alquiler y compara el rendimiento bruto con el neto.">
+    <CalculatorShell title="Calcular rentabilidad de alquiler" description="Calcula rentabilidad de alquiler anual y compara el rendimiento bruto con el neto.">
       <div class="calculator-layout">
         <form id="rent-yield-form" class="calculator-form" novalidate>
           <fieldset>
@@ -40,6 +40,7 @@ import Layout from '../../layouts/Layout.astro';
         <h2>Qué gastos puedes considerar</h2>
         <p>Puedes introducir una estimación anual de gastos como comunidad, mantenimiento, seguros, periodos sin alquilar u otros costes que quieras tener en cuenta. Para una comparación más completa también conviene considerar impuestos, financiación y los gastos iniciales de adquisición.</p>
       </section>
+      <section class="content-section prose" aria-labelledby="rental-faq-title"><h2 id="rental-faq-title">Preguntas frecuentes</h2><details><summary>¿Qué es la rentabilidad bruta del alquiler?</summary><p>Relaciona el alquiler anual con el precio de compra antes de descontar gastos.</p></details><details><summary>¿Qué gastos incluye la rentabilidad neta?</summary><p>Depende de los importes que introduzcas; revisa comunidad, seguro, mantenimiento y periodos sin alquiler.</p></details><details><summary>¿Incluye la hipoteca?</summary><p>No automáticamente. Puedes estimar la financiación con la <a href="/vivienda/calculadora-hipoteca/">calculadora de hipoteca</a>.</p></details></section>
       <Disclaimer>Esta es una estimación matemática. No incluye automáticamente impuestos, financiación, gastos de compra, vacantes ni todos los costes asociados a una vivienda en alquiler.</Disclaimer>
       <RelatedTools tools={[{ href: '/vivienda/calculadora-hipoteca/', title: 'Calculadora de hipoteca', description: 'Simula cuota, intereses y capital financiado.' }, { href: '/ahorro-inversion/roi/', title: 'Calculadora de ROI', description: 'Calcula el retorno porcentual de una inversión.' }]} />
     </CalculatorShell>
