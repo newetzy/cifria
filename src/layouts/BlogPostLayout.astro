@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { post, relatedTools } = Astro.props;
-const words = post.body.split(/\s+/).filter(Boolean).length;
+const words = (post.body ?? '').split(/\s+/).filter(Boolean).length;
 const readingMinutes = Math.max(1, Math.ceil(words / 200));
 const publishedDate = post.data.pubDate.toLocaleDateString('es-ES', {
   day: 'numeric',
