@@ -1,4 +1,5 @@
 ---
+---
 <div class="cookie-consent" data-cookie-consent hidden role="dialog" aria-label="Preferencias de privacidad">
   <div class="cookie-consent-inner">
     <div class="cookie-consent-copy">
@@ -13,70 +14,4 @@
   </div>
 </div>
 
-<script is:inline>
-  (() => {
-    const cifriaConsentStorageKey = 'cifria_analytics_consent';
-    const cifriaConsentBanner = document.querySelector('[data-cookie-consent]');
-    const cifriaAcceptButton = document.querySelector('[data-cookie-accept]');
-    const cifriaRejectButton = document.querySelector('[data-cookie-reject]');
-
-    const cifriaEnsureDataLayer = () => {
-      window.dataLayer = window.dataLayer || [];
-      return window.dataLayer;
-    };
-
-    const cifriaConsentUpdate = (values) => {
-      cifriaEnsureDataLayer().push(['consent', 'update', values]);
-    };
-
-    const cifriaSetConsent = (value) => {
-      try {
-        localStorage.setItem(cifriaConsentStorageKey, value);
-      } catch (_) {
-        // Ignore storage errors; the consent signal can still be sent for this page view.
-      }
-
-      if (value === 'granted') {
-        cifriaConsentUpdate({
-          analytics_storage: 'granted',
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied'
-        });
-        cifriaEnsureDataLayer().push({ event: 'cifria_consent_granted' });
-      } else {
-        cifriaConsentUpdate({
-          analytics_storage: 'denied',
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied'
-        });
-      }
-
-      if (cifriaConsentBanner) cifriaConsentBanner.hidden = true;
-    };
-
-    const cifriaShowBanner = () => {
-      if (cifriaConsentBanner) cifriaConsentBanner.hidden = false;
-    };
-
-    let cifriaSavedConsent = null;
-    try {
-      cifriaSavedConsent = localStorage.getItem(cifriaConsentStorageKey);
-    } catch (_) {
-      cifriaSavedConsent = null;
-    }
-
-    if (!cifriaSavedConsent) cifriaShowBanner();
-
-    cifriaAcceptButton?.addEventListener('click', () => cifriaSetConsent('granted'));
-    cifriaRejectButton?.addEventListener('click', () => cifriaSetConsent('denied'));
-
-    document.querySelectorAll('[data-cookie-settings]').forEach((link) => {
-      link.addEventListener('click', (event) => {
-        event.preventDefault();
-        cifriaShowBanner();
-      });
-    });
-  })();
-</script>
+<script>import '../scripts/cookie-consent';</script>

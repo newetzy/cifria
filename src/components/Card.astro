@@ -1,5 +1,5 @@
 ---
-export interface Props { as?: 'article' | 'div'; class?: string; }
-const { as: Tag = 'article', class: className = '' } = Astro.props as Props;
+export interface Props { class?: string; }
+const { class: className = '' } = Astro.props as Props;
 ---
-<Tag class:list={['card', className]}><slot /></Tag>
+<article class:list={['card', className]}><slot /></article>

@@ -1,8 +1,6 @@
 ---
-import { tools } from '../data/tools';
-const serialized = JSON.stringify(tools).replace(/</g, '\\u003c');
 ---
-<div class="tool-search" data-tools={serialized}>
+<div class="tool-search">
   <label for="tool-search-input">Buscar una herramienta</label>
   <input id="tool-search-input" type="search" placeholder="Ej.: hipoteca, salario, IVA, ahorro..." autocomplete="off" />
   <div class="tool-search-filters" aria-label="Filtrar resultados">
@@ -13,16 +11,19 @@ const serialized = JSON.stringify(tools).replace(/</g, '\\u003c');
   <div class="tool-search-results" id="tool-search-results" aria-live="polite"></div>
 </div>
 <script>
-  const root = document.querySelector('.tool-search');
+  import { tools } from '../data/tools';
+
+  const root = document.querySelector<HTMLElement>('.tool-search');
   if (root) {
-    const tools = JSON.parse(root.dataset.tools ?? '[]');
-    const input = root.querySelector('#tool-search-input');
-    const typeSelect = root.querySelector('#tool-search-type');
-    const categorySelect = root.querySelector('#tool-search-category');
-    const results = root.querySelector('#tool-search-results');
-    const meta = root.querySelector('#tool-search-meta');
+    const input = root.querySelector<HTMLInputElement>('#tool-search-input');
+    const typeSelect = root.querySelector<HTMLSelectElement>('#tool-search-type');
+    const categorySelect = root.querySelector<HTMLSelectElement>('#tool-search-category');
+    const results = root.querySelector<HTMLElement>('#tool-search-results');
+    const meta = root.querySelector<HTMLElement>('#tool-search-meta');
+    if (!input || !typeSelect || !categorySelect || !results || !meta) throw new Error('Faltan elementos de la búsqueda.');
+    type Tool = (typeof tools)[number];
     const typeLabels = { calculadora: 'Calculadora', guia: 'Guía', comparador: 'Comparador', escenario: 'Escenario', glosario: 'Glosario' };
-    const normalize = (value) => value.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const normalize = (value: string) => value.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     const categories = [...new Set(tools.map((tool) => tool.category))].sort((a, b) => a.localeCompare(b, 'es'));
     categories.forEach((category) => {
       const option = document.createElement('option');
@@ -34,7 +35,7 @@ const serialized = JSON.stringify(tools).replace(/</g, '\\u003c');
     input.value = params.get('q') ?? '';
     typeSelect.value = params.get('tipo') ?? '';
     categorySelect.value = params.get('categoria') ?? '';
-    const render = (items) => {
+    const render = (items: readonly Tool[]) => {
       results.innerHTML = items.length
         ? items.map((tool) => `<a class="search-result" href="${tool.href}"><span class="search-result-type">${typeLabels[tool.type] ?? tool.type}</span><strong>${tool.title}</strong><span>${tool.description}</span></a>`).join('')
         : '<p class="search-empty">No hemos encontrado una herramienta con esos criterios. Prueba otra búsqueda.</p>';

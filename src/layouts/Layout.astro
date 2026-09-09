@@ -17,7 +17,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).to
     <script is:inline>
       (() => {
         window.dataLayer = window.dataLayer || [];
-        function cifriaGtag(){ window.dataLayer.push(arguments); }
+        window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
         const cifriaConsentKey = 'cifria_analytics_consent';
         let cifriaSavedConsent = null;
         try {
@@ -25,7 +25,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).to
         } catch (_) {
           cifriaSavedConsent = null;
         }
-        cifriaGtag('consent', 'default', {
+        window.gtag('consent', 'default', {
           analytics_storage: 'denied',
           ad_storage: 'denied',
           ad_user_data: 'denied',
@@ -35,7 +35,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).to
           wait_for_update: 500
         });
         if (cifriaSavedConsent === 'granted') {
-          cifriaGtag('consent', 'update', {
+          window.gtag('consent', 'update', {
             analytics_storage: 'granted',
             ad_storage: 'denied',
             ad_user_data: 'denied',
