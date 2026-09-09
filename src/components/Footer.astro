@@ -1,1 +1,77 @@
-<footer class="site-footer"><div class="container footer-grid"><div><a class="brand brand-footer" href="/" aria-label="Cifria, inicio"><span class="brand-mark" aria-hidden="true">C</span><span>Cifria</span></a><p class="muted">Calculadoras útiles para entender mejor tus decisiones financieras.</p></div><div><h2>Información</h2><ul class="footer-links"><li><a href="/buscar/">Buscar en Cifria</a></li><li><a href="/herramientas/">Todas las herramientas</a></li><li><a href="/glosario/">Glosario financiero</a></li><li><a href="/fuentes-metodologia/">Fuentes y metodología</a></li><li><a href="/quienes-somos/">Quiénes somos</a></li><li><a href="/politica-editorial/">Política editorial</a></li><li><a href="/aviso-legal/">Aviso legal</a></li><li><a href="/privacidad/">Privacidad</a></li><li><a href="/cookies/">Cookies</a></li><li><a href="#" data-cookie-settings>Gestionar cookies</a></li></ul></div></div><div class="container footer-bottom">© {new Date().getFullYear()} Cifria</div></footer>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-intro">
+      <a class="brand brand-footer" href="/" aria-label="Cifria, inicio"><span class="brand-mark" aria-hidden="true">C</span><span>Cifria</span></a>
+      <p class="muted">Calculadoras útiles para entender mejor tus decisiones financieras.</p>
+      <a class="footer-contact" href="mailto:hola@cifria.es">hola@cifria.es</a>
+    </div>
+    <nav aria-label="Explorar Cifria">
+      <h2>Explora</h2>
+      <ul class="footer-links">
+        <li><a href="/buscar/">Buscar en Cifria</a></li>
+        <li><a href="/herramientas/">Todas las herramientas</a></li>
+        <li><a href="/glosario/">Glosario financiero</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Acerca de Cifria">
+      <h2>Sobre Cifria</h2>
+      <ul class="footer-links">
+        <li><a href="/quienes-somos/">Quiénes somos</a></li>
+        <li><a href="/fuentes-metodologia/">Fuentes y metodología</a></li>
+        <li><a href="/politica-editorial/">Política editorial</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Información legal y privacidad">
+      <h2>Legal y privacidad</h2>
+      <ul class="footer-links">
+        <li><a href="/aviso-legal/">Aviso legal</a></li>
+        <li><a href="/privacidad/">Privacidad</a></li>
+        <li><a href="/cookies/">Cookies</a></li>
+        <li><a href="#" data-cookie-settings>Gestionar cookies</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container footer-bottom">© {new Date().getFullYear()} Cifria</div>
+</footer>
+
+<style>
+  .site-footer { padding-top: 2.5rem; }
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 1.25rem;
+    align-items: start;
+    padding-bottom: 2rem;
+  }
+  .footer-intro { grid-column: 1 / -1; }
+  .footer-intro p { max-width: 28ch; font-size: .9rem; }
+  .footer-contact { display: inline-flex; margin-top: .8rem; color: #f5c56c; font-size: .9rem; font-weight: 750; }
+  .footer-grid nav { min-width: 0; }
+  .footer-grid h2 { margin-bottom: .55rem; font-size: .9rem; line-height: 1.5; }
+  .footer-links li + li { margin-top: 0; }
+  .footer-links a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding-block: .4rem;
+    font-size: .85rem;
+    line-height: 1.5;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .footer-links a:hover { color: #f5c56c; text-decoration: underline; }
+  .footer-links a:focus-visible, .brand:focus-visible {
+    outline-color: #f5c56c;
+  }
+  @media (min-width: 42rem) {
+    .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 2rem; }
+    .footer-intro p { max-width: 44ch; }
+  }
+  @media (min-width: 64rem) {
+    .footer-grid { grid-template-columns: 1.3fr 1fr 1fr 1fr; }
+    .footer-intro { grid-column: auto; }
+    .footer-intro p { max-width: 25ch; }
+  }
+  @media (max-width: 22rem) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>

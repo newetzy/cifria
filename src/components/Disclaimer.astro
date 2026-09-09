@@ -1,1 +1,13 @@
-<aside class="disclaimer" aria-label="Aviso importante"><strong>Información orientativa.</strong><slot /></aside>
+<aside class="disclaimer" aria-label="Información orientativa">
+  <strong class="disclaimer-title">Información orientativa</strong>
+  <div><slot /></div>
+</aside>
+
+<style>
+  .disclaimer-title {
+    display: block;
+    margin-bottom: .65rem;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+</style>
