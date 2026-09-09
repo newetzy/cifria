@@ -3,9 +3,9 @@ import CalculatorShell from '../../components/CalculatorShell.astro';
 import Disclaimer from '../../components/Disclaimer.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="Calculadora de interés compuesto | Cifria" description="Calcula cómo podría evolucionar tu ahorro con capital inicial, aportaciones mensuales y una rentabilidad anual hipotética.">
+<Layout title="Calcular interés compuesto mensual | Cifria" description="Calcula interés compuesto mensual con capital inicial, aportaciones y rentabilidad anual hipotética. Simula tu ahorro aquí.">
   <section class="calculator-page-section">
-    <CalculatorShell title="Calculadora de interés compuesto" description="Simula la evolución de tu capital con una aportación mensual y una rentabilidad anual que tú decides como hipótesis.">
+    <CalculatorShell title="Calcular interés compuesto mensual" description="Calcula interés compuesto mensual con capital, aportaciones y una rentabilidad anual hipotética.">
       <div class="calculator-layout">
         <form id="compound-interest-form" class="calculator-form" novalidate>
           <fieldset>
@@ -38,6 +38,7 @@ import Layout from '../../layouts/Layout.astro';
         <div class="table-wrap"><table><caption>Detalle anual de la simulación</caption><thead><tr><th scope="col">Año</th><th scope="col">Aportado</th><th scope="col">Intereses</th><th scope="col">Capital estimado</th></tr></thead><tbody id="compound-table-body"></tbody></table></div>
       </section>
       <section class="content-section prose"><p class="eyebrow">Cómo interpretarlo</p><h2>¿Qué es el interés compuesto?</h2><p>Es el efecto por el que los intereses de un periodo se incorporan al capital y pueden generar nuevos intereses en los periodos siguientes. Esta herramienta combina ese efecto con tus aportaciones mensuales.</p><h2>Qué calcula esta herramienta</h2><p>El resultado separa el dinero introducido por ti del crecimiento atribuido a la rentabilidad elegida. La rentabilidad es una hipótesis que introduces para explorar escenarios: no es una garantía ni una previsión.</p><h2>Metodología</h2><p>La simulación convierte la rentabilidad anual introducida en una tasa mensual, calcula el crecimiento cada mes y añade la aportación al final de ese mes. La tabla resume el resultado al cierre de cada año completo.</p></section>
+      <section class="content-section prose"><h2>Preguntas frecuentes</h2><details><summary>¿Qué es el interés compuesto?</summary><p>Es el crecimiento que se produce cuando los rendimientos se incorporan al capital y vuelven a generar rendimientos.</p></details><details><summary>¿La rentabilidad está garantizada?</summary><p>No. La tasa es una hipótesis para comparar escenarios; los resultados reales pueden variar.</p></details><details><summary>¿Cómo influyen las aportaciones mensuales?</summary><p>Las aportaciones constantes aumentan el capital invertido y pueden tener más impacto cuanto mayor sea el plazo.</p></details></section>
       <Disclaimer>Los resultados son orientativos. No incorporan comisiones, fiscalidad, inflación, variaciones de rentabilidad ni otros costes que puedan afectar al resultado real.</Disclaimer>
     </CalculatorShell>
   </section>
