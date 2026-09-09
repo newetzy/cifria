@@ -1,5 +1,6 @@
 // Auto-generado por scripts/generate-sitemap.mjs. No edites a mano.
 export const paths = [
+  "/",
   "/ahorro-inversion/",
   "/ahorro-inversion/200-euros-5-porciento-10-anos/",
   "/ahorro-inversion/ahorrar-200-euros-mes/",
@@ -14,6 +15,13 @@ export const paths = [
   "/ahorro-inversion/objetivo-ahorro/",
   "/ahorro-inversion/roi/",
   "/aviso-legal/",
+  "/blog/",
+  "/blog/cambio-fiscal-reciente-que-comprobar/",
+  "/blog/categoria/finanzas-personales/",
+  "/blog/categoria/fiscalidad/",
+  "/blog/categoria/vivienda/",
+  "/blog/precios-vivienda-como-analizarlos/",
+  "/blog/presupuesto-mensual-con-margen/",
   "/calculadoras/",
   "/calculadoras/descuento/",
   "/calculadoras/porcentaje/",
@@ -67,7 +75,6 @@ export const paths = [
   "/impuestos/calculadora-iva/",
   "/impuestos/escenarios/iva-10-por-ciento/",
   "/impuestos/escenarios/iva-4-por-ciento/",
-  "/index/",
   "/nomina/",
   "/nomina/escenarios/salario-35-horas/",
   "/nomina/salario-30000-40-horas/",

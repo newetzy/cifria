@@ -12,6 +12,7 @@ function walk(dir) {
     else if (entry.isFile() && entry.name.endsWith('.astro')) {
       if (entry.name === '404.astro') continue;
       const relative = path.relative(root, full).split(path.sep).join('/');
+      if (relative.includes('[')) continue;
       const route = relative === 'index.astro'
         ? '/'
         : relative.endsWith('/index.astro')
