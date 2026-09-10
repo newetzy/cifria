@@ -3,12 +3,13 @@ import Layout from '../../layouts/Layout.astro';
 import SeoLandingPage from '../../components/SeoLandingPage.astro';
 ---
 <Layout title='Ahorrar 300 o 500 € al mes: comparación | Cifria' description='Mira cómo cambia el ahorro acumulado cuando aumentas la aportación mensual de 300 a 500 euros.'>
-  <SeoLandingPage title='Ahorrar 300 o 500 € al mes: comparación' description='Mira cómo cambia el ahorro acumulado cuando aumentas la aportación mensual de 300 a 500 euros.' intro='La diferencia es de 200 € al mes, que se convierten en 2.400 € adicionales al año antes de considerar cualquier rentabilidad.' calculatorHref='/ahorro-inversion/aportaciones-periodicas/' calculatorLabel='Calcular aportaciones' sections={[
+  <SeoLandingPage title='Ahorrar 300 o 500 euros al mes' description='Mira cómo cambia el ahorro acumulado cuando aumentas la aportación mensual de 300 a 500 euros.' intro='Ahorrar 300 o 500 euros al mes supone una diferencia de 200 euros mensuales, o 2.400 euros adicionales al año antes de considerar cualquier rentabilidad.' calculatorHref='/ahorro-inversion/aportaciones-periodicas/' calculatorLabel='Calcular aportaciones' sections={[
     { title: 'Diferencia mensual', paragraphs: ['La diferencia es de 200 € al mes, que se convierten en 2.400 € adicionales al año antes de considerar cualquier rentabilidad.'] },
     { title: 'Efecto del tiempo', paragraphs: ['Cuanto más largo es el horizonte, mayor es la diferencia acumulada. Con rentabilidad hipotética también puede crecer el efecto de las aportaciones adicionales.'] },
-    { title: 'Cómo probarlo', paragraphs: ['Calcula primero una aportación y después la otra manteniendo iguales el plazo y la rentabilidad. Así aislas el efecto del ahorro mensual.'] }
+    { title: 'Cómo probarlo', paragraphs: ['Calcula primero una aportación y después la otra manteniendo iguales el plazo y la rentabilidad. Así aislas el efecto del ahorro mensual.', 'No comprometas gastos esenciales para elevar la aportación. Ajusta el importe cuando cambien tus ingresos y separa un fondo de emergencia de los objetivos de medio y largo plazo.'] }
   ]} faqs={[
     { question: '¿Ahorrar 500 € al mes siempre es mejor?', answer: 'Aumentar el ahorro puede acelerar una meta, pero debe ser compatible con gastos, fondo de emergencia y objetivos personales.' },
-    { question: '¿La rentabilidad está garantizada?', answer: 'No. En una simulación es un supuesto introducido por el usuario.' }
+    { question: '¿La rentabilidad está garantizada?', answer: 'No. En una simulación es un supuesto introducido por el usuario.' },
+    { question: '¿Puedo cambiar la aportación más adelante?', answer: 'Sí. Prueba distintos importes para adaptar el plan a tus ingresos, gastos y objetivos.' }
   ]} />
 </Layout>
