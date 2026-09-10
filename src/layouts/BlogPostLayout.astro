@@ -29,7 +29,7 @@ const updatedDate = post.data.updatedDate?.toLocaleDateString('es-ES', {
     <header class="blog-post-header container narrow">
       <p class="eyebrow">{post.data.category.replace('-', ' ')}</p>
       <h1>{post.data.title}</h1>
-      <p class="lead">{post.data.description}</p>
+      <p class="lead"><strong>{post.data.title}</strong>: {post.data.description}</p>
       <p class="blog-post-meta">
         <span>Por {post.data.author}</span>
         <span><time datetime={post.data.pubDate.toISOString()}>Publicado el {publishedDate}</time></span>
