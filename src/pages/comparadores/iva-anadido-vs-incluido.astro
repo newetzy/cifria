@@ -3,12 +3,13 @@ import Layout from '../../layouts/Layout.astro';
 import SeoLandingPage from '../../components/SeoLandingPage.astro';
 ---
 <Layout title='IVA añadido o IVA incluido: cómo distinguirlos | Cifria' description='Aprende la diferencia entre sumar IVA a un precio neto y extraer el IVA de un precio final.'>
-  <SeoLandingPage title='IVA añadido o IVA incluido: cómo distinguirlos' description='Aprende la diferencia entre sumar IVA a un precio neto y extraer el IVA de un precio final.' intro='Cuando partes de una base imponible, el IVA se calcula multiplicando esa base por el tipo aplicable y después se suma al total.' calculatorHref='/impuestos/calculadora-iva/' calculatorLabel='Calcular IVA' sections={[
+  <SeoLandingPage title='IVA añadido o IVA incluido: cómo distinguirlos' description='Aprende la diferencia entre sumar IVA a un precio neto y extraer el IVA de un precio final.' intro='El IVA añadido o IVA incluido determina si partes de una base imponible o de un precio final. Cuando partes de la base, el impuesto se calcula aplicando el tipo correspondiente y después se suma al total.' calculatorHref='/impuestos/calculadora-iva/' calculatorLabel='Calcular IVA' sections={[
     { title: 'Precio sin IVA', paragraphs: ['Cuando partes de una base imponible, el IVA se calcula multiplicando esa base por el tipo aplicable y después se suma al total.'] },
     { title: 'Precio con IVA', paragraphs: ['Si el importe ya incluye IVA, no se obtiene el impuesto multiplicando simplemente el total por el porcentaje: primero hay que separar la base mediante el tipo correspondiente.'] },
-    { title: 'Ejemplo práctico', paragraphs: ['Introduce el importe en la calculadora y cambia entre añadir y quitar IVA para comprobar la diferencia.'] }
+    { title: 'Ejemplo práctico', paragraphs: ['Introduce el importe en la calculadora y cambia entre añadir y quitar IVA para comprobar la diferencia.', 'Comprueba en la factura si el precio anunciado es neto o final antes de comparar ofertas. El tipo aplicable depende de la operación concreta, por lo que conviene consultar la normativa o confirmar el criterio con quien emite la factura.'] }
   ]} faqs={[
     { question: '¿Quitar un 21 % de un precio con IVA es correcto?', answer: 'No. Para extraer el IVA incluido se divide el precio final entre 1 más el tipo de IVA expresado en decimal.' },
-    { question: '¿Qué tipo de IVA debo utilizar?', answer: 'Depende de la operación y de la normativa aplicable al caso concreto.' }
+    { question: '¿Qué tipo de IVA debo utilizar?', answer: 'Depende de la operación y de la normativa aplicable al caso concreto.' },
+    { question: '¿La calculadora decide el tipo aplicable?', answer: 'No. Permite hacer la operación matemática; debes elegir el tipo que corresponda a tu producto o servicio.' }
   ]} />
 </Layout>
