@@ -6,12 +6,12 @@ const posts = await getCollection('blog', ({ data }) => !data.draft);
 const categories = [...new Set(posts.map((post) => post.data.category))].sort();
 ---
 
-<Layout title="Categorías del blog | Cifria" description="Explora los artículos de Cifria por vivienda, finanzas personales y fiscalidad.">
+<Layout title="Categorías del blog de finanzas | Cifria" description="Explora los artículos de Cifria por vivienda, finanzas personales y fiscalidad.">
   <section class="blog-index container">
     <div class="blog-intro">
       <p class="eyebrow">Blog Cifria</p>
-      <h1>Categorías</h1>
-      <p class="lead">Encuentra artículos sobre la decisión financiera que estás preparando.</p>
+      <h1>Categorías del blog de finanzas</h1>
+      <p class="lead"><strong>Categorías del blog de finanzas</strong>: encuentra artículos sobre la decisión que estás preparando.</p>
     </div>
     <nav class="category-list" aria-label="Categorías del blog">
       {categories.map((category) => <a href={`/blog/categoria/${category}/`}>{category.replace('-', ' ')}</a>)}
