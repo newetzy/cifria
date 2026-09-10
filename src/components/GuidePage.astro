@@ -26,7 +26,7 @@ for (const faq of fallbackFaqs) if (displayedFaqs.length < 3) displayedFaqs.push
     <div class="container narrow">
       <p class="eyebrow">Guía de Cifria</p>
       <h1>{title}</h1>
-      <p class="lead">{description}</p>
+      <p class="lead"><strong>{title}</strong>: {description}</p>
       {calculatorHref && <a class="button" href={calculatorHref}>{calculatorLabel ?? 'Abrir calculadora'}</a>}
     </div>
   </header>
@@ -39,7 +39,7 @@ for (const faq of fallbackFaqs) if (displayedFaqs.length < 3) displayedFaqs.push
           {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
         </section>
       ))}
-      <section><h2>Cómo comprobar la información</h2><p>Utiliza cifras actuales y anota la fecha de los datos empleados. Si una norma, contrato o tarifa afecta al cálculo, consulta su fuente original y repite la comparación cuando cambien las condiciones. Separar los hechos conocidos de las hipótesis evita interpretar una simulación como una predicción.</p></section>
+      <section><h2>Cómo comprobar la información</h2><p>Para aplicar {title.toLocaleLowerCase('es')} a tu situación, utiliza cifras actuales y anota la fecha de los datos empleados. Si una norma, contrato o tarifa afecta al cálculo, consulta su fuente original y repite la comparación cuando cambien las condiciones. Separar los hechos conocidos de las hipótesis evita interpretar una simulación como una predicción.</p></section>
       <section class="faq-section"><p class="eyebrow">Preguntas frecuentes</p><h2>Preguntas habituales</h2>{displayedFaqs.map((faq) => <details class="faq-item"><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</section>
       {calculatorHref && categoryLink && <section class="related-tools" aria-labelledby="guide-related-title"><div class="section-heading"><div><p class="eyebrow">Sigue explorando</p><h2 id="guide-related-title">Más herramientas</h2></div><p>Relaciona la explicación con el resto de calculadoras del mismo tema.</p></div><div class="related-tools-grid"><a class="related-tool" href={calculatorHref}>{calculatorLabel ?? 'Abrir calculadora'}<span>Prueba tus propios datos.</span></a><a class="related-tool" href={categoryLink.href}>{categoryLink.title}<span>Consulta otras herramientas de la categoría.</span></a></div></section>}
     </div>
