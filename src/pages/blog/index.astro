@@ -9,12 +9,12 @@ const categories = [...new Set(posts.map((post) => post.data.category))];
 const visiblePosts = posts.slice(0, 9);
 ---
 
-<Layout title="Blog de finanzas personales y vivienda | Cifria" description="Noticias de vivienda, consejos financieros y guías para tomar decisiones con tus números claros.">
+<Layout title="Blog de finanzas personales en España | Cifria" description="Noticias de vivienda, consejos financieros y guías para tomar decisiones con tus números claros.">
   <section class="blog-index container">
     <div class="blog-intro">
       <p class="eyebrow">Blog Cifria</p>
-      <h1>Finanzas y vivienda, con números que puedes comprobar</h1>
-      <p class="lead">Ideas y contexto para entender precios, ahorro e impuestos antes de usar nuestras calculadoras.</p>
+      <h1>Blog de finanzas personales en España</h1>
+      <p class="lead"><strong>Blog de finanzas personales en España</strong>: ideas para entender precios, ahorro e impuestos antes de usar nuestras calculadoras.</p>
     </div>
 
     {categories.length > 0 && <nav class="category-list" aria-label="Categorías del blog">
