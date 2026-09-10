@@ -22,8 +22,12 @@ const related = tools
   .map(({ tool }) => tool);
 ---
 <article class="calculator-shell">
-  <header><h1>{title}</h1><p class="lead">{description}</p></header>
+  <header><h1>{title}</h1><p class="lead"><strong>{title}</strong>: {description}</p></header>
   <div class="calculator-content"><slot /></div>
+  <section class="content-section prose">
+    <h2>Cómo utilizar esta calculadora</h2>
+    <p>Para usar {title.toLocaleLowerCase('es')}, completa los campos con datos comprobables y modifica una sola variable cada vez. Así podrás entender qué provoca cada diferencia y comparar escenarios con los mismos supuestos.</p>
+  </section>
   {related.length > 0 && (
     <section class="related-tools calculator-related" aria-labelledby="calculator-related-title">
       <div class="section-heading">
