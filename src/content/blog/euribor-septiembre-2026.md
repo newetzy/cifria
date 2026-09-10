@@ -1,5 +1,5 @@
 ---
-title: "El Euríbor roza el 3 %: cómo estimar el impacto en una hipoteca variable"
+title: "Cómo afecta el Euríbor a la hipoteca"
 description: "Qué datos necesitas revisar para anticipar una subida de cuota en tu hipoteca variable."
 pubDate: 2026-09-09
 category: vivienda
