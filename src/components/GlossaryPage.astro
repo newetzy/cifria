@@ -11,6 +11,17 @@ const { term, definition, details, related } = Astro.props;
   <header class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Glosario financiero</p><h1>{term}</h1><p class="lead">{definition}</p></div></header>
   <section class="section"><div class="container narrow prose">
     {details.map((paragraph) => <p>{paragraph}</p>)}
+    <section>
+      <h2>Cómo interpretar {term}</h2>
+      <p>Antes de utilizar este concepto en una decisión, identifica qué datos intervienen, en qué periodo se expresan y qué costes quedan fuera. Dos cifras con el mismo nombre pueden haberse calculado con supuestos distintos, por lo que conviene revisar la metodología y la fecha de referencia.</p>
+      <p>Usa los enlaces relacionados para aplicar {term} a un ejemplo concreto y modifica una variable cada vez. El resultado de una calculadora sirve para comparar escenarios, pero no sustituye un contrato, una liquidación oficial ni una recomendación adaptada a tu situación.</p>
+    </section>
+    <section class="faq-section">
+      <h2>Preguntas frecuentes sobre {term}</h2>
+      <details><summary>¿Por qué es importante entender {term}?</summary><p>Porque ayuda a interpretar costes, rendimientos o condiciones y a comparar alternativas con un criterio común.</p></details>
+      <details><summary>¿Puedo calcularlo con mis propios datos?</summary><p>Sí, cuando exista una herramienta relacionada. Revisa sus supuestos y completa todos los importes relevantes.</p></details>
+      <details><summary>¿La definición sirve para todos los casos?</summary><p>Es una explicación general. La aplicación concreta puede depender del contrato, del producto o de la normativa vigente.</p></details>
+    </section>
     <section class="related-tools" aria-labelledby="glossary-related-title">
       <div class="section-heading"><div><p class="eyebrow">Relacionado</p><h2 id="glossary-related-title">Herramientas de Cifria</h2></div><p>Aplica el concepto con una calculadora o sigue explorando el mismo tema.</p></div>
       <div class="related-tools-grid">{related.map((item) => <a class="related-tool" href={item.href}>{item.title}<span>{item.description}</span></a>)}</div>
