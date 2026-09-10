@@ -9,11 +9,20 @@ interface Props {
 }
 
 const { title, description, canonical, noindex = false, image, type = 'website' } = Astro.props;
+const callToAction = ' Descúbrelo aquí.';
+const descriptionTargetLength = 150;
+const cleanTitle = title.replace(/\s*\|\s*Cifria$/, '');
+const descriptionSource = `${cleanTitle}: ${description} Consulta información práctica, ejemplos y herramientas relacionadas para tomar una decisión informada.`;
+const descriptionLimit = descriptionTargetLength - callToAction.length;
+const descriptionBody = descriptionSource.length <= descriptionLimit
+  ? descriptionSource
+  : `${descriptionSource.slice(0, descriptionLimit).replace(/\s+\S*$/, '')}.`;
+const seoDescription = noindex ? description : `${descriptionBody.replace(/\.+$/, '')}${callToAction}`;
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content={description} />
+<meta name="description" content={seoDescription} />
 <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
 <link rel="canonical" href={canonical} />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -22,11 +31,11 @@ const { title, description, canonical, noindex = false, image, type = 'website' 
 <meta name="theme-color" content="#17342d" />
 <meta property="og:site_name" content="Cifria" />
 <meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:description" content={seoDescription} />
 <meta property="og:url" content={canonical} />
 {image && <meta property="og:image" content={new URL(image, canonical).toString()} />}
 <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
 <meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={description} />
+<meta name="twitter:description" content={seoDescription} />
 {image && <meta name="twitter:image" content={new URL(image, canonical).toString()} />}
 <title>{title}</title>
