@@ -75,6 +75,10 @@ for (const { href, primaryKeyword } of seoTargets) {
   const normalizedContent = normalize(textContent(main));
   const occurrences = keywordCount(normalizedContent, normalizedKeyword);
   const wordCount = textContent(main).match(/[\p{Letter}\p{Number}]+/gu)?.length ?? 0;
+  const calculatorSections = [...main.matchAll(/<section\s+class="content-section prose">[\s\S]*?<\/section>/gi)].map((match) => match[0]).join(' ');
+  const editorialWordCount = calculatorSections
+    ? textContent(calculatorSections).match(/[\p{Letter}\p{Number}]+/gu)?.length ?? 0
+    : wordCount;
   const faqCount = [...main.matchAll(/<details\b/gi)].length;
   const rules = {
     titleStartsWithKeyword: normalize(title).startsWith(normalizedKeyword),
@@ -86,13 +90,13 @@ for (const { href, primaryKeyword } of seoTargets) {
     h1Keyword: normalize(h1) === normalizedKeyword,
     firstParagraphKeyword: normalize(firstParagraph).includes(normalizedKeyword),
     keywordDensity: occurrences >= 3 && occurrences <= 6,
-    minimumWords: wordCount >= 300,
+    minimumWords: editorialWordCount >= 300,
     minimumFaqs: faqCount >= 3,
   };
 
-  rows.push({ route: href, keyword: primaryKeyword, occurrences, wordCount, faqCount });
+  rows.push({ route: href, keyword: primaryKeyword, occurrences, wordCount: editorialWordCount, faqCount });
   for (const [rule, passed] of Object.entries(rules)) {
-    if (!passed) failures.push({ route: href, keyword: primaryKeyword, rule, occurrences, wordCount, faqCount, titleLength: title.length, descriptionLength: description.length });
+    if (!passed) failures.push({ route: href, keyword: primaryKeyword, rule, occurrences, wordCount: editorialWordCount, faqCount, titleLength: title.length, descriptionLength: description.length });
   }
 }
 
