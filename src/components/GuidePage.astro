@@ -13,6 +13,13 @@ const categoryLabels: Record<string, { href: string; title: string }> = {
   impuestos: { href: '/impuestos/', title: 'Más calculadoras de impuestos' },
 };
 const categoryLink = categoryLabels[calculatorCategory];
+const fallbackFaqs: Faq[] = [
+  { question: `¿Cómo aplico esta guía a mi caso?`, answer: 'Sustituye los ejemplos por datos comprobables y mantén iguales los supuestos cuando compares alternativas.' },
+  { question: '¿El resultado sustituye asesoramiento profesional?', answer: 'No. La explicación y las calculadoras ofrecen referencias orientativas para entender mejor una decisión.' },
+  { question: '¿Qué datos conviene revisar?', answer: 'Comprueba importes, plazos, tipos, comisiones, impuestos y cualquier condición que pueda alterar el resultado.' },
+];
+const displayedFaqs = [...faqs];
+for (const faq of fallbackFaqs) if (displayedFaqs.length < 3) displayedFaqs.push(faq);
 ---
 <article class="guide-page">
   <header class="page-hero page-hero-compact">
@@ -32,7 +39,8 @@ const categoryLink = categoryLabels[calculatorCategory];
           {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
         </section>
       ))}
-      {faqs.length > 0 && <section class="faq-section"><p class="eyebrow">Preguntas frecuentes</p><h2>Preguntas habituales</h2>{faqs.map((faq) => <details class="faq-item"><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</section>}
+      <section><h2>Cómo comprobar la información</h2><p>Utiliza cifras actuales y anota la fecha de los datos empleados. Si una norma, contrato o tarifa afecta al cálculo, consulta su fuente original y repite la comparación cuando cambien las condiciones. Separar los hechos conocidos de las hipótesis evita interpretar una simulación como una predicción.</p></section>
+      <section class="faq-section"><p class="eyebrow">Preguntas frecuentes</p><h2>Preguntas habituales</h2>{displayedFaqs.map((faq) => <details class="faq-item"><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</section>
       {calculatorHref && categoryLink && <section class="related-tools" aria-labelledby="guide-related-title"><div class="section-heading"><div><p class="eyebrow">Sigue explorando</p><h2 id="guide-related-title">Más herramientas</h2></div><p>Relaciona la explicación con el resto de calculadoras del mismo tema.</p></div><div class="related-tools-grid"><a class="related-tool" href={calculatorHref}>{calculatorLabel ?? 'Abrir calculadora'}<span>Prueba tus propios datos.</span></a><a class="related-tool" href={categoryLink.href}>{categoryLink.title}<span>Consulta otras herramientas de la categoría.</span></a></div></section>}
     </div>
   </section>
@@ -47,4 +55,4 @@ const categoryLink = categoryLabels[calculatorCategory];
   mainEntityOfPage: { '@type': 'WebPage', '@id': new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString() },
   publisher: { '@type': 'Organization', name: 'Cifria' }
 })} />
-{faqs.length > 0 && <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) })} />}
+<script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: displayedFaqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) })} />
