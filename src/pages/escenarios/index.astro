@@ -14,8 +14,8 @@ const scenarios = [
   ['IVA del 4 %','/impuestos/escenarios/iva-4-por-ciento/','Escenario para productos y servicios al tipo superreducido.'],
 ];
 ---
-<Layout title="Escenarios financieros y laborales | Cifria" description="Ejemplos prácticos de hipotecas, préstamos, ahorro, salarios e IVA para entender rápidamente distintos escenarios.">
-  <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Ejemplos prácticos</p><h1>Escenarios financieros</h1><p class="lead">Páginas de referencia para comparar cantidades y plazos concretos. Úsalas como punto de partida y cambia los datos en la calculadora.</p></div></section>
+<Layout title="Escenarios financieros con ejemplos | Cifria" description="Ejemplos prácticos de hipotecas, préstamos, ahorro, salarios e IVA para entender rápidamente distintos escenarios.">
+  <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Ejemplos prácticos</p><h1>Escenarios financieros con ejemplos</h1><p class="lead"><strong>Escenarios financieros con ejemplos</strong>: compara cantidades y plazos concretos antes de cambiar los datos en la calculadora.</p></div></section>
   <section class="section"><div class="container"><div class="scenario-grid">{scenarios.map(([title, href, desc]) => <Card class="scenario-card"><h2 style="font-size:1.25rem"><a href={href}>{title}</a></h2><p>{desc}</p><a class="text-link" href={href}>Ver escenario →</a></Card>)}</div></div></section>
   <section class="section section-tint"><div class="container feature-grid"><div><p class="eyebrow">Comparaciones</p><h2>¿Quieres cambiar una variable?</h2></div><div><p>Compara dos plazos, aportaciones o estructuras antes de abrir la calculadora.</p><a class="text-link" href="/comparadores/">Ver comparadores →</a></div></div></section>
   <section class="section"><div class="container narrow prose">
