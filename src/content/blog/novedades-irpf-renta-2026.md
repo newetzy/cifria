@@ -11,7 +11,7 @@ relatedTools:
   - /impuestos/calculadora-iva/
 ---
 
-La campaña de la Renta exige revisar ingresos, retenciones y circunstancias personales. Los mínimos personales y familiares, las aportaciones a planes de pensiones y determinadas deducciones pueden cambiar el resultado, pero sus requisitos dependen de cada caso y de la comunidad autónoma.
+Qué revisar en la declaración de la Renta 2026 empieza por los ingresos, las retenciones y las circunstancias personales. Los mínimos familiares, las aportaciones a planes de pensiones y determinadas deducciones pueden cambiar el resultado, pero sus requisitos dependen de cada caso y de la comunidad autónoma.
 
 ## Prepara la información antes del borrador
 
@@ -20,3 +20,5 @@ Reúne certificados de rendimientos del trabajo, retenciones, rendimientos del a
 La [calculadora de IRPF 2025](/impuestos/calculadora-irpf/) permite obtener una estimación orientativa con ingresos, cotizaciones, retenciones y situación familiar. Para facturas o actividad económica, la [calculadora de IVA](/impuestos/calculadora-iva/) ayuda a separar base imponible e impuesto.
 
 La estimación no sustituye a Renta WEB ni incorpora todas las deducciones autonómicas: confirma siempre el resultado con la Agencia Tributaria.
+
+Para completar qué revisar en la declaración de la Renta 2026, consulta la [campaña oficial de Renta](https://sede.agenciatributaria.gob.es/Sede/Renta.html) y los servicios de ayuda de Renta WEB de la Agencia Tributaria.
