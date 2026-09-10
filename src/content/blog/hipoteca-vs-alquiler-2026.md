@@ -11,7 +11,7 @@ relatedTools:
   - /vivienda/rentabilidad-alquiler/
 ---
 
-El alquiler y la compra no se comparan solo por la mensualidad. El precio de la vivienda, el ahorro para la entrada, el plazo previsto de permanencia y el tipo de interés determinan qué alternativa encaja mejor en cada caso.
+Hipoteca o alquiler en 2026 no se comparan solo por la mensualidad. El precio de la vivienda, el ahorro para la entrada, el plazo previsto de permanencia y el tipo de interés determinan qué alternativa encaja mejor en cada caso.
 
 ## El coste del alquiler y el de comprar
 
@@ -24,3 +24,5 @@ Con un Euríbor elevado, conviene considerar la cuota inicial y escenarios de re
 La [calculadora de hipoteca](/vivienda/calculadora-hipoteca/) permite estimar cuota, intereses y coste total según importe, plazo y tipo. Para analizar un inmueble destinado al alquiler, la [calculadora de rentabilidad de alquiler](/vivienda/rentabilidad-alquiler/) ayuda a ordenar precio, renta y gastos.
 
 Estas simulaciones son orientativas: contrasta las condiciones concretas con la oferta de tu entidad y los gastos de compra aplicables.
+
+Al valorar hipoteca o alquiler en 2026, consulta también el [Portal del Cliente Bancario](https://clientebancario.bde.es/pcb/es/) del Banco de España para revisar conceptos, tipos de referencia y condiciones habituales de financiación.
