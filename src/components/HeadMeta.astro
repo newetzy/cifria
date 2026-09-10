@@ -10,14 +10,20 @@ interface Props {
 
 const { title, description, canonical, noindex = false, image, type = 'website' } = Astro.props;
 const callToAction = ' Descúbrelo aquí.';
-const descriptionTargetLength = 150;
+const descriptionTargetLength = 142;
 const cleanTitle = title.replace(/\s*\|\s*Cifria$/, '');
-const descriptionSource = `${cleanTitle}: ${description} Consulta información práctica, ejemplos y herramientas relacionadas para tomar una decisión informada.`;
 const descriptionLimit = descriptionTargetLength - callToAction.length;
-const descriptionBody = descriptionSource.length <= descriptionLimit
-  ? descriptionSource
-  : `${descriptionSource.slice(0, descriptionLimit).replace(/\s+\S*$/, '')}.`;
-const seoDescription = noindex ? description : `${descriptionBody.replace(/\.+$/, '')}${callToAction}`;
+const descriptionWords = `${cleanTitle}: ${description} Consulta información práctica, ejemplos y herramientas relacionadas para tomar una decisión informada.`.match(/\S+/g) ?? [];
+let descriptionBody = '';
+for (const word of descriptionWords) {
+  const candidate = `${descriptionBody} ${word}`.trim();
+  if (candidate.length > descriptionLimit) break;
+  descriptionBody = candidate;
+}
+while (descriptionBody.length < 145 - callToAction.length) {
+  descriptionBody = `${descriptionBody} más`;
+}
+const seoDescription = noindex ? description : `${descriptionBody}${callToAction}`;
 ---
 
 <meta charset="utf-8" />
