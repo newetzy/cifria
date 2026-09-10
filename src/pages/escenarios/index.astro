@@ -18,4 +18,13 @@ const scenarios = [
   <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Ejemplos prácticos</p><h1>Escenarios financieros</h1><p class="lead">Páginas de referencia para comparar cantidades y plazos concretos. Úsalas como punto de partida y cambia los datos en la calculadora.</p></div></section>
   <section class="section"><div class="container"><div class="scenario-grid">{scenarios.map(([title, href, desc]) => <Card class="scenario-card"><h2 style="font-size:1.25rem"><a href={href}>{title}</a></h2><p>{desc}</p><a class="text-link" href={href}>Ver escenario →</a></Card>)}</div></div></section>
   <section class="section section-tint"><div class="container feature-grid"><div><p class="eyebrow">Comparaciones</p><h2>¿Quieres cambiar una variable?</h2></div><div><p>Compara dos plazos, aportaciones o estructuras antes de abrir la calculadora.</p><a class="text-link" href="/comparadores/">Ver comparadores →</a></div></div></section>
+  <section class="section"><div class="container narrow prose">
+    <h2>Cómo interpretar los escenarios financieros</h2>
+    <p>Los escenarios financieros con ejemplos muestran una combinación concreta de importe, plazo o aportación para que puedas entender el cálculo antes de introducir tus datos. No describen un resultado universal: una variación en el tipo, los gastos o el calendario puede cambiar la cifra final.</p>
+    <p>Abre primero el ejemplo más cercano a tu situación, identifica sus supuestos y después utiliza la calculadora enlazada. Compara un escenario prudente con otro más exigente y conserva las mismas variables cuando quieras medir solo el efecto de un cambio.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Los ejemplos son ofertas reales?</summary><p>No. Son referencias matemáticas y no representan condiciones ofrecidas por una entidad.</p></details>
+    <details><summary>¿Puedo modificar los importes?</summary><p>Sí. Cada escenario enlaza con la herramienta correspondiente para sustituir los valores por tus datos.</p></details>
+    <details><summary>¿Qué costes debo añadir?</summary><p>Revisa comisiones, impuestos, seguros y gastos que la página indique como excluidos de la simulación.</p></details>
+  </div></section>
 </Layout>
