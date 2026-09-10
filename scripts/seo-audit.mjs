@@ -1,66 +1,107 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { seoTargets } from './seo-targets.mjs';
 
-const root = path.resolve(process.cwd(), 'src/pages');
-const files = [];
-const routes = new Set();
+const distRoot = path.resolve(process.cwd(), 'dist');
+const legalRoutes = ['/aviso-legal/', '/cookies/', '/fuentes-metodologia/', '/privacidad/'];
 
-function walk(dir) {
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) walk(full);
-    else if (entry.isFile() && entry.name.endsWith('.astro')) {
-      if (entry.name === '404.astro') continue;
-      const relative = path.relative(root, full).split(path.sep).join('/');
-      if (relative.includes('[')) continue;
-      const route = relative === 'index.astro'
-        ? '/'
-        : relative.endsWith('/index.astro')
-          ? `/${relative.slice(0, -'/index.astro'.length)}/`
-          : `/${relative.slice(0, -'.astro'.length)}/`;
-      routes.add(route);
-      files.push({ full, relative, route, source: fs.readFileSync(full, 'utf8') });
-    }
-  }
-}
-walk(root);
-
-const report = { pages: files.length, routes: routes.size, missingMetadata: [], duplicateTitles: [], duplicateDescriptions: [], multipleH1: [], missingH1: [], brokenInternalLinks: [], noindex: [] };
-const titleMap = new Map();
-const descriptionMap = new Map();
-const hrefPattern = /href=["'](\/[^"'#? ]*\/)["']/g;
-
-for (const file of files) {
-  const layoutMatch = file.source.match(/<Layout\b[\s\S]*?title=['\"]([^'\"]+)['\"][\s\S]*?description=['\"]([^'\"]+)['\"]/);
-  if (!layoutMatch) report.missingMetadata.push(file.route);
-  else {
-    const [, title, description] = layoutMatch;
-    titleMap.set(title, [...(titleMap.get(title) ?? []), file.route]);
-    descriptionMap.set(description, [...(descriptionMap.get(description) ?? []), file.route]);
-  }
-  const h1 = (file.source.match(/<h1\b/g) ?? []).length;
-  const delegatedH1 = /<CalculatorShell\b|<CategoryPage\b|<GuidePage\b|<SeoLandingPage\b|<GlossaryPage\b/.test(file.source);
-  if (!delegatedH1 && h1 === 0) report.missingH1.push(file.route);
-  if (!delegatedH1 && h1 > 1) report.multipleH1.push(file.route);
-  if (/\bnoindex\b/.test(file.source)) report.noindex.push(file.route);
-  for (const match of file.source.matchAll(hrefPattern)) {
-    const href = match[1];
-    if (href.startsWith('//') || href.startsWith('/_')) continue;
-    if (!routes.has(href) && href !== '/buscar/' && href !== '/ads.txt' && href !== '/robots.txt' && href !== '/sitemap.xml' && href !== '/sitemap-index.xml') {
-      report.brokenInternalLinks.push({ from: file.route, href });
-    }
-  }
+function decodeHtml(value) {
+  return value
+    .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
+    .replace(/&#x([\da-f]+);/gi, (_, code) => String.fromCodePoint(Number.parseInt(code, 16)))
+    .replaceAll('&nbsp;', ' ')
+    .replaceAll('&amp;', '&')
+    .replaceAll('&quot;', '"')
+    .replaceAll('&#39;', "'")
+    .replaceAll('&lt;', '<')
+    .replaceAll('&gt;', '>');
 }
 
-for (const [title, routesForTitle] of titleMap) if (routesForTitle.length > 1) report.duplicateTitles.push({ title, routes: routesForTitle });
-for (const [description, routesForDescription] of descriptionMap) if (routesForDescription.length > 1) report.duplicateDescriptions.push({ description, routes: routesForDescription });
+function textContent(html) {
+  return decodeHtml(html)
+    .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 
-console.log(JSON.stringify(report, null, 2));
-const hardFailures = [
-  report.missingMetadata.length,
-  report.duplicateTitles.length,
-  report.multipleH1.length,
-  report.missingH1.length,
-  report.brokenInternalLinks.length,
-].reduce((sum, n) => sum + n, 0);
-process.exitCode = hardFailures ? 1 : 0;
+function normalize(value) {
+  return value
+    .normalize('NFD')
+    .replace(/\p{Mark}/gu, '')
+    .toLocaleLowerCase('es')
+    .replaceAll('€', ' euros ')
+    .replace(/(?<=\d)[.,](?=\d{3}\b)/g, '')
+    .replace(/[^\p{Letter}\p{Number}]+/gu, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function routeFile(route) {
+  return route === '/' ? path.join(distRoot, 'index.html') : path.join(distRoot, route.slice(1), 'index.html');
+}
+
+function matchValue(html, pattern) {
+  return decodeHtml(html.match(pattern)?.[1] ?? '').trim();
+}
+
+function keywordCount(content, keyword) {
+  const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return [...content.matchAll(new RegExp(`(?<![\\p{Letter}\\p{Number}])${escaped}(?![\\p{Letter}\\p{Number}])`, 'gu'))].length;
+}
+
+const failures = [];
+const rows = [];
+
+if (seoTargets.length !== 95) failures.push({ rule: 'target-count', actual: seoTargets.length, expected: 95 });
+
+for (const { href, primaryKeyword } of seoTargets) {
+  const file = routeFile(href);
+  if (!fs.existsSync(file)) {
+    failures.push({ route: href, rule: 'missing-built-route' });
+    continue;
+  }
+
+  const html = fs.readFileSync(file, 'utf8');
+  const main = html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? '';
+  const title = matchValue(html, /<title>([\s\S]*?)<\/title>/i);
+  const description = matchValue(html, /<meta\s+name="description"\s+content="([^"]*)"/i);
+  const h1Matches = [...main.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)];
+  const h1 = textContent(h1Matches[0]?.[1] ?? '');
+  const afterH1 = h1Matches[0] ? main.slice((h1Matches[0].index ?? 0) + h1Matches[0][0].length) : '';
+  const firstParagraph = textContent(afterH1.match(/<p\b[^>]*>([\s\S]*?)<\/p>/i)?.[1] ?? '');
+  const normalizedKeyword = normalize(primaryKeyword);
+  const normalizedContent = normalize(textContent(main));
+  const occurrences = keywordCount(normalizedContent, normalizedKeyword);
+  const wordCount = textContent(main).match(/[\p{Letter}\p{Number}]+/gu)?.length ?? 0;
+  const faqCount = [...main.matchAll(/<details\b/gi)].length;
+  const rules = {
+    titleStartsWithKeyword: normalize(title).startsWith(normalizedKeyword),
+    titleLength: title.length <= 60,
+    descriptionLength: description.length >= 145 && description.length <= 155,
+    descriptionKeyword: normalize(description).includes(normalizedKeyword),
+    descriptionCta: description.endsWith('Descúbrelo aquí.'),
+    oneH1: h1Matches.length === 1,
+    h1Keyword: normalize(h1) === normalizedKeyword,
+    firstParagraphKeyword: normalize(firstParagraph).includes(normalizedKeyword),
+    keywordDensity: occurrences >= 3 && occurrences <= 6,
+    minimumWords: wordCount >= 300,
+    minimumFaqs: faqCount >= 3,
+  };
+
+  rows.push({ route: href, keyword: primaryKeyword, occurrences, wordCount, faqCount });
+  for (const [rule, passed] of Object.entries(rules)) {
+    if (!passed) failures.push({ route: href, keyword: primaryKeyword, rule, occurrences, wordCount, faqCount, titleLength: title.length, descriptionLength: description.length });
+  }
+}
+
+for (const route of legalRoutes) {
+  const file = routeFile(route);
+  const html = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : '';
+  const robots = matchValue(html, /<meta\s+name="robots"\s+content="([^"]*)"/i);
+  if (!robots.includes('noindex')) failures.push({ route, rule: 'legal-noindex' });
+}
+
+console.log(JSON.stringify({ auditedRoutes: rows.length, failures, pages: rows }, null, 2));
+if (failures.length) process.exitCode = 1;
