@@ -3,7 +3,15 @@ import Layout from "../../../layouts/Layout.astro";
 import SeoLandingPage from "../../../components/SeoLandingPage.astro";
 ---
 <Layout title='Salario por hora con jornada de 35 horas | Cifria' description='Calcula una referencia de salario por hora para una jornada de 35 horas semanales.'>
-  <SeoLandingPage title='Salario por hora con jornada de 35 horas' description='Calcula una referencia de salario por hora para una jornada de 35 horas semanales.' intro='Convertir un salario anual en una cifra por hora ayuda a comparar jornadas, ofertas y cambios de horario.' exampleTitle="Ejemplo de uso" exampleText='Introduce tu salario bruto anual y 35 horas semanales. Repite el cálculo con 40 horas para ver el valor horario de cada jornada.' calculatorHref='/nomina/salario-por-hora/' calculatorLabel='Calcular salario por hora' sections={[{ title: 'Qué representa', paragraphs: ['El cálculo convierte el salario anual en una referencia horaria según las horas semanales y semanas de trabajo consideradas.'] },
+  <SeoLandingPage
+    interpretation={{
+      title: "Cuándo mejora el valor horario al reducir jornada",
+      paragraphs: [
+        "El salario por hora con jornada de 35 horas puede aumentar aunque la remuneración anual no cambie. Pasar de cuarenta a treinta y cinco horas reduce la jornada un 12,5 %, pero eleva el cociente salario por hora aproximadamente un 14,3 % si conservas salario y semanas. Los porcentajes difieren porque usan bases distintas.",
+        "Si el salario también baja en la misma proporción que las horas, la referencia horaria permanece igual. Por ejemplo, reducir una remuneración anual de 28.000 a 24.500 euros al pasar de cuarenta a treinta y cinco horas conserva ese cociente. Introduce ambas ofertas completas y comprueba por separado ingresos anuales y tiempo de trabajo. La calculadora permite comparar magnitudes; no determina qué remuneración corresponde legalmente a una reducción concreta.",
+      ],
+    }}
+    title='Salario por hora con jornada de 35 horas' description='Calcula una referencia de salario por hora para una jornada de 35 horas semanales.' intro='Convertir un salario anual en una cifra por hora ayuda a comparar jornadas, ofertas y cambios de horario.' exampleTitle="Ejemplo de uso" exampleText='Introduce tu salario bruto anual y 35 horas semanales. Repite el cálculo con 40 horas para ver el valor horario de cada jornada.' calculatorHref='/nomina/salario-por-hora/' calculatorLabel='Calcular salario por hora' sections={[{ title: 'Qué representa', paragraphs: ['El cálculo convierte el salario anual en una referencia horaria según las horas semanales y semanas de trabajo consideradas.'] },
     { title: 'No es salario neto', paragraphs: ['Esta herramienta no sustituye una nómina real ni calcula retenciones, cotizaciones o variables particulares de cada contrato.'] }]} faqs={[{ question: '¿35 horas son menos que 40?', answer: 'Sí. Manteniendo el mismo salario anual, el valor horario resultante es mayor con una jornada semanal menor.' },
     { question: '¿Es salario bruto o neto?', answer: 'La referencia parte del salario anual que introduzcas y no pretende calcular el salario neto.' },
     { question: '¿Debo incluir las pagas extra?', answer: 'Sí. Utiliza la remuneración bruta anual total para comparar jornadas con una base homogénea, con independencia del número de pagas.' }]} />

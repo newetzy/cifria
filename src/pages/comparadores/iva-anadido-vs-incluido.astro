@@ -3,7 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import SeoLandingPage from '../../components/SeoLandingPage.astro';
 ---
 <Layout title='IVA añadido o IVA incluido: cómo distinguirlos | Cifria' description='Aprende la diferencia entre sumar IVA a un precio neto y extraer el IVA de un precio final.'>
-  <SeoLandingPage title='IVA añadido o IVA incluido: cómo distinguirlos' description='Aprende la diferencia entre sumar IVA a un precio neto y extraer el IVA de un precio final.' intro='El IVA añadido o IVA incluido determina si partes de una base imponible o de un precio final. Cuando partes de la base, el impuesto se calcula aplicando el tipo correspondiente y después se suma al total.' calculatorHref='/impuestos/calculadora-iva/' calculatorLabel='Calcular IVA' sections={[
+  <SeoLandingPage
+    interpretation={{
+      title: "IVA añadido o IVA incluido: cómo distinguirlos en un presupuesto",
+      paragraphs: [
+        "IVA añadido o incluido: cómo calcularlo puede comprobarse con una base hipotética de 100 euros y un tipo del 21 %. Un presupuesto de 100 euros más IVA y otro de 121 euros IVA incluido tienen el mismo total. Para comparar sus precios antes de impuesto, suma en el primero o divide el segundo entre 1,21; no hagas ambas operaciones sobre el mismo importe.",
+        "Si el vendedor anuncia un descuento, identifica si el precio sobre el que lo calcula ya incluye el impuesto. Mantener claramente separados base, cuota de IVA y total evita confundir el descuento con la extracción del impuesto. En operaciones con varias líneas, conserva también el tipo de cada una. La comparación matemática supone que el porcentaje elegido es aplicable; esa clasificación debe comprobarse por separado.",
+      ],
+    }}
+    title='IVA añadido o IVA incluido: cómo distinguirlos' description='Aprende la diferencia entre sumar IVA a un precio neto y extraer el IVA de un precio final.' intro='El IVA añadido o IVA incluido determina si partes de una base imponible o de un precio final. Cuando partes de la base, el impuesto se calcula aplicando el tipo correspondiente y después se suma al total.' calculatorHref='/impuestos/calculadora-iva/' calculatorLabel='Calcular IVA' sections={[
     { title: 'Precio sin IVA', paragraphs: ['Cuando partes de una base imponible, el IVA se calcula multiplicando esa base por el tipo aplicable y después se suma al total.'] },
     { title: 'Precio con IVA', paragraphs: ['Si el importe ya incluye IVA, no se obtiene el impuesto multiplicando simplemente el total por el porcentaje: primero hay que separar la base mediante el tipo correspondiente.'] },
     { title: 'Ejemplo práctico', paragraphs: ['Introduce el importe en la calculadora y cambia entre añadir y quitar IVA para comprobar la diferencia.', 'Comprueba en la factura si el precio anunciado es neto o final antes de comparar ofertas. El tipo aplicable depende de la operación concreta, por lo que conviene consultar la normativa o confirmar el criterio con quien emite la factura.'] }

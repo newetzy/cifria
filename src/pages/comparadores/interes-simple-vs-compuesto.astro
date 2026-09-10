@@ -3,7 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import SeoLandingPage from '../../components/SeoLandingPage.astro';
 ---
 <Layout title='Interés simple o compuesto para invertir | Cifria' description='Entiende cómo cambia el crecimiento cuando los intereses se incorporan al capital y vuelven a generar rendimiento.'>
-  <SeoLandingPage title='Interés simple o compuesto para invertir' description='Entiende cómo cambia el crecimiento cuando los intereses se incorporan al capital y vuelven a generar rendimiento.' intro='Elegir interés simple o compuesto para invertir cambia cómo se acumulan los rendimientos a lo largo del tiempo. El interés simple se calcula sobre el capital de referencia sin incorporar los intereses anteriores al principal.' calculatorHref='/ahorro-inversion/interes-compuesto/' calculatorLabel='Calcular interés compuesto' sections={[
+  <SeoLandingPage
+    interpretation={{
+      title: "Un ejemplo de dos años con el mismo capital",
+      paragraphs: [
+        "Interés simple o compuesto se distingue con un capital hipotético de 1.000 euros al 5 % anual durante dos años y sin aportaciones. Con interés simple, cada año genera 50 euros sobre el capital original y el saldo final sería 1.100. Con capitalización anual compuesta, el segundo año calcula el 5 % sobre 1.050 euros y termina en 1.102,50.",
+        "La diferencia de 2,50 euros procede de reinvertir los intereses del primer año. Para extender el ejemplo a aportaciones mensuales hay que definir cuándo entra cada una y con qué frecuencia se capitaliza. No compares una cifra simple calculada sobre todo el capital desde el comienzo con otra que recibe el dinero poco a poco: además del régimen de interés estarías cambiando el tiempo que permanece invertido.",
+      ],
+    }}
+    title='Interés simple o compuesto para invertir' description='Entiende cómo cambia el crecimiento cuando los intereses se incorporan al capital y vuelven a generar rendimiento.' intro='Elegir interés simple o compuesto para invertir cambia cómo se acumulan los rendimientos a lo largo del tiempo. El interés simple se calcula sobre el capital de referencia sin incorporar los intereses anteriores al principal.' calculatorHref='/ahorro-inversion/interes-compuesto/' calculatorLabel='Calcular interés compuesto' sections={[
     { title: 'Interés simple', paragraphs: ['El interés se calcula sobre el capital de referencia sin incorporar los intereses anteriores al principal. Es un modelo sencillo para determinados escenarios.'] },
     { title: 'Interés compuesto', paragraphs: ['Los rendimientos acumulados pasan a formar parte del capital que puede generar nuevos rendimientos. El efecto crece con el tiempo.'] },
     { title: 'Qué debes comparar', paragraphs: ['Usa el mismo capital, tipo y plazo para aislar la diferencia entre ambas formas de cálculo.', 'Incluye aportaciones, comisiones, fiscalidad y frecuencia de capitalización si forman parte del producto. Una simulación muestra un supuesto matemático; no garantiza la rentabilidad futura ni elimina el riesgo de pérdida.'] }

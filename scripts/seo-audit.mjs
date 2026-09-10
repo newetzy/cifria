@@ -53,6 +53,15 @@ function keywordCount(content, keyword) {
 
 const failures = [];
 const rows = [];
+const editorialParagraphs = new Map();
+const editorialFaqSets = new Map();
+let distinctEditorialRoutes = 0;
+
+function trackSharedText(collection, text, route) {
+  const key = normalize(text);
+  if (!collection.has(key)) collection.set(key, { text, routes: new Set() });
+  collection.get(key).routes.add(route);
+}
 
 if (seoTargets.length !== 95) failures.push({ rule: 'target-count', actual: seoTargets.length, expected: 95 });
 
@@ -65,6 +74,22 @@ for (const { href, primaryKeyword } of seoTargets) {
 
   const html = fs.readFileSync(file, 'utf8');
   const main = html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? '';
+  // Detect substantial copied paragraphs and complete FAQ sets in the editorial
+  // templates. Short navigation labels and isolated shared answers are expected.
+  // This catches exact repetition; usefulness still needs an editorial review.
+  const hasDistinctEditorial = main.includes('seo-landing-page')
+    || main.includes('blog-post-content')
+    || /^\/(vivienda|prestamos|nomina|impuestos|coche|ahorro-inversion)\/$/.test(href);
+  if (hasDistinctEditorial) {
+    distinctEditorialRoutes++;
+    for (const match of main.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)) {
+      const paragraph = textContent(match[1]);
+      if (paragraph.split(/\s+/).length >= 35) trackSharedText(editorialParagraphs, paragraph, href);
+    }
+    const questions = [...main.matchAll(/<summary\b[^>]*>([\s\S]*?)<\/summary>/gi)]
+      .map((match) => textContent(match[1]));
+    if (questions.length >= 3) trackSharedText(editorialFaqSets, questions.join(' | '), href);
+  }
   const title = matchValue(html, /<title>([\s\S]*?)<\/title>/i);
   const description = matchValue(html, /<meta\s+name="description"\s+content="([^"]*)"/i);
   const h1Matches = [...main.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)];
@@ -107,5 +132,14 @@ for (const route of legalRoutes) {
   if (!robots.includes('noindex')) failures.push({ route, rule: 'legal-noindex' });
 }
 
-console.log(JSON.stringify({ auditedRoutes: rows.length, failures, pages: rows }, null, 2));
+for (const [rule, collection] of [
+  ['repeatedEditorialParagraph', editorialParagraphs],
+  ['repeatedEditorialFaqSet', editorialFaqSets],
+]) {
+  for (const { text, routes } of collection.values()) {
+    if (routes.size > 1) failures.push({ rule, routes: [...routes], excerpt: text.slice(0, 180) });
+  }
+}
+
+console.log(JSON.stringify({ auditedRoutes: rows.length, distinctEditorialRoutes, failures, pages: rows }, null, 2));
 if (failures.length) process.exitCode = 1;

@@ -3,7 +3,15 @@ import Layout from "../../../layouts/Layout.astro";
 import SeoLandingPage from "../../../components/SeoLandingPage.astro";
 ---
 <Layout title='Préstamo de 10.000 € a 5 años | Cifria' description='Simula un préstamo de 10.000 € a 5 años y compara cuota mensual, intereses y coste total.'>
-  <SeoLandingPage title='Préstamo de 10.000 € a 5 años' description='Simula un préstamo de 10.000 € a 5 años y compara cuota mensual, intereses y coste total.' intro='Financiar 10.000 € durante cinco años es un escenario frecuente para compras y gastos importantes.' exampleTitle="Ejemplo de uso" exampleText='Introduce 10.000 € y 60 meses y prueba varios tipos. La comparación más útil es mantener el plazo constante y variar el tipo.' calculatorHref='/prestamos/calculadora-cuota-prestamo/' calculatorLabel='Calcular préstamo' sections={[{ title: 'La cuota depende del tipo', paragraphs: ['Con sistema de cuota fija, el tipo y el plazo condicionan la mensualidad y el total de intereses.'] },
+  <SeoLandingPage
+    interpretation={{
+      title: "Una comprobación rápida de los sesenta recibos",
+      paragraphs: [
+        "Un préstamo de 10.000 euros a 5 años tiene sesenta pagos mensuales. Multiplicar la cuota constante por sesenta permite obtener el total de cuotas; al restar los 10.000 euros iniciales obtienes los intereses del modelo sin comisiones. Si trabajas con una cuota redondeada a céntimos, puede aparecer una pequeña diferencia respecto al total calculado con precisión completa.",
+        "El cociente 10.000 dividido entre sesenta solo da la devolución mensual de capital en un supuesto sin intereses: no es la cuota de un préstamo con tipo positivo. Si el recibo que te ofrecen parece muy bajo, revisa si existe un pago final diferente, un periodo de carencia o una comisión financiada. Cualquiera de esas condiciones haría que la oferta no coincidiera con este ejemplo de pagos iguales.",
+      ],
+    }}
+    title='Préstamo de 10.000 € a 5 años' description='Simula un préstamo de 10.000 € a 5 años y compara cuota mensual, intereses y coste total.' intro='Financiar 10.000 € durante cinco años es un escenario frecuente para compras y gastos importantes.' exampleTitle="Ejemplo de uso" exampleText='Introduce 10.000 € y 60 meses y prueba varios tipos. La comparación más útil es mantener el plazo constante y variar el tipo.' calculatorHref='/prestamos/calculadora-cuota-prestamo/' calculatorLabel='Calcular préstamo' sections={[{ title: 'La cuota depende del tipo', paragraphs: ['Con sistema de cuota fija, el tipo y el plazo condicionan la mensualidad y el total de intereses.'] },
     { title: 'Coste total', paragraphs: ['Una comisión inicial o de apertura puede hacer que el coste total sea mayor que la suma de cuotas.'] }]} faqs={[{ question: '¿60 meses son cinco años?', answer: 'Sí, cinco años equivalen a 60 mensualidades.' },
     { question: '¿Una comisión aumenta el coste total?', answer: 'Sí, una comisión separada de las cuotas incrementa el coste total de financiar la operación.' },
     { question: '¿Puedo comparar otros tipos de interés?', answer: 'Sí. Mantén el importe y el plazo y modifica solo el tipo para medir su efecto.' }]} />

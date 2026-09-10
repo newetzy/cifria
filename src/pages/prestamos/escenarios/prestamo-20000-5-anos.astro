@@ -3,7 +3,15 @@ import Layout from "../../../layouts/Layout.astro";
 import SeoLandingPage from "../../../components/SeoLandingPage.astro";
 ---
 <Layout title='Préstamo de 20.000 € a 5 años | Cifria' description='Calcula un escenario de financiación de 20.000 € a 5 años y revisa el coste total.'>
-  <SeoLandingPage title='Préstamo de 20.000 € a 5 años' description='Calcula un escenario de financiación de 20.000 € a 5 años y revisa el coste total.' intro='Este escenario permite ver cómo evoluciona una financiación de 20.000 € cuando se mantiene un plazo de 60 meses.' exampleTitle="Ejemplo de uso" exampleText='Prueba un 5 %, 7 % y 9 % como hipótesis independientes para observar cómo cambia la cuota. Son ejemplos, no ofertas de financiación.' calculatorHref='/prestamos/calculadora-cuota-prestamo/' calculatorLabel='Calcular préstamo' sections={[{ title: 'Plazo fijo para comparar', paragraphs: ['Mantener los 60 meses constantes ayuda a aislar el efecto del tipo de interés.'] },
+  <SeoLandingPage
+    interpretation={{
+      title: "Comparar 20.000 euros financiados con una aportación inicial",
+      paragraphs: [
+        "El préstamo de 20.000 euros a 5 años presupone que necesitas recibir todo ese capital. Si la compra cuesta 20.000 euros pero puedes pagar 4.000 al contado, el importe a financiar sería 16.000 euros. En el modelo de cuota constante, conservar el plazo y el tipo reduce proporcionalmente la cuota y los intereses al disminuir el principal.",
+        "Realiza ambas simulaciones y anota la diferencia de mensualidad durante los sesenta meses. Después revisa si los 4.000 euros proceden de ahorro disponible o de otro préstamo: en este último caso debes sumar la segunda deuda para comparar el esfuerzo real. También comprueba si una oferta condiciona el precio de compra a financiar un importe mínimo; ese descuento debe valorarse junto con el coste completo de financiación.",
+      ],
+    }}
+    title='Préstamo de 20.000 € a 5 años' description='Calcula un escenario de financiación de 20.000 € a 5 años y revisa el coste total.' intro='Este escenario permite ver cómo evoluciona una financiación de 20.000 € cuando se mantiene un plazo de 60 meses.' exampleTitle="Ejemplo de uso" exampleText='Prueba un 5 %, 7 % y 9 % como hipótesis independientes para observar cómo cambia la cuota. Son ejemplos, no ofertas de financiación.' calculatorHref='/prestamos/calculadora-cuota-prestamo/' calculatorLabel='Calcular préstamo' sections={[{ title: 'Plazo fijo para comparar', paragraphs: ['Mantener los 60 meses constantes ayuda a aislar el efecto del tipo de interés.'] },
     { title: 'No confundas cuota y coste', paragraphs: ['Una cuota asumible no implica que el préstamo sea barato. Revisa siempre el interés y el coste total.'] }]} faqs={[{ question: '¿Puedo calcularlo con otro plazo?', answer: 'Sí. La herramienta permite cambiar el plazo y comparar escenarios.' },
     { question: '¿El tipo del ejemplo es una oferta real?', answer: 'No. Debes introducir el tipo y las comisiones de la financiación concreta que quieras analizar.' },
     { question: '¿Qué ocurre si alargo el plazo?', answer: 'La cuota suele bajar, pero el coste total de intereses puede aumentar.' }]} />

@@ -1,7 +1,9 @@
 ---
 import type { Category } from '../data/categories';
+import { categoryEditorial } from '../data/category-editorial';
 interface Props { category: Category; }
 const { category } = Astro.props;
+const editorial = categoryEditorial[category.slug];
 const primaryKeywords: Record<string, string> = {
   'ahorro-inversion': 'Calculadoras de ahorro e inversión',
   coche: 'Calculadoras de costes del coche',
@@ -53,17 +55,12 @@ const links: Record<string, Record<string, string>> = {
 <section class="section"><div class="container narrow"><div class="section-heading"><div><p class="eyebrow">Herramientas</p><h2>Calculadoras de {category.name.toLowerCase()}</h2></div><p>Calcula online y consulta después la metodología y las limitaciones de cada herramienta.</p></div><div class="tool-list">{category.tools.filter((tool) => links[category.slug]?.[tool]).map((tool) => { const href = links[category.slug]?.[tool]; return <article class="card tool-card"><h3><a href={href}>{tool}</a></h3><p class="tool-card-status">Disponible</p></article>; })}</div></div></section>
 <section class="section section-tint"><div class="container narrow"><div class="section-heading"><div><p class="eyebrow">También puedes buscar</p><h2>Páginas de cálculo concretas</h2></div><p>Escenarios frecuentes con explicaciones y acceso directo a la calculadora.</p></div><div class="tool-list seo-tool-list">{(seoLinks[category.slug] ?? []).map((item) => <article class="card tool-card seo-tool-card"><h3><a href={item.href}>{item.title}</a></h3><p>{item.description}</p></article>)}</div></div></section>
 <section class="section"><div class="container narrow prose">
-  <h2>Cómo utilizar estas calculadoras</h2>
-  <p>Las {primaryKeyword.toLocaleLowerCase('es')} reúnen herramientas y ejemplos del mismo tema para que puedas pasar de una estimación general a un caso concreto sin mezclar criterios.</p>
-  <p>Empieza por la herramienta que responda a tu decisión inmediata y reúne antes los datos que puedas comprobar. Introducir importes reales, plazos comparables y gastos completos ayuda a que el resultado sea más útil. Si todavía no conoces una cifra, prueba un escenario prudente y otro más exigente para observar cuánto cambia la estimación.</p>
-  <p>Compara siempre resultados obtenidos con los mismos supuestos. Una cuota menor, un porcentaje mayor o una cifra final más alta no bastan por sí solos para elegir: también importan el plazo, la liquidez, el riesgo y los costes que la herramienta indique como no incluidos.</p>
-  <h2>Qué significa el resultado</h2>
-  <p>Las calculadoras de {category.name.toLowerCase()} ofrecen simulaciones matemáticas y explican las variables empleadas. No representan una oferta comercial, una resolución administrativa ni asesoramiento personalizado. Guarda los datos utilizados y confirma las condiciones reales con el contrato, la entidad o el organismo correspondiente antes de tomar una decisión.</p>
-  <p>Puedes continuar con los ejemplos de esta categoría para entender casos concretos y después abrir la calculadora principal para sustituirlos por tus cifras. Esta navegación conecta conceptos, escenarios y herramientas sin obligarte a empezar cada comparación desde cero.</p>
+  {editorial.sections.map((section) => <section>
+    <h2>{section.title}</h2>
+    {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  </section>)}
   <section class="faq-section">
     <h2>Preguntas frecuentes</h2>
-    <details><summary>¿Los resultados son definitivos?</summary><p>No. Son estimaciones basadas en los datos introducidos y en los supuestos explicados por cada herramienta.</p></details>
-    <details><summary>¿Puedo comparar varios escenarios?</summary><p>Sí. Mantén iguales las variables que no quieras estudiar y modifica una condición cada vez para interpretar mejor la diferencia.</p></details>
-    <details><summary>¿Qué datos debo comprobar?</summary><p>Revisa importes, plazos, tipos, comisiones, impuestos y cualquier gasto que pueda influir en el resultado real.</p></details>
+    {editorial.faqs.map((faq) => <details><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}
   </section>
 </div></section>

@@ -3,7 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import SeoLandingPage from '../../components/SeoLandingPage.astro';
 ---
 <Layout title='Salario con jornada de 35 o 40 horas | Cifria' description='Compara el valor bruto por hora de una jornada de 35 horas frente a una de 40 horas.'>
-  <SeoLandingPage title='Salario con jornada de 35 o 40 horas' description='Compara el valor bruto por hora de una jornada de 35 horas frente a una de 40 horas.' intro='Un salario con jornada de 35 o 40 horas cambia el valor bruto de cada hora y el tiempo disponible. Si el salario anual es el mismo, trabajar menos horas semanales eleva el valor bruto aproximado de cada hora.' calculatorHref='/nomina/salario-por-hora/' calculatorLabel='Calcular salario por hora' sections={[
+  <SeoLandingPage
+    interpretation={{
+      title: "El salario que igualaría el valor de una hora",
+      paragraphs: [
+        "Salario por hora con 35 o 40 horas semanales requiere comparar remuneración anual y jornada a la vez. Una oferta de 28.000 euros por cuarenta horas tendría la misma referencia horaria que otra de 24.500 euros por treinta y cinco, siempre que uses igual número de semanas. La segunda paga menos al año, aunque no menos por hora bajo esos supuestos.",
+        "Si ambas ofrecen 28.000 euros, la de treinta y cinco horas mejora el valor horario y deja cinco horas semanales adicionales fuera de la jornada indicada. Comprueba si ese horario incluye pausas y si existen guardias u horas extra antes de trasladar la diferencia al tiempo realmente disponible. Los desplazamientos pueden influir en tu decisión, pero no deben mezclarse con las horas contractuales dentro de una sola comparación sin explicarlo.",
+      ],
+    }}
+    title='Salario con jornada de 35 o 40 horas' description='Compara el valor bruto por hora de una jornada de 35 horas frente a una de 40 horas.' intro='Un salario con jornada de 35 o 40 horas cambia el valor bruto de cada hora y el tiempo disponible. Si el salario anual es el mismo, trabajar menos horas semanales eleva el valor bruto aproximado de cada hora.' calculatorHref='/nomina/salario-por-hora/' calculatorLabel='Calcular salario por hora' sections={[
     { title: 'Mismo salario anual', paragraphs: ['Si el salario anual es el mismo, trabajar menos horas semanales eleva el valor bruto aproximado de cada hora.'] },
     { title: 'Mismo horario anual', paragraphs: ['La comparación debe usar una misma metodología de horas trabajadas y tener en cuenta vacaciones, festivos y la distribución real de la jornada si buscas máxima precisión.'] },
     { title: 'Cómo utilizarlo', paragraphs: ['Calcula primero 35 horas y después 40 horas manteniendo el mismo salario anual. La diferencia muestra el efecto de la jornada sobre el valor horario.', 'Para comparar ofertas, añade desplazamientos, teletrabajo, vacaciones, flexibilidad y posibilidades de desarrollo. El importe por hora es una referencia útil, pero no resume por sí solo todas las condiciones de un empleo.'] }

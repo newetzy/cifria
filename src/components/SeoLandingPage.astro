@@ -7,13 +7,14 @@ interface Props {
   description: string;
   intro: string;
   sections: Section[];
+  interpretation: Section;
   exampleTitle?: string;
   exampleText?: string;
   calculatorHref: string;
   calculatorLabel: string;
   faqs: Faq[];
 }
-const { title, description, intro, sections, exampleTitle, exampleText, calculatorHref, calculatorLabel, faqs } = Astro.props;
+const { title, description, intro, sections, interpretation, exampleTitle, exampleText, calculatorHref, calculatorLabel, faqs } = Astro.props;
 const category = calculatorHref.split('/').filter(Boolean)[0] ?? '';
 const categoryLinks: Record<string, { href: string; title: string; description: string }> = {
   vivienda: { href: '/vivienda/', title: 'Calculadoras de vivienda', description: 'Consulta hipotecas y otras herramientas de vivienda.' },
@@ -46,11 +47,8 @@ const relatedCategory = categoryLinks[category];
         </section>
       ))}
       <section>
-        <h2>Cómo interpretar esta simulación</h2>
-        <p>Al analizar {title.toLocaleLowerCase('es')}, conserva los mismos datos de partida cuando cambies una variable. Esa comparación permite atribuir la diferencia al supuesto que estás estudiando.</p>
-        <p>Usa este contenido como una referencia para ordenar los datos de tu caso y comparar alternativas con el mismo criterio. Introduce importes, plazos y condiciones actualizados antes de trasladar el resultado a una decisión económica real.</p>
-        <p>La estimación no sustituye las condiciones de un contrato, una oferta vinculante ni el asesoramiento profesional cuando corresponda. Revisa comisiones, impuestos, gastos asociados y cualquier cambio que pueda modificar el resultado antes de elegir una opción.</p>
-        <p>Guarda los valores utilizados y repite la simulación con un escenario prudente y otro más exigente. Así podrás observar qué variables tienen mayor impacto, detectar resultados demasiado sensibles y comparar opciones sin mezclar supuestos diferentes.</p>
+        <h2>{interpretation.title}</h2>
+        {interpretation.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
       </section>
       <section class="faq-section">
         <p class="eyebrow">Preguntas frecuentes</p>

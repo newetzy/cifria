@@ -39,10 +39,7 @@ const updatedDate = post.data.updatedDate?.toLocaleDateString('es-ES', {
     </header>
     {post.data.heroImage && <img class="blog-post-hero" src={post.data.heroImage} alt="" />}
     <div class="container narrow">
-      <div class="blog-post-content prose"><slot />
-        <section><h2>Cómo aplicar esta información</h2><p>Contrasta las cifras y fechas del artículo con fuentes oficiales y con las condiciones de tu caso. Cuando compares alternativas, utiliza los mismos importes, plazos y supuestos para evitar conclusiones engañosas.</p><p>Las herramientas relacionadas permiten convertir la explicación en una simulación con tus datos. Sus resultados son orientativos y no sustituyen una oferta, una liquidación administrativa ni asesoramiento profesional.</p></section>
-        <section class="faq-section"><h2>Preguntas frecuentes sobre {post.data.title}</h2><details><summary>¿Puedo usar mis propios datos?</summary><p>Sí. Abre las calculadoras relacionadas y sustituye los ejemplos por cifras comprobables de tu situación.</p></details><details><summary>¿El artículo ofrece un resultado definitivo?</summary><p>No. Explica criterios generales que debes contrastar con normativa, contratos y datos actualizados.</p></details><details><summary>¿Dónde continúo la comparación?</summary><p>Al final del artículo encontrarás herramientas relacionadas para calcular escenarios y revisar cómo cambia el resultado.</p></details></section>
-      </div>
+      <div class="blog-post-content prose"><slot /></div>
       {relatedTools.length > 0 && <RelatedTools tools={relatedTools} />}
     </div>
   </article>

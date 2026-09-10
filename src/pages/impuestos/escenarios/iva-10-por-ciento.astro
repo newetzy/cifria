@@ -3,7 +3,15 @@ import Layout from "../../../layouts/Layout.astro";
 import SeoLandingPage from "../../../components/SeoLandingPage.astro";
 ---
 <Layout title='IVA del 10 % | Cifria' description='Añade o quita un IVA del 10 % y separa base imponible e impuesto.'>
-  <SeoLandingPage title='IVA del 10 %' description='Añade o quita un IVA del 10 % y separa base imponible e impuesto.' intro='El 10 % es uno de los tipos de IVA que puedes usar como hipótesis en la calculadora de Cifria.' exampleTitle="Ejemplo de uso" exampleText='Introduce un precio sin IVA para añadir el 10 %, o parte del precio final para separar base e impuesto.' calculatorHref='/impuestos/calculadora-iva/' calculatorLabel='Calcular IVA' sections={[{ title: 'Cómo leer el resultado', paragraphs: ['La herramienta separa el importe base del impuesto para que puedas ver de dónde sale el precio final.'] },
+  <SeoLandingPage
+    interpretation={{
+      title: "Comprobar un precio de 55 euros con impuesto incluido",
+      paragraphs: [
+        "Calcular IVA del 10 por ciento permite descomponer un total hipotético de 55 euros en 50 euros de base y 5 euros de impuesto. La cuenta inversa es 55 dividido entre 1,10. Si restaras el 10 % de 55, obtendrías 49,50 euros: ese descuento usa el precio final como base y no sirve para extraer el IVA incluido.",
+        "Antes de comparar presupuestos, lleva ambos a la misma forma de presentación. Un importe de 50 euros antes de IVA y otro de 55 euros con este impuesto incluido representan el mismo total bajo el supuesto del ejemplo. Si hay un descuento comercial, identifica a qué importe se aplica antes de rehacer la cuenta. El ejemplo no acredita que el 10 % corresponda a una compra concreta.",
+      ],
+    }}
+    title='IVA del 10 %' description='Añade o quita un IVA del 10 % y separa base imponible e impuesto.' intro='El 10 % es uno de los tipos de IVA que puedes usar como hipótesis en la calculadora de Cifria.' exampleTitle="Ejemplo de uso" exampleText='Introduce un precio sin IVA para añadir el 10 %, o parte del precio final para separar base e impuesto.' calculatorHref='/impuestos/calculadora-iva/' calculatorLabel='Calcular IVA' sections={[{ title: 'Cómo leer el resultado', paragraphs: ['La herramienta separa el importe base del impuesto para que puedas ver de dónde sale el precio final.'] },
     { title: 'El tipo depende del caso', paragraphs: ['Antes de aplicar un tipo de IVA a una operación real debes comprobar que corresponde al bien o servicio concreto.'] }]} faqs={[{ question: '¿Puedo quitar un 10 % de un precio final restándolo directamente?', answer: 'No. Para quitar IVA debes dividir el precio final por 1,10 y separar la base y el impuesto.' },
     { question: '¿Todo lleva un 10 % de IVA?', answer: 'No. El tipo aplicable depende del producto o servicio y de la normativa vigente.' },
     { question: '¿Cómo compruebo el IVA calculado?', answer: 'Suma la base imponible y la cuota de IVA: el resultado debe coincidir con el precio final, salvo diferencias de redondeo.' }]} />

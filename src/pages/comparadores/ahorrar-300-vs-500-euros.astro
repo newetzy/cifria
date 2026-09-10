@@ -3,7 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import SeoLandingPage from '../../components/SeoLandingPage.astro';
 ---
 <Layout title='Ahorrar 300 o 500 € al mes: comparación | Cifria' description='Mira cómo cambia el ahorro acumulado cuando aumentas la aportación mensual de 300 a 500 euros.'>
-  <SeoLandingPage title='Ahorrar 300 o 500 euros al mes' description='Mira cómo cambia el ahorro acumulado cuando aumentas la aportación mensual de 300 a 500 euros.' intro='Ahorrar 300 o 500 euros al mes supone una diferencia de 200 euros mensuales, o 2.400 euros adicionales al año antes de considerar cualquier rentabilidad.' calculatorHref='/ahorro-inversion/aportaciones-periodicas/' calculatorLabel='Calcular aportaciones' sections={[
+  <SeoLandingPage
+    interpretation={{
+      title: "El aumento de esfuerzo y la diferencia acumulada",
+      paragraphs: [
+        "Ahorrar 300 o 500 euros al mes cambia la aportación en 200 euros mensuales: 2.400 euros al año y 12.000 en cinco años sin rendimientos. Pasar de 300 a 500 exige aumentar el esfuerzo de ahorro aproximadamente un 66,7 %. Ese porcentaje ayuda a valorar si el salto cabe en el presupuesto o si conviene ensayar una cantidad intermedia.",
+        "Si ambos planes parten del mismo capital inicial, la diferencia de saldo depende de las aportaciones adicionales y de sus rendimientos, no de todo el dinero acumulado. Para comprobarlo, simula los dos importes con el mismo plazo y tipo. Evita comparar un escenario de 300 euros con rentabilidad conservadora frente a otro de 500 con rentabilidad elevada, porque no sabrías cuánto de la mejora procede del ahorro extra.",
+      ],
+    }}
+    title='Ahorrar 300 o 500 euros al mes' description='Mira cómo cambia el ahorro acumulado cuando aumentas la aportación mensual de 300 a 500 euros.' intro='Ahorrar 300 o 500 euros al mes supone una diferencia de 200 euros mensuales, o 2.400 euros adicionales al año antes de considerar cualquier rentabilidad.' calculatorHref='/ahorro-inversion/aportaciones-periodicas/' calculatorLabel='Calcular aportaciones' sections={[
     { title: 'Diferencia mensual', paragraphs: ['La diferencia es de 200 € al mes, que se convierten en 2.400 € adicionales al año antes de considerar cualquier rentabilidad.'] },
     { title: 'Efecto del tiempo', paragraphs: ['Cuanto más largo es el horizonte, mayor es la diferencia acumulada. Con rentabilidad hipotética también puede crecer el efecto de las aportaciones adicionales.'] },
     { title: 'Cómo probarlo', paragraphs: ['Calcula primero una aportación y después la otra manteniendo iguales el plazo y la rentabilidad. Así aislas el efecto del ahorro mensual.', 'No comprometas gastos esenciales para elevar la aportación. Ajusta el importe cuando cambien tus ingresos y separa un fondo de emergencia de los objetivos de medio y largo plazo.'] }

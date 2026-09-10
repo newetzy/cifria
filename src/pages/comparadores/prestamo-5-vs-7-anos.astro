@@ -3,7 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import SeoLandingPage from '../../components/SeoLandingPage.astro';
 ---
 <Layout title='Préstamo a 5 o 7 años: cuota y coste | Cifria' description='Compara cómo cambia la cuota y el coste total cuando alargas el plazo de un préstamo.'>
-  <SeoLandingPage title='Préstamo a 5 o 7 años: cuota y coste' description='Compara cómo cambia la cuota y el coste total cuando alargas el plazo de un préstamo.' intro='Un préstamo a 5 o 7 años cambia la cuota mensual y el coste total de la financiación. Un plazo menor suele implicar una cuota mayor, pero reduce los meses durante los que se generan intereses.' calculatorHref='/prestamos/calculadora-cuota-prestamo/' calculatorLabel='Calcular préstamo' sections={[
+  <SeoLandingPage
+    interpretation={{
+      title: "Préstamo a 5 o 7 años: cuota y coste después del quinto año",
+      paragraphs: [
+        "Préstamo a 5 o 7 años: cuota e intereses compara sesenta pagos con ochenta y cuatro. Durante los primeros cinco años, el plazo largo puede dejar más dinero disponible cada mes. En los dos años siguientes, sin embargo, la alternativa corta ya no exige cuotas y la larga sigue cobrando. Esa segunda etapa debe figurar en el presupuesto comparado.",
+        "Para evaluar el coste, multiplica cada cuota por su propio número de pagos y añade los gastos de esa oferta. Para evaluar flexibilidad, observa por separado el calendario mensual y el saldo pendiente si quisieras cancelar antes. Una mensualidad baja no permite deducir cuánto costaría salir del préstamo al tercer año: necesitarás la tabla de amortización y las condiciones de cancelación de cada propuesta.",
+      ],
+    }}
+    title='Préstamo a 5 o 7 años: cuota y coste' description='Compara cómo cambia la cuota y el coste total cuando alargas el plazo de un préstamo.' intro='Un préstamo a 5 o 7 años cambia la cuota mensual y el coste total de la financiación. Un plazo menor suele implicar una cuota mayor, pero reduce los meses durante los que se generan intereses.' calculatorHref='/prestamos/calculadora-cuota-prestamo/' calculatorLabel='Calcular préstamo' sections={[
     { title: 'Plazo más corto', paragraphs: ['Un plazo menor suele implicar una cuota mensual mayor, pero reduce el número de meses durante los que se generan intereses.'] },
     { title: 'Plazo más largo', paragraphs: ['Alargar el préstamo puede aliviar la cuota mensual, pero normalmente aumenta el coste total de intereses si el tipo y el resto de condiciones se mantienen.'] },
     { title: 'Qué mirar', paragraphs: ['Compara siempre cuota, intereses y coste total. Una cuota baja por sí sola no indica que la financiación sea más barata.', 'Comprueba también comisión de apertura, seguros vinculados y la posibilidad de amortizar antes. Elige un plazo que encaje con tus ingresos estables y conserva margen para gastos imprevistos.'] }

@@ -6,7 +6,15 @@ import { formatEuro } from '../../lib/formatters/currency.ts';
 const result = calculateLoan({ principal: 20000, annualInterestRate: 7, years: 7 });
 ---
 <Layout title="Préstamo de 20.000 euros a 7 años | Cifria" description="Simulación de un préstamo de 20.000 euros a 7 años con un 7 % hipotético. Consulta cuota, intereses y coste total.">
-  <SeoLandingPage title="Préstamo de 20.000 € a 7 años" description="Consulta una simulación de cuota e intereses para un préstamo de 20.000 € a 7 años." intro={`Con 20.000 € financiados a 7 años y un tipo hipotético del 7 %, la cuota matemática estimada es de ${formatEuro(result.monthlyPayment)} al mes.`} exampleTitle="Ejemplo con 7 %" exampleText={`Cuota estimada: ${formatEuro(result.monthlyPayment)} · intereses: ${formatEuro(result.totalInterest)} · total de cuotas: ${formatEuro(result.totalInstallments)}.`} calculatorHref="/prestamos/calculadora-cuota-prestamo/" calculatorLabel="Calcular préstamo" sections={[
+  <SeoLandingPage
+    interpretation={{
+      title: "El efecto de añadir veinticuatro mensualidades",
+      paragraphs: [
+        "El préstamo de 20.000 euros a 7 años se devuelve en 84 cuotas, veinticuatro más que una financiación a cinco años. La mensualidad menor puede facilitar el pago, pero mantiene deuda durante dos años adicionales. Si financias un coche u otro bien que pierde valor, considera también si seguirías debiendo dinero cuando quisieras sustituirlo.",
+        "Para comparar con cinco años, calcula ambos plazos al mismo tipo y resta los totales de cuotas. Esa diferencia muestra el precio de ampliar el calendario dentro del modelo. No multipliques solo la diferencia mensual por 84: la alternativa corta termina antes y ese cálculo mezclaría duraciones. Si las ofertas tienen tipos diferentes, simula cada una con su tipo real y revisa además las comisiones.",
+      ],
+    }}
+    title="Préstamo de 20.000 € a 7 años" description="Consulta una simulación de cuota e intereses para un préstamo de 20.000 € a 7 años." intro={`Con 20.000 € financiados a 7 años y un tipo hipotético del 7 %, la cuota matemática estimada es de ${formatEuro(result.monthlyPayment)} al mes.`} exampleTitle="Ejemplo con 7 %" exampleText={`Cuota estimada: ${formatEuro(result.monthlyPayment)} · intereses: ${formatEuro(result.totalInterest)} · total de cuotas: ${formatEuro(result.totalInstallments)}.`} calculatorHref="/prestamos/calculadora-cuota-prestamo/" calculatorLabel="Calcular préstamo" sections={[
     { title: 'Plazo largo y coste total', paragraphs: ['Siete años reparten 20.000 € entre 84 cuotas. Eso puede aliviar la mensualidad frente a plazos más cortos.', 'A cambio, mantener el préstamo durante más tiempo suele incrementar los intereses acumulados si el tipo permanece igual.'] },
     { title: 'Compara escenarios iguales', paragraphs: ['Una comparación útil cambia solo el plazo: 5, 7 y 8 años, por ejemplo, manteniendo capital y tipo.', 'Así puedes identificar cuánto cuesta reducir la cuota mensual.'] },
     { title: 'Qué no contempla este ejemplo', paragraphs: ['No se incluyen seguros, productos vinculados ni gastos que no formen parte de la cuota matemática.', 'Para una oferta real, comprueba el coste total y la documentación facilitada por la entidad.'] },

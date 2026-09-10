@@ -3,7 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import SeoLandingPage from '../../components/SeoLandingPage.astro';
 ---
 <Layout title='Hipoteca a 20 o 30 años: qué cambia | Cifria' description='Compara el efecto del plazo sobre la cuota mensual y los intereses totales de una hipoteca.'>
-  <SeoLandingPage title='Hipoteca a 20 o 30 años: qué cambia' description='Compara el efecto del plazo sobre la cuota mensual y los intereses totales de una hipoteca.' intro='Una hipoteca a 20 o 30 años cambia la cuota mensual, los intereses totales y el margen de tu presupuesto. Con el mismo capital y tipo, un plazo de 30 años suele producir una cuota menor porque el importe se reparte entre más pagos.' calculatorHref='/vivienda/calculadora-hipoteca/' calculatorLabel='Calcular hipoteca' sections={[
+  <SeoLandingPage
+    interpretation={{
+      title: "Una comparación con una fecha de corte común",
+      paragraphs: [
+        "Hipoteca a 20 o 30 años: qué cambia también depende de cuándo compares el patrimonio. Al terminar el año veinte, el préstamo corto estaría pagado bajo el calendario previsto, mientras que el largo conservaría capital pendiente. Una comparación que solo suma cuotas hasta ese momento olvidaría esa deuda y podría presentar como ahorro lo que en realidad es devolución aplazada.",
+        "Si piensas vender en un año anterior, consulta en las dos tablas el saldo pendiente de ese mismo mes. Combina los pagos realizados hasta entonces con la deuda que tendrías que cancelar. Para valorar además el dinero que la cuota baja dejó disponible, necesitarías especificar qué hiciste con él; no supongas que estuvo invertido ni que obtuvo una rentabilidad determinada sin incluir esa hipótesis de forma expresa.",
+      ],
+    }}
+    title='Hipoteca a 20 o 30 años: qué cambia' description='Compara el efecto del plazo sobre la cuota mensual y los intereses totales de una hipoteca.' intro='Una hipoteca a 20 o 30 años cambia la cuota mensual, los intereses totales y el margen de tu presupuesto. Con el mismo capital y tipo, un plazo de 30 años suele producir una cuota menor porque el importe se reparte entre más pagos.' calculatorHref='/vivienda/calculadora-hipoteca/' calculatorLabel='Calcular hipoteca' sections={[
     { title: 'Cuota mensual', paragraphs: ['Con el mismo capital y tipo, un plazo de 30 años suele producir una cuota mensual menor porque el importe se reparte entre más pagos.'] },
     { title: 'Intereses totales', paragraphs: ['La cuota más baja no significa necesariamente un coste menor. Al mantener la deuda durante más tiempo, normalmente se pagan intereses durante más años.'] },
     { title: 'Cómo compararlo', paragraphs: ['Introduce el mismo importe, tipo y entrada en la calculadora y prueba primero 20 años y después 30. Mira la cuota y los intereses totales a la vez.', 'No olvides los gastos de compra, seguros y posibles cambios de ingresos. Elige una cuota que puedas mantener incluso si tu situación cambia, y consulta las condiciones de amortización anticipada si prevés reducir deuda en el futuro.'] }

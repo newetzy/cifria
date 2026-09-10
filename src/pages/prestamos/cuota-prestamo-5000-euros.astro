@@ -3,7 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import SeoLandingPage from '../../components/SeoLandingPage.astro';
 ---
 <Layout title="Cuota de un préstamo de 5.000 euros | Cifria" description="Simula la cuota de un préstamo de 5.000 euros con distintos plazos y tipos de interés.">
-  <SeoLandingPage title="Cuota de un préstamo de 5.000 euros" description="Comprueba cómo cambia la mensualidad y el coste total al financiar 5.000 €." intro="Un préstamo de 5.000 € puede tener cuotas muy distintas según el plazo y el tipo de interés. La mejor comparación no mira solo la mensualidad." exampleTitle="Prueba tres plazos" exampleText="Introduce 5.000 € como capital y compara 12, 24 y 48 meses. Verás cómo una cuota más pequeña puede aumentar el coste total de los intereses." calculatorHref="/prestamos/calculadora-cuota-prestamo/" calculatorLabel="Calcular cuota del préstamo" sections={[
+  <SeoLandingPage
+    interpretation={{
+      title: "Por qué una comisión fija pesa en un préstamo pequeño",
+      paragraphs: [
+        "Al calcular la cuota de un préstamo de 5.000 euros, una diferencia pequeña entre mensualidades puede ocultar costes relevantes. Una comisión hipotética de apertura de 100 euros representa un 2 % del importe solicitado. Si se paga al inicio, aumenta el desembolso total aunque no cambie el recibo mensual; si se financia, el capital utilizado en la simulación también debe aumentar.",
+        "Compara el dinero que efectivamente recibes con todos los pagos que realizarás: cuotas, apertura y otros costes obligatorios de la oferta. No conviertas ese 2 % en una TAE, porque la TAE tiene en cuenta cuándo se producen los cobros y pagos. Para evaluar dos propuestas, usa el mismo importe recibido y plazo y comprueba sus condiciones completas además del tipo anunciado.",
+      ],
+    }}
+    title="Cuota de un préstamo de 5.000 euros" description="Comprueba cómo cambia la mensualidad y el coste total al financiar 5.000 €." intro="Un préstamo de 5.000 € puede tener cuotas muy distintas según el plazo y el tipo de interés. La mejor comparación no mira solo la mensualidad." exampleTitle="Prueba tres plazos" exampleText="Introduce 5.000 € como capital y compara 12, 24 y 48 meses. Verás cómo una cuota más pequeña puede aumentar el coste total de los intereses." calculatorHref="/prestamos/calculadora-cuota-prestamo/" calculatorLabel="Calcular cuota del préstamo" sections={[
     { title: 'La importancia del plazo', paragraphs: ['Alargar el plazo suele reducir la cuota mensual porque el capital se reparte entre más pagos.', 'Sin embargo, también puede aumentar el total de intereses. Por eso es mejor comparar cuota e importe total pagado.'] },
     { title: 'TIN y tipo de interés', paragraphs: ['La simulación utiliza el tipo anual que introduzcas para estimar la cuota matemática. Una oferta real puede incluir comisiones y otros costes.', 'Antes de contratar, revisa la información contractual y compara el coste total, no solo el porcentaje anunciado.'] },
     { title: 'Cuándo resulta útil esta simulación', paragraphs: ['Puede servir para valorar compras financiadas, comparar plazos o comprobar si una cuota encaja en un presupuesto.', 'También puedes usarla como punto de partida antes de revisar una oferta concreta de una entidad.'] },

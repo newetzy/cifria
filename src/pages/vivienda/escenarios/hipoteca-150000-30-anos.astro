@@ -3,7 +3,15 @@ import Layout from "../../../layouts/Layout.astro";
 import SeoLandingPage from "../../../components/SeoLandingPage.astro";
 ---
 <Layout title='Hipoteca de 150.000 € a 30 años | Cifria' description='Simula una hipoteca de 150.000 € a 30 años y aprende qué variables cambian la cuota y el coste total.'>
-  <SeoLandingPage title='Hipoteca de 150.000 € a 30 años' description='Simula una hipoteca de 150.000 € a 30 años y aprende qué variables cambian la cuota y el coste total.' intro='Este escenario sirve como referencia para estudiar una financiación de 150.000 € a tres décadas.' exampleTitle="Ejemplo de uso" exampleText='Mantén el importe en 150.000 € y compara 30, 25 y 20 años con el mismo tipo. La diferencia entre cuotas y el interés total ayuda a visualizar el coste del plazo.' calculatorHref='/vivienda/calculadora-hipoteca/' calculatorLabel='Calcular hipoteca' sections={[{ title: 'El plazo cambia el coste', paragraphs: ['A mayor plazo, normalmente menor cuota y mayor número de periodos de intereses.'] },
+  <SeoLandingPage
+    interpretation={{
+      title: "La entrada cambia el préstamo que necesitas",
+      paragraphs: [
+        "Una hipoteca de 150.000 euros a 30 años describe una deuda, no necesariamente una vivienda de ese precio. Por ejemplo, una compra de 190.000 euros con 40.000 euros destinados exclusivamente a la entrada deja 150.000 euros por financiar. Los gastos de adquisición se presupuestan aparte; descontarlos también de la entrada sin aumentar los ahorros disponibles alteraría el importe solicitado.",
+        "Para adaptar el ejemplo, introduce el precio de compra y la entrada por separado y verifica que el resultado financia 150.000 euros. Después prueba una entrada mayor manteniendo los treinta años y el mismo tipo. La reducción de intereses permite ver qué efecto tiene aportar más ahorro, aunque deberás valorar cuánto dinero conservarías para mudanza, reparaciones y otros desembolsos tras recibir las llaves.",
+      ],
+    }}
+    title='Hipoteca de 150.000 € a 30 años' description='Simula una hipoteca de 150.000 € a 30 años y aprende qué variables cambian la cuota y el coste total.' intro='Este escenario sirve como referencia para estudiar una financiación de 150.000 € a tres décadas.' exampleTitle="Ejemplo de uso" exampleText='Mantén el importe en 150.000 € y compara 30, 25 y 20 años con el mismo tipo. La diferencia entre cuotas y el interés total ayuda a visualizar el coste del plazo.' calculatorHref='/vivienda/calculadora-hipoteca/' calculatorLabel='Calcular hipoteca' sections={[{ title: 'El plazo cambia el coste', paragraphs: ['A mayor plazo, normalmente menor cuota y mayor número de periodos de intereses.'] },
     { title: 'Compara con tu presupuesto', paragraphs: ['La cuota debe encajar con ingresos y otros gastos recurrentes, no solo con el precio de la vivienda.'] }]} faqs={[{ question: '¿30 años siempre es mejor?', answer: 'No. La cuota puede ser más cómoda, pero el coste total suele ser mayor en igualdad de condiciones.' },
     { question: '¿Qué tipo debo poner?', answer: 'Usa el tipo que estés estudiando y no lo mezcles con escenarios que tengan condiciones distintas.' },
     { question: '¿La simulación incluye seguros y comisiones?', answer: 'No. Añade esos gastos al comparar ofertas porque pueden cambiar el coste efectivo aunque la cuota calculada sea parecida.' }]} />
