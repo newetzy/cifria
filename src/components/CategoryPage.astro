@@ -2,6 +2,15 @@
 import type { Category } from '../data/categories';
 interface Props { category: Category; }
 const { category } = Astro.props;
+const primaryKeywords: Record<string, string> = {
+  'ahorro-inversion': 'Calculadoras de ahorro e inversión',
+  coche: 'Calculadoras de costes del coche',
+  impuestos: 'Calculadoras de impuestos en España',
+  nomina: 'Calculadoras de nómina y salario',
+  prestamos: 'Calculadoras de préstamos personales',
+  vivienda: 'Calculadoras para comprar vivienda',
+};
+const primaryKeyword = primaryKeywords[category.slug] ?? `Calculadoras de ${category.name.toLowerCase()}`;
 const seoLinks: Record<string, { href: string; title: string; description: string }[]> = {
   vivienda: [
     { href: '/vivienda/cuota-hipoteca-20-anos/', title: 'Hipoteca a 20 años', description: 'Compara cuota e intereses con un plazo de 20 años.' },
@@ -40,11 +49,12 @@ const links: Record<string, Record<string, string>> = {
   coche: { 'Coste de viaje': '/coche/coste-viaje/', 'Coste por kilómetro': '/coche/coste-por-kilometro/' },
 };
 ---
-<section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Categoría {category.accent}</p><h1>{category.name}</h1><p class="lead">{category.description}</p></div></section>
+<section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Categoría {category.accent}</p><h1>{primaryKeyword}</h1><p class="lead"><strong>{primaryKeyword}</strong>: {category.description}</p></div></section>
 <section class="section"><div class="container narrow"><div class="section-heading"><div><p class="eyebrow">Herramientas</p><h2>Calculadoras de {category.name.toLowerCase()}</h2></div><p>Calcula online y consulta después la metodología y las limitaciones de cada herramienta.</p></div><div class="tool-list">{category.tools.filter((tool) => links[category.slug]?.[tool]).map((tool) => { const href = links[category.slug]?.[tool]; return <article class="card tool-card"><h3><a href={href}>{tool}</a></h3><p class="tool-card-status">Disponible</p></article>; })}</div></div></section>
 <section class="section section-tint"><div class="container narrow"><div class="section-heading"><div><p class="eyebrow">También puedes buscar</p><h2>Páginas de cálculo concretas</h2></div><p>Escenarios frecuentes con explicaciones y acceso directo a la calculadora.</p></div><div class="tool-list seo-tool-list">{(seoLinks[category.slug] ?? []).map((item) => <article class="card tool-card seo-tool-card"><h3><a href={item.href}>{item.title}</a></h3><p>{item.description}</p></article>)}</div></div></section>
 <section class="section"><div class="container narrow prose">
   <h2>Cómo utilizar estas calculadoras</h2>
+  <p>Las {primaryKeyword.toLocaleLowerCase('es')} reúnen herramientas y ejemplos del mismo tema para que puedas pasar de una estimación general a un caso concreto sin mezclar criterios.</p>
   <p>Empieza por la herramienta que responda a tu decisión inmediata y reúne antes los datos que puedas comprobar. Introducir importes reales, plazos comparables y gastos completos ayuda a que el resultado sea más útil. Si todavía no conoces una cifra, prueba un escenario prudente y otro más exigente para observar cuánto cambia la estimación.</p>
   <p>Compara siempre resultados obtenidos con los mismos supuestos. Una cuota menor, un porcentaje mayor o una cifra final más alta no bastan por sí solos para elegir: también importan el plazo, la liquidez, el riesgo y los costes que la herramienta indique como no incluidos.</p>
   <h2>Qué significa el resultado</h2>
