@@ -1,5 +1,5 @@
 ---
-title: "Hipoteca vs. alquiler en 2026: cómo comparar con el Euríbor cerca del 3 %"
+title: "Hipoteca o alquiler en 2026"
 description: "Claves para comparar el coste de alquilar y comprar vivienda con tus propios datos."
 pubDate: 2026-09-09
 category: vivienda
