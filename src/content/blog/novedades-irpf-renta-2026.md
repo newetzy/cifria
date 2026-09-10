@@ -1,5 +1,5 @@
 ---
-title: "Declaración de la Renta 2026: qué revisar antes de presentar el IRPF"
+title: "Qué revisar en la declaración de la Renta 2026"
 description: "Una guía práctica para ordenar ingresos, retenciones, mínimos familiares y deducciones antes de usar Renta WEB."
 pubDate: 2026-09-09
 category: fiscalidad
