@@ -1,4 +1,57 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Fuentes y metodología | Cifria" description="El enfoque de fuentes y metodología de las calculadoras de Cifria." noindex><section class="legal-page"><div class="container narrow"><p class="eyebrow">Transparencia</p><h1>Fuentes y metodología</h1><div class="prose"><p>Cifria publicará, en cada calculadora que dependa de datos normativos, la metodología empleada, su fecha de revisión, limitaciones y las fuentes consultadas.</p><h2>Principio de fuentes</h2><p>Para normativa española se priorizarán fuentes oficiales, como BOE, AEAT, Banco de España, Seguridad Social, SEPE y las administraciones autonómicas que correspondan.</p><h2>Estado actual</h2><p>Esta base todavía no ofrece cálculos fiscales, laborales o normativos. Por ello no se muestran tipos, tramos ni importes que puedan inducir a error.</p></div></div></section></Layout>
+<Layout
+  title="Fuentes y metodología | Cifria"
+  description="Modelos, supuestos, fuentes y limitaciones de las calculadoras de Cifria: financiación, ahorro, impuestos, salario y coche."
+  noindex
+>
+  <section class="legal-page">
+    <div class="container narrow">
+      <p class="eyebrow">Transparencia</p>
+      <h1>Fuentes y metodología</h1>
+      <p class="muted">Revisión de esta página: <time datetime="2026-09-11">11 de septiembre de 2026</time>.</p>
+      <div class="prose">
+        <p>Cifria ofrece calculadoras de financiación, ahorro, inversión, impuestos, salario y costes del coche. Esta página describe los modelos que utilizan, los datos que debes aportar y las limitaciones que afectan a la interpretación de sus resultados.</p>
+        <p>Las operaciones matemáticas se distinguen de las reglas fiscales: sumar un porcentaje no requiere conocer tu situación tributaria, pero estimar el IRPF sí depende de un ejercicio y de circunstancias que el modelo puede no contemplar. Los enlaces oficiales sirven para consultar esas reglas y contrastar conceptos; no implican que los organismos citados hayan validado Cifria.</p>
+
+        <h2>Hipotecas, préstamos y amortización anticipada</h2>
+        <p>La <a href="/vivienda/calculadora-hipoteca/">calculadora de hipoteca</a> y la <a href="/prestamos/calculadora-cuota-prestamo/">calculadora de préstamo</a> usan el sistema francés con tipo fijo y cuotas mensuales iguales. El tipo mensual es el TIN anual dividido entre doce y entre cien. El primer pago se sitúa un mes después del inicio; a tipo cero, la cuota es el capital dividido entre el número de pagos.</p>
+        <p>En la hipoteca, el capital financiado es el precio menos la entrada. No se incluyen impuestos, seguros ni gastos de compraventa. En el préstamo, la comisión inicial indicada se suma al total pagado y no modifica la cuota: se trata como un pago aparte, no como capital financiado. Estos modelos no calculan la TAE ni reproducen carencias, cuotas finales especiales o revisiones futuras de tipos.</p>
+        <p>La <a href="/prestamos/amortizacion-anticipada/">amortización anticipada</a> parte del saldo pendiente y compara un pago extraordinario reduciendo cuota o plazo, con el tipo constante. No incluye comisiones de amortización. Al reducir plazo, el modelo cuenta meses completos y estima el total con la cuota anterior; no ajusta el último recibo parcial, por lo que el ahorro de intereses es aproximado.</p>
+        <p>Referencia para contrastar el sistema de cuotas: <a href="https://clientebancario.bde.es/pcb/es/menu-horizontal/podemosayudarte/simuladores/simulador_prestamo_hipotecario_personal.html" rel="external">simulador de préstamo hipotecario o personal del Banco de España</a>.</p>
+
+        <h2>Ahorro, interés e inflación</h2>
+        <p>El <a href="/ahorro-inversion/interes-simple/">interés simple</a> multiplica capital inicial, tipo anual expresado en decimal y años, sin reinvertir intereses. El <a href="/ahorro-inversion/interes-compuesto/">interés compuesto</a> y las <a href="/ahorro-inversion/aportaciones-periodicas/">aportaciones periódicas</a> dividen la rentabilidad anual introducida entre doce para obtener el tipo mensual y añaden cada aportación al final del mes. Esta convención no equivale a convertir una rentabilidad anual efectiva en su tasa mensual equivalente.</p>
+        <p>El <a href="/ahorro-inversion/objetivo-ahorro/">objetivo de ahorro</a> calcula cuántos meses necesitas con el capital inicial y la aportación que indiques, hasta un máximo de cien años. No calcula automáticamente la aportación necesaria para una fecha límite. Las simulaciones suponen una rentabilidad constante y no descuentan comisiones, impuestos o inflación; los modelos actuales no admiten rentabilidades negativas, aunque una inversión real sí puede perder valor.</p>
+        <p>La <a href="/ahorro-inversion/calculadora-inflacion/">calculadora de inflación</a> aplica una tasa anual constante: multiplica el importe por (1 + tasa) elevado al número de años para estimar el coste futuro, y lo divide por ese factor para obtener el poder adquisitivo restante. No descarga series históricas ni predice el IPC, y no simula tasas negativas. Para datos observados, consulta el <a href="https://www.ine.es/prensa/ipc_prensa.htm" rel="external">Índice de Precios de Consumo del INE</a>.</p>
+
+        <h2>ROI y rentabilidad del alquiler</h2>
+        <p>El <a href="/ahorro-inversion/roi/">ROI</a> se calcula como (valor final − inversión inicial − costes adicionales) / inversión inicial × 100. Los costes se restan del beneficio y el denominador sigue siendo la inversión inicial. El porcentaje no se anualiza ni mide el riesgo; los impuestos solo afectan al resultado si los incluyes entre los costes.</p>
+        <p>La <a href="/vivienda/rentabilidad-alquiler/">rentabilidad del alquiler</a> supone doce mensualidades de renta. La rentabilidad bruta divide esa renta anual entre el precio de compra; la neta resta primero los gastos anuales que introduzcas. «Neta» significa después de esos gastos, no necesariamente después de impuestos. No incorpora automáticamente meses vacíos, impagos, financiación, gastos de adquisición ni cambios en el valor del inmueble.</p>
+
+        <h2>IVA: cálculo del importe, no clasificación fiscal</h2>
+        <p>La <a href="/impuestos/calculadora-iva/">calculadora de IVA</a> añade el porcentaje elegido a una base o extrae la base de un total dividiéndolo entre 1 + tipo expresado en decimal. Muestra base, impuesto y total. Los tipos disponibles son opciones de cálculo; la herramienta no decide cuál corresponde a una operación ni determina exenciones o regímenes especiales.</p>
+        <p>Comprueba el porcentaje aplicable y su periodo de vigencia en la <a href="https://sede.agenciatributaria.gob.es/Sede/iva/calculo-iva-repercutido-clientes/tipos-impositivos-iva.html" rel="external">información de tipos impositivos de IVA de la AEAT</a>. Una operación con varios tipos requiere separar las bases correspondientes. La herramienta no sustituye la preparación de una factura ni una liquidación tributaria.</p>
+
+        <h2>IRPF: modelo simplificado del ejercicio 2025</h2>
+        <p>La <a href="/impuestos/calculadora-irpf/">calculadora de IRPF 2025</a> estima una base general y otra del ahorro a partir de los importes introducidos. Aplica escalas progresivas de referencia y ajustes simplificados por cotizaciones, aportaciones a pensiones, modalidad de declaración y circunstancias personales y familiares. Después compara la cuota estimada con las retenciones indicadas.</p>
+        <p>Utiliza una única escala general de referencia: no calcula las escalas, mínimos ni deducciones de cada comunidad autónoma y no reproduce los regímenes forales de Navarra y del País Vasco. Tampoco incorpora todos los gastos deducibles, reducciones, clases de renta ni requisitos para aplicar beneficios fiscales. No es un cálculo de retención de nómina ni una reproducción completa de Renta WEB.</p>
+        <p>El ejercicio de referencia sigue siendo 2025 aunque consultes la página en otro año. El <a href="https://sede.agenciatributaria.gob.es/Sede/Ayuda/25Manual/100.html" rel="external">Manual práctico de Renta 2025 de la AEAT</a> permite consultar el tratamiento oficial de cada supuesto. Para preparar la declaración utiliza los servicios oficiales de la administración tributaria que te corresponda. Citar el manual no certifica que esta estimación aplique todas sus reglas.</p>
+
+        <h2>Salario, porcentajes y descuentos</h2>
+        <p>El <a href="/nomina/salario-por-hora/">salario bruto por hora</a> divide la remuneración bruta anual entre las horas estimadas: horas semanales × (52 − semanas de vacaciones) + horas adicionales anuales. Es una referencia aritmética; no calcula el neto, las cotizaciones ni el importe legal de una hora extraordinaria.</p>
+        <p>La <a href="/calculadoras/subida-salarial/">subida salarial</a> aplica el porcentaje al bruto anual y expresa la variación mensual como una media dividida entre doce, con independencia del calendario de pagas. Las herramientas de <a href="/calculadoras/porcentaje/">porcentajes</a> y <a href="/calculadoras/descuento/">descuentos</a> multiplican la cantidad por el porcentaje dividido entre cien y suman o restan el importe obtenido según la operación.</p>
+
+        <h2>Viajes y coste por kilómetro</h2>
+        <p>El <a href="/coche/coste-viaje/">coste de viaje</a> estima litros como distancia × consumo / 100, los multiplica por el precio por litro y añade los peajes introducidos. El <a href="/coche/coste-por-kilometro/">coste por kilómetro</a> suma el combustible por kilómetro y los costes anuales indicados divididos entre los kilómetros anuales. Solo incluye seguro, mantenimiento o depreciación si los has incorporado a esos costes.</p>
+        <p>El consumo y el precio del combustible son datos del usuario, no precios o mediciones actualizados automáticamente. Tráfico, carga y ruta pueden hacer que el consumo real difiera del supuesto.</p>
+
+        <h2>Precisión, fuentes y revisiones</h2>
+        <p>Los resultados monetarios se presentan habitualmente con dos decimales. Los cálculos pueden conservar más precisión que las cifras visibles, de modo que sumar importes ya redondeados puede producir pequeñas diferencias. Los ejemplos y escenarios usan supuestos indicados en sus páginas y no constituyen ofertas comerciales ni rentabilidades garantizadas.</p>
+        <p>La revisión del 11 de septiembre de 2026 ha contrastado esta descripción con los modelos publicados y comprobado las referencias oficiales enlazadas. Es una revisión de metodología y contenido, no una validación fiscal integral ni una afirmación de actualización automática de todas las calculadoras. Las fechas de los organismos corresponden a sus propias publicaciones.</p>
+        <p>Para entender cómo se mantienen los contenidos, consulta la <a href="/politica-editorial/">política editorial</a>. Si un dato normativo cambia, comprueba el ejercicio y la fuente aplicable antes de trasladar una simulación a tu caso.</p>
+      </div>
+    </div>
+  </section>
+</Layout>
