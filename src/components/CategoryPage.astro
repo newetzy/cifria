@@ -1,6 +1,7 @@
 ---
 import type { Category } from '../data/categories';
 import { categoryEditorial } from '../data/category-editorial';
+import { tools } from '../data/tools';
 interface Props { category: Category; }
 const { category } = Astro.props;
 const editorial = categoryEditorial[category.slug];
@@ -13,47 +14,30 @@ const primaryKeywords: Record<string, string> = {
   vivienda: 'Calculadoras para comprar vivienda',
 };
 const primaryKeyword = primaryKeywords[category.slug] ?? `Calculadoras de ${category.name.toLowerCase()}`;
-const seoLinks: Record<string, { href: string; title: string; description: string }[]> = {
-  vivienda: [
-    { href: '/vivienda/cuota-hipoteca-20-anos/', title: 'Hipoteca a 20 años', description: 'Compara cuota e intereses con un plazo de 20 años.' },
-    { href: '/vivienda/cuota-hipoteca-30-anos/', title: 'Hipoteca a 30 años', description: 'Explora el efecto de un plazo hipotecario largo.' },
-    { href: '/vivienda/hipoteca-250000-30-anos/', title: 'Hipoteca de 250.000 € a 30 años', description: 'Consulta una simulación con un ejemplo concreto de capital y plazo.' },
-    { href: '/vivienda/hipoteca-300000-30-anos/', title: 'Hipoteca de 300.000 € a 30 años', description: 'Consulta otra referencia de cuota e intereses con 30 años.' },
-  ],
-  prestamos: [
-    { href: '/prestamos/cuota-prestamo-5000-euros/', title: 'Préstamo de 5.000 €', description: 'Simula cuota, plazo e intereses.' },
-    { href: '/prestamos/prestamo-15000-5-anos/', title: 'Préstamo de 15.000 € a 5 años', description: 'Usa una referencia concreta para comparar cuota y coste total.' },
-    { href: '/prestamos/prestamo-20000-7-anos/', title: 'Préstamo de 20.000 € a 7 años', description: 'Compara una financiación de plazo más largo.' },
-  ],
-  'ahorro-inversion': [
-    { href: '/ahorro-inversion/ahorrar-200-euros-mes/', title: 'Ahorrar 200 € al mes', description: 'Mide cuánto puedes acumular con una aportación constante.' },
-    { href: '/ahorro-inversion/ahorrar-300-euros-mes/', title: 'Ahorrar 300 € al mes', description: 'Mide cuánto acumulas con aportaciones mensuales.' },
-    { href: '/ahorro-inversion/ahorrar-500-euros-mes/', title: 'Ahorrar 500 € al mes', description: 'Compara ahorro e inversión durante varios años.' },
-    { href: '/ahorro-inversion/200-euros-5-porciento-10-anos/', title: '200 € al mes al 5 % durante 10 años', description: 'Consulta una simulación concreta de interés compuesto.' },
-  ],
-  nomina: [
-    { href: '/nomina/salario-por-hora-40-horas/', title: 'Salario por hora con 40 horas', description: 'Convierte tu salario anual en valor bruto por hora.' },
-    { href: '/nomina/salario-30000-40-horas/', title: 'Salario de 30.000 € con 40 horas', description: 'Consulta una referencia concreta de salario bruto por hora.' },
-  ],
-  coche: [
-    { href: '/coche/coste-viaje-gasolina/', title: 'Coste de un viaje en gasolina', description: 'Estima el combustible necesario para un trayecto.' },
-    { href: '/coche/coste-viaje-500-km/', title: 'Coste de un viaje de 500 km', description: 'Consulta una referencia concreta para un trayecto de 500 km.' },
-  ],
-  impuestos: [{ href: '/impuestos/calculadora-iva-21-por-ciento/', title: 'IVA del 21 %', description: 'Añade o separa IVA del precio final.' }],
-};
-
-const links: Record<string, Record<string, string>> = {
-  impuestos: { 'Calculadora de IVA': '/impuestos/calculadora-iva/', 'Añadir o quitar IVA': '/impuestos/calculadora-iva/' },
-  'ahorro-inversion': { 'Interés compuesto': '/ahorro-inversion/interes-compuesto/', 'ROI': '/ahorro-inversion/roi/', 'Objetivo de ahorro': '/ahorro-inversion/objetivo-ahorro/', 'Inflación': '/ahorro-inversion/calculadora-inflacion/', 'Aportaciones periódicas': '/ahorro-inversion/aportaciones-periodicas/', 'Interés simple': '/ahorro-inversion/interes-simple/' },
-  vivienda: { 'Calculadora de hipoteca': '/vivienda/calculadora-hipoteca/', 'Rentabilidad del alquiler': '/vivienda/rentabilidad-alquiler/' },
-  prestamos: { 'Cuota de préstamo': '/prestamos/calculadora-cuota-prestamo/', 'Amortización anticipada': '/prestamos/amortizacion-anticipada/' },
-  nomina: { 'Salario por hora': '/nomina/salario-por-hora/' },
-  coche: { 'Coste de viaje': '/coche/coste-viaje/', 'Coste por kilómetro': '/coche/coste-por-kilometro/' },
-};
+const categoryTools = tools.filter((tool) => tool.category === category.name);
+const calculators = categoryTools.filter((tool) => tool.type === 'calculadora');
+const scenarios = categoryTools.filter((tool) => tool.type === 'escenario');
+const comparisons = categoryTools.filter((tool) => tool.type === 'comparador');
 ---
 <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Categoría {category.accent}</p><h1>{primaryKeyword}</h1><p class="lead"><strong>{primaryKeyword}</strong>: {category.description}</p></div></section>
-<section class="section"><div class="container narrow"><div class="section-heading"><div><p class="eyebrow">Herramientas</p><h2>Calculadoras de {category.name.toLowerCase()}</h2></div><p>Calcula online y consulta después la metodología y las limitaciones de cada herramienta.</p></div><div class="tool-list">{category.tools.filter((tool) => links[category.slug]?.[tool]).map((tool) => { const href = links[category.slug]?.[tool]; return <article class="card tool-card"><h3><a href={href}>{tool}</a></h3><p class="tool-card-status">Disponible</p></article>; })}</div></div></section>
-<section class="section section-tint"><div class="container narrow"><div class="section-heading"><div><p class="eyebrow">También puedes buscar</p><h2>Páginas de cálculo concretas</h2></div><p>Escenarios frecuentes con explicaciones y acceso directo a la calculadora.</p></div><div class="tool-list seo-tool-list">{(seoLinks[category.slug] ?? []).map((item) => <article class="card tool-card seo-tool-card"><h3><a href={item.href}>{item.title}</a></h3><p>{item.description}</p></article>)}</div></div></section>
+<section class="section"><div class="container narrow">
+  <div class="section-heading"><div><p class="eyebrow">Herramientas</p><h2>Calculadoras de {category.name.toLowerCase()}</h2></div><p>Calcula online y consulta después la metodología y las limitaciones de cada herramienta.</p></div>
+  <div class="tool-list">{calculators.map((tool) => <article class="card tool-card">
+    <h3><a href={tool.href}>{tool.title}</a></h3><p>{tool.description}</p>
+  </article>)}</div>
+</div></section>
+{scenarios.length > 0 && <section class="section section-tint"><div class="container narrow">
+  <div class="section-heading"><div><p class="eyebrow">También puedes buscar</p><h2>Páginas de cálculo concretas</h2></div><p>Escenarios frecuentes con explicaciones y acceso directo a la calculadora.</p></div>
+  <div class="tool-list seo-tool-list">{scenarios.map((tool) => <article class="card tool-card seo-tool-card">
+    <h3><a href={tool.href}>{tool.title}</a></h3><p>{tool.description}</p>
+  </article>)}</div>
+</div></section>}
+{comparisons.length > 0 && <section class="section"><div class="container narrow">
+  <div class="section-heading"><div><p class="eyebrow">Compara alternativas</p><h2>Comparadores de {category.name.toLowerCase()}</h2></div></div>
+  <div class="tool-list">{comparisons.map((tool) => <article class="card tool-card">
+    <h3><a href={tool.href}>{tool.title}</a></h3><p>{tool.description}</p>
+  </article>)}</div>
+</div></section>}
 <section class="section"><div class="container narrow prose">
   {editorial.sections.map((section) => <section>
     <h2>{section.title}</h2>

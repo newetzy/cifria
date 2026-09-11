@@ -9,7 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "node --experimental-strip-types --test src/lib/calculations/*.test.ts scripts/generate-sitemap.test.mjs",
+    "test": "node --experimental-strip-types --test src/lib/calculations/*.test.ts scripts/*.test.mjs",
     "seo:audit": "node scripts/seo-audit.mjs",
     "seo:report": "node scripts/seo-report.mjs"
   },
