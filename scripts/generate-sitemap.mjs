@@ -2,6 +2,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// Published pages deliberately excluded from search. seo:audit also compares
+// the sitemap with the rendered robots tags, including future/dynamic routes.
+const excludedPages = new Set([
+  '404.astro', 'buscar/index.astro', 'aviso-legal.astro',
+  'cookies.astro', 'privacidad.astro', 'fuentes-metodologia.astro',
+]);
+
 export function collectSitemapPaths(root, blogRoot) {
   const paths = [];
 
@@ -11,7 +18,7 @@ export function collectSitemapPaths(root, blogRoot) {
       if (entry.isDirectory()) walk(full);
       else if (entry.isFile() && entry.name.endsWith('.astro')) {
         const relative = path.relative(root, full).split(path.sep).join('/');
-        if (relative === '404.astro' || relative === 'buscar/index.astro' || relative.includes('[')) continue;
+        if (excludedPages.has(relative) || relative.includes('[')) continue;
         if (relative === 'index.astro') paths.push('/');
         else if (relative.endsWith('/index.astro')) paths.push(`/${relative.slice(0, -'/index.astro'.length)}/`);
         else paths.push(`/${relative.slice(0, -'.astro'.length)}/`);

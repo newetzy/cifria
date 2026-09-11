@@ -53,6 +53,35 @@ function keywordCount(content, keyword) {
 
 const failures = [];
 const rows = [];
+const builtPages = new Map();
+function collectBuiltPages(directory) {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const file = path.join(directory, entry.name);
+    if (entry.isDirectory()) collectBuiltPages(file);
+    else if (entry.name.endsWith('.html')) {
+      const relative = path.relative(distRoot, file).split(path.sep).join('/');
+      const route = `/${relative.replace(/index\.html$/, '')}`;
+      builtPages.set(route, fs.readFileSync(file, 'utf8'));
+    }
+  }
+}
+collectBuiltPages(distRoot);
+const sitemapUrls = [...fs.readFileSync(path.join(distRoot, 'sitemap.xml'), 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)]
+  .map((match) => match[1]);
+const sitemapRoutes = new Set();
+for (const url of sitemapUrls) {
+  const parsed = new URL(url);
+  const route = parsed.pathname;
+  if (parsed.origin !== 'https://cifria.es' || parsed.search || parsed.hash) failures.push({ rule: 'sitemap-url', url });
+  if (sitemapRoutes.has(route)) failures.push({ rule: 'sitemap-duplicate', route });
+  sitemapRoutes.add(route);
+  if (!builtPages.has(route)) failures.push({ rule: 'sitemap-missing-page', route });
+}
+for (const [route, html] of builtPages) {
+  const noindex = /<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html);
+  if (noindex && sitemapRoutes.has(route)) failures.push({ rule: 'sitemap-noindex', route });
+  if (!noindex && !sitemapRoutes.has(route)) failures.push({ rule: 'sitemap-omitted-indexable', route });
+}
 const editorialParagraphs = new Map();
 const editorialFaqSets = new Map();
 let distinctEditorialRoutes = 0;

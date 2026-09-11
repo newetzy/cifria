@@ -12,6 +12,8 @@ test('incluye la portada y excluye rutas no indexables', async (t) => {
   await Promise.all([
     writeFile(path.join(pagesRoot, 'index.astro'), ''),
     writeFile(path.join(pagesRoot, '404.astro'), ''),
+    ...['aviso-legal', 'cookies', 'privacidad', 'fuentes-metodologia'].map((name) =>
+      writeFile(path.join(pagesRoot, `${name}.astro`), '<Layout noindex />')),
     mkdir(path.join(pagesRoot, 'buscar')),
     mkdir(path.join(pagesRoot, 'vivienda')),
     mkdir(path.join(pagesRoot, 'guias')),
