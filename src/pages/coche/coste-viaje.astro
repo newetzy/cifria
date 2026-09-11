@@ -4,7 +4,7 @@ import Disclaimer from '../../components/Disclaimer.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="Calcular coste de viaje en coche | Cifria" description="Calcular coste de viaje en coche estima combustible, peajes y coste por kilómetro según tu ruta. Planifica el presupuesto del trayecto. Calcula ahora.">
+<Layout title="Calcular coste de viaje en coche | Cifria" description="Calcula los litros de combustible, peajes y coste por kilómetro de tu viaje. Introduce distancia, consumo y precio por litro para preparar el presupuesto.">
   <section class="calculator-page-section"><CalculatorShell title="Calcular coste de viaje en coche" description="Calcular coste de viaje en coche ofrece una estimación orientativa con tus datos.">
     <div class="calculator-layout"><form id="fuel-trip-form" class="calculator-form" novalidate><fieldset><legend>Datos del viaje</legend><div class="calculator-fields">
       <div class="field"><label for="distanceKm">Distancia</label><div class="input-with-suffix"><input id="distanceKm" type="number" min="0.1" step="0.1" value="500" /><span>km</span></div><small>Distancia total del trayecto.</small></div>

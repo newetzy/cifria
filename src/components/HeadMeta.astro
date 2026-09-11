@@ -9,29 +9,7 @@ interface Props {
 }
 
 const { title, description, canonical, noindex = false, image, type = 'website' } = Astro.props;
-const callToAction = ' Descúbrelo aquí.';
-const cleanTitle = title.replace(/\s*\|\s*Cifria$/, '');
-const descriptionLimit = 154 - callToAction.length;
-const descriptionMinimum = 144 - callToAction.length;
-const descriptionWords = `${cleanTitle}: ${description}`.match(/\S+/g) ?? [];
-let descriptionBody = '';
-for (const word of descriptionWords) {
-  const candidate = `${descriptionBody} ${word}`.trim();
-  if (candidate.length > descriptionLimit) break;
-  descriptionBody = candidate;
-}
-const danglingWords = new Set(['a', 'al', 'con', 'de', 'del', 'el', 'en', 'la', 'las', 'los', 'para', 'por', 'que', 'sin', 'su', 'sus', 'tu', 'tus', 'un', 'una', 'y']);
-let bodyWords = descriptionBody.replace(/[,:;]+$/, '').split(/\s+/);
-while (bodyWords.length > 1 && danglingWords.has(bodyWords.at(-1)?.toLocaleLowerCase('es') ?? '')) {
-  bodyWords = bodyWords.slice(0, -1);
-}
-descriptionBody = bodyWords.join(' ').replace(/[,:;.!?]+$/, '');
-const usefulEndings = [' Más detalles y ejemplos útiles', ' Información práctica y ejemplos claros', ' Consulta ejemplos útiles', ' Más detalles prácticos', ' Más detalles', ' Guía útil'];
-for (const ending of usefulEndings) {
-  if (descriptionBody.length >= descriptionMinimum) break;
-  if (descriptionBody.length + 1 + ending.length <= descriptionLimit) descriptionBody += `.${ending}`;
-}
-const seoDescription = noindex ? description : `${descriptionBody}.${callToAction}`;
+const seoDescription = description.trim();
 ---
 
 <meta charset="utf-8" />

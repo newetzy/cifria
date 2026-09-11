@@ -5,7 +5,7 @@ import { calculateMortgage } from '../../lib/calculations/mortgage.ts';
 import { formatEuro, formatNumber } from '../../lib/formatters/currency.ts';
 const result = calculateMortgage({ propertyPrice: 250000, downPayment: 0, annualInterestRate: 3, years: 30 });
 ---
-<Layout title="Hipoteca de 250.000 euros a 30 años | Cifria" description="Simulación de una hipoteca de 250.000 euros a 30 años. Consulta cuota mensual, intereses y coste total con un tipo hipotético del 3 %.">
+<Layout title="Hipoteca de 250.000 euros a 30 años | Cifria" description="Consulta cuota e intereses de 250.000 euros financiados a treinta años con un 3 % hipotético. Distingue el capital prestado del precio de la vivienda.">
   <SeoLandingPage
     interpretation={{
       title: "Separar precio, financiación y ahorro disponible",

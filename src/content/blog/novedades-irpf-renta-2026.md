@@ -1,6 +1,6 @@
 ---
 title: "Qué revisar en la declaración de la Renta 2026"
-description: "Una guía práctica para ordenar ingresos, retenciones, mínimos familiares y deducciones antes de usar Renta WEB."
+description: "Organiza ingresos, retenciones y documentos antes de revisar el borrador de la renta. Contrasta tus datos fiscales y conoce los límites de una estimación."
 pubDate: 2026-09-09
 updatedDate: 2026-09-10
 category: fiscalidad

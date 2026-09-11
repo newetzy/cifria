@@ -6,7 +6,7 @@ const posts = await getCollection('blog', ({ data }) => !data.draft);
 const categories = [...new Set(posts.map((post) => post.data.category))].sort();
 ---
 
-<Layout title="Categorías del blog de finanzas | Cifria" description="Explora los artículos de Cifria por vivienda, finanzas personales y fiscalidad.">
+<Layout title="Categorías del blog de finanzas | Cifria" description="Explora el blog de Cifria por temas y encuentra artículos de vivienda y fiscalidad. Accede a explicaciones, fuentes y calculadoras relacionadas.">
   <section class="blog-index container">
     <div class="blog-intro">
       <p class="eyebrow">Blog Cifria</p>

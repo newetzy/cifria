@@ -25,9 +25,14 @@ const primaryKeywords: Record<string, string> = {
   fiscalidad: 'Consejos fiscales para la renta',
 };
 const primaryKeyword = primaryKeywords[category] ?? `Consejos de ${categoryName}`;
+const descriptions: Record<string, string> = {
+  vivienda: 'Lee artículos sobre Euríbor, hipotecas y compra frente a alquiler. Revisa las variables de cada decisión y accede a calculadoras de vivienda.',
+  fiscalidad: 'Prepara los datos de tu declaración con artículos sobre renta e impuestos. Consulta fuentes oficiales y conoce los límites de las estimaciones fiscales.',
+  'finanzas-personales': 'Explora artículos sobre ahorro y decisiones cotidianas de dinero. Relaciona los conceptos con ejemplos y calculadoras para adaptar las cifras a tu caso.',
+};
 ---
 
-<Layout title={`${primaryKeyword} | Cifria`} description={`Artículos de ${categoryName} en el blog de Cifria.`}>
+<Layout title={`${primaryKeyword} | Cifria`} description={descriptions[category]}>
   <section class="blog-index container">
     <div class="blog-intro">
       <p class="eyebrow">Blog Cifria</p>

@@ -14,7 +14,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 const { page } = Astro.props as { page: Page<CollectionEntry<'blog'>> };
 ---
 
-<Layout title={`Blog, página ${page.currentPage} | Cifria`} description="Artículos de Cifria sobre vivienda, finanzas personales e impuestos.">
+<Layout title={`Blog, página ${page.currentPage} | Cifria`} description={`Página ${page.currentPage} del blog de Cifria: consulta artículos anteriores de vivienda, finanzas personales e impuestos y accede a sus calculadoras relacionadas.`}>
   <section class="blog-index container">
     <div class="blog-intro">
       <p class="eyebrow">Blog Cifria</p>

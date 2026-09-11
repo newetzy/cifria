@@ -1,6 +1,6 @@
 ---
 title: "Hipoteca o alquiler en 2026"
-description: "Claves para comparar el coste de alquilar y comprar vivienda con tus propios datos."
+description: "Compara comprar o alquilar vivienda con una misma fecha de referencia. Separa entrada, cuotas, gastos y patrimonio para interpretar las dos alternativas."
 pubDate: 2026-09-09
 updatedDate: 2026-09-10
 category: vivienda

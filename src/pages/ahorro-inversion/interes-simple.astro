@@ -4,7 +4,7 @@ import Disclaimer from '../../components/Disclaimer.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="Calcular interés simple anual | Cifria" description="Calcula interés simple anual con capital, tipo y plazo para conocer los intereses generados. Haz tu cálculo aquí.">
+<Layout title="Calcular interés simple anual | Cifria" description="Calcula los intereses de un capital sin reinvertir rendimientos. Introduce el tipo anual y el plazo para conocer la ganancia y el importe final.">
   <section class="calculator-page-section"><CalculatorShell title="Calcular interés simple anual" description="Calcular interés simple anual permite estimar un rendimiento que no se reinvierte sobre el capital.">
     <div class="calculator-layout"><form id="simple-interest-form" class="calculator-form" novalidate><fieldset><legend>Datos del cálculo</legend><div class="calculator-fields">
       <div class="field"><label for="principal">Capital inicial</label><div class="input-with-suffix"><input id="principal" type="number" min="0" step="0.01" value="10000" /><span>€</span></div></div>

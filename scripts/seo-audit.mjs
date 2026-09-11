@@ -53,6 +53,7 @@ function keywordCount(content, keyword) {
 
 const failures = [];
 const rows = [];
+const descriptions = new Map();
 const builtPages = new Map();
 function collectBuiltPages(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -79,6 +80,18 @@ for (const url of sitemapUrls) {
 }
 for (const [route, html] of builtPages) {
   const noindex = /<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html);
+  if (!noindex) {
+    const description = matchValue(html, /<meta\s+name="description"\s+content="([^"]*)"/i);
+    if (!description) failures.push({ rule: 'description-missing', route });
+    const key = normalize(description);
+    if (descriptions.has(key)) failures.push({ rule: 'description-duplicate', routes: [descriptions.get(key), route] });
+    descriptions.set(key, route);
+    const socialDescriptions = [
+      matchValue(html, /<meta\s+property="og:description"\s+content="([^"]*)"/i),
+      matchValue(html, /<meta\s+name="twitter:description"\s+content="([^"]*)"/i),
+    ];
+    if (socialDescriptions.some((value) => value !== description)) failures.push({ rule: 'description-social-mismatch', route });
+  }
   if (noindex && sitemapRoutes.has(route)) failures.push({ rule: 'sitemap-noindex', route });
   if (!noindex && !sitemapRoutes.has(route)) failures.push({ rule: 'sitemap-omitted-indexable', route });
 }
@@ -137,9 +150,7 @@ for (const { href, primaryKeyword } of seoTargets) {
   const rules = {
     titleStartsWithKeyword: normalize(title).startsWith(normalizedKeyword),
     titleLength: title.length <= 60,
-    descriptionLength: description.length >= 145 && description.length <= 155,
-    descriptionKeyword: normalize(description).includes(normalizedKeyword),
-    descriptionCta: description.endsWith('Descúbrelo aquí.'),
+    descriptionPresent: description.length > 0,
     oneH1: h1Matches.length === 1,
     h1Keyword: normalize(h1) === normalizedKeyword,
     firstParagraphKeyword: normalize(firstParagraph).includes(normalizedKeyword),
@@ -148,7 +159,9 @@ for (const { href, primaryKeyword } of seoTargets) {
     minimumFaqs: faqCount >= 3,
   };
 
-  rows.push({ route: href, keyword: primaryKeyword, occurrences, wordCount: editorialWordCount, faqCount });
+  // Keep length visible for editorial review without padding to a character quota
+  // or requiring an exact-match keyword/identical CTA in every description.
+  rows.push({ route: href, keyword: primaryKeyword, occurrences, wordCount: editorialWordCount, faqCount, descriptionLength: description.length });
   for (const [rule, passed] of Object.entries(rules)) {
     if (!passed) failures.push({ route: href, keyword: primaryKeyword, rule, occurrences, wordCount: editorialWordCount, faqCount, titleLength: title.length, descriptionLength: description.length });
   }

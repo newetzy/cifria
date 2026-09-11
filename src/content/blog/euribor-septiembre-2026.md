@@ -1,6 +1,6 @@
 ---
 title: "Cómo afecta el Euríbor a la hipoteca"
-description: "Qué datos necesitas revisar para anticipar una subida de cuota en tu hipoteca variable."
+description: "Entiende cómo el Euríbor y tu diferencial influyen en la revisión hipotecaria. Reúne el capital pendiente y el plazo para estimar una nueva cuota."
 pubDate: 2026-09-09
 updatedDate: 2026-09-10
 category: vivienda

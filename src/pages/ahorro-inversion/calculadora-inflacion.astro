@@ -4,7 +4,7 @@ import Disclaimer from '../../components/Disclaimer.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="Calcular inflación y poder adquisitivo | Cifria" description="Calcula inflación y poder adquisitivo para estimar el coste futuro de tu dinero con una tasa anual. Haz la simulación aquí.">
+<Layout title="Calcular inflación y poder adquisitivo | Cifria" description="Estima el coste futuro de una cantidad y el poder adquisitivo que conservaría con inflación constante. Compara tasas y plazos con tus propios datos.">
   <section class="calculator-page-section"><CalculatorShell title="Calcular inflación y poder adquisitivo" description="Calcula inflación y poder adquisitivo con una cantidad, tasa anual y plazo.">
     <div class="calculator-layout"><form id="inflation-form" class="calculator-form" novalidate><fieldset><legend>Datos de la simulación</legend><div class="calculator-fields">
       <div class="field"><label for="amount">Cantidad actual</label><div class="input-with-suffix"><input id="amount" type="number" min="0.01" step="0.01" value="1000" /><span>€</span></div></div>
