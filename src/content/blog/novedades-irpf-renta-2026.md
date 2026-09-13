@@ -8,7 +8,7 @@ tags: [irpf, renta, impuestos, retenciones]
 author: Equipo Cifria
 draft: false
 relatedTools:
-  - /impuestos/calculadora-irpf/
+  - /impuestos/calculadora-irpf-2026/
   - /impuestos/calculadora-iva/
 ---
 
