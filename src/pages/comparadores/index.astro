@@ -4,7 +4,7 @@ import Card from '../../components/Card.astro';
 import { tools } from '../../data/tools';
 const comparators = tools.filter((tool) => tool.type === 'comparador');
 ---
-<Layout title="Comparadores financieros para decidir | Cifria" description="Compara plazos de hipoteca y préstamo, formas de ahorrar, IVA y jornadas laborales. Encuentra qué variables cambian y accede a las calculadoras.">
+<Layout title="Comparadores financieros para decidir | Cifria" description="Compara plazos de hipoteca y préstamo, opciones de ahorro, IVA y jornadas laborales. Mantén variables comunes y abre cada calculadora para adaptarla.">
   <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Compara antes de decidir</p><h1>Comparadores financieros para decidir</h1><p class="lead"><strong>Comparadores financieros para decidir</strong>: entiende qué cambia al modificar una variable y lleva después el escenario a la calculadora.</p></div></section>
   <section class="section"><div class="container"><div class="scenario-grid">
 {comparators.map((tool, index) => <Card class="scenario-card">
