@@ -105,7 +105,7 @@ function trackSharedText(collection, text, route) {
   collection.get(key).routes.add(route);
 }
 
-if (seoTargets.length !== 95) failures.push({ rule: 'target-count', actual: seoTargets.length, expected: 95 });
+if (seoTargets.length !== 90) failures.push({ rule: 'target-count', actual: seoTargets.length, expected: 90 });
 
 for (const { href, primaryKeyword } of seoTargets) {
   const file = routeFile(href);

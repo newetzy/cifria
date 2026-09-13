@@ -1,14 +1,15 @@
 ---
 interface Props {
   term: string;
+  title?: string;
   definition: string;
   details: string[];
   related: { href: string; title: string; description: string }[];
 }
-const { term, definition, details, related } = Astro.props;
+const { term, title, definition, details, related } = Astro.props;
 const feminineTerms = new Set(['Amortización', 'Cuota mensual', 'Inflación', 'Rentabilidad', 'TAE']);
 const article = feminineTerms.has(term) ? 'la' : 'el';
-const primaryKeyword = `Qué es ${article} ${term} en finanzas`;
+const primaryKeyword = title ?? `Qué es ${article} ${term} en finanzas`;
 ---
 <article class="guide-page glossary-page">
   <header class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Glosario financiero</p><h1>{primaryKeyword}</h1><p class="lead"><strong>{primaryKeyword}</strong>: {definition}</p></div></header>
