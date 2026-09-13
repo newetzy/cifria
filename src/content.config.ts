@@ -10,11 +10,12 @@ const blog = defineCollection({
   loader: glob({ base: './src/content/blog', pattern: '**/*.md' }),
   schema: z.object({
     title: z.string().min(1),
+    metaTitle: z.string().min(1).optional(),
     description: z.string().min(1),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
-    category: z.enum(['vivienda', 'finanzas-personales', 'fiscalidad']),
+    category: z.enum(['vivienda', 'finanzas-personales', 'fiscalidad', 'ahorro-inversion', 'coche', 'nomina']),
     tags: z.array(z.string().min(1)).min(1),
     author: z.string().min(1),
     draft: z.boolean().default(false),

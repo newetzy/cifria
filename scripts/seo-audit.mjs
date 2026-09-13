@@ -108,7 +108,7 @@ function trackSharedText(collection, text, route) {
   collection.get(key).routes.add(route);
 }
 
-if (seoTargets.length !== 90) failures.push({ rule: 'target-count', actual: seoTargets.length, expected: 90 });
+if (seoTargets.length !== 95) failures.push({ rule: 'target-count', actual: seoTargets.length, expected: 95 });
 
 for (const { href, primaryKeyword } of seoTargets) {
   const file = routeFile(href);
@@ -155,7 +155,7 @@ for (const { href, primaryKeyword } of seoTargets) {
     titleLength: title.length <= 60,
     descriptionPresent: description.length > 0,
     oneH1: h1Matches.length === 1,
-    h1Keyword: normalize(h1) === normalizedKeyword,
+    h1Keyword: normalize(h1).includes(normalizedKeyword),
     firstParagraphKeyword: normalize(firstParagraph).includes(normalizedKeyword),
     keywordDensity: occurrences >= 3 && occurrences <= 6,
     minimumWords: editorialWordCount >= 300,

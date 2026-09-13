@@ -24,7 +24,7 @@ const updatedDate = post.data.updatedDate?.toLocaleDateString('es-ES', {
 });
 ---
 
-<Layout title={`${post.data.title} | Cifria`} description={post.data.description} image={post.data.heroImage} metaType="article">
+<Layout title={post.data.metaTitle ?? `${post.data.title} | Cifria`} description={post.data.description} image={post.data.heroImage} metaType="article">
   <article class="blog-post">
     <header class="blog-post-header container narrow">
       <p class="eyebrow">{post.data.category.replace('-', ' ')}</p>

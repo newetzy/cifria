@@ -23,11 +23,17 @@ const categoryName = category.replace('-', ' ');
 const primaryKeywords: Record<string, string> = {
   vivienda: 'Consejos financieros para vivienda',
   fiscalidad: 'Consejos fiscales para la renta',
+  'ahorro-inversion': 'Consejos para ahorrar e invertir',
+  coche: 'Consejos para calcular los costes del coche',
+  nomina: 'Consejos sobre nómina y salario',
 };
 const primaryKeyword = primaryKeywords[category] ?? `Consejos de ${categoryName}`;
 const descriptions: Record<string, string> = {
   vivienda: 'Lee consejos financieros para vivienda sobre Euríbor, hipotecas y compra frente a alquiler. Revisa variables, gastos y calculadoras antes de decidir.',
   fiscalidad: 'Prepara los datos de tu declaración con artículos sobre renta e impuestos. Consulta fuentes oficiales y conoce los límites de las estimaciones fiscales.',
+  'ahorro-inversion': 'Lee artículos sobre ahorro e inversión para revisar plazo, aportaciones y riesgo. Conecta cada decisión con calculadoras y supuestos claros en cada caso.',
+  coche: 'Consulta contenidos para estimar combustible, mantenimiento y costes de uso del coche. Utiliza tus kilómetros y gastos reales para comparar escenarios.',
+  nomina: 'Entiende cómo cambian salario, jornada, retenciones y nómina. Revisa los datos de tu contrato y utiliza calculadoras para preparar comparaciones.',
   'finanzas-personales': 'Explora artículos sobre ahorro y decisiones cotidianas de dinero. Relaciona los conceptos con ejemplos y calculadoras para adaptar las cifras a tu caso.',
 };
 ---
