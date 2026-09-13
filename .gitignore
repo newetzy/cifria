@@ -15,3 +15,6 @@ dist/
 
 .jumbo/
 .jumbo/jumbo.db
+
+# Generated codebase-analysis artifacts
+graphify-out/
