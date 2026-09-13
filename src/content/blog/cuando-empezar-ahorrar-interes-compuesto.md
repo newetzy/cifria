@@ -5,7 +5,7 @@ description: "Cuándo empezar a ahorrar con interés compuesto: compara el efect
 pubDate: 2026-09-13
 category: ahorro-inversion
 tags: [ahorro, interés-compuesto, inversión, aportaciones]
-author: Equipo Cifria
+author: Carlos Medina González
 draft: false
 relatedTools:
   - /ahorro-inversion/interes-compuesto/

@@ -5,7 +5,7 @@ description: "Cuánto cuesta tener un coche en España en 2026: separa combustib
 pubDate: 2026-09-13
 category: coche
 tags: [coche, costes, combustible, mantenimiento]
-author: Equipo Cifria
+author: Carlos Medina González
 draft: false
 relatedTools:
   - /coche/coste-por-kilometro/

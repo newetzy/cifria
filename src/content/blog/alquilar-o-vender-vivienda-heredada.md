@@ -5,7 +5,7 @@ description: "Alquilar o vender una vivienda heredada: compara renta, gastos, pr
 pubDate: 2026-09-13
 category: vivienda
 tags: [vivienda, herencia, alquiler, rentabilidad]
-author: Equipo Cifria
+author: Carlos Medina González
 draft: false
 relatedTools:
   - /vivienda/rentabilidad-alquiler/

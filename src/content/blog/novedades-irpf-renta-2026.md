@@ -5,7 +5,7 @@ pubDate: 2026-09-09
 updatedDate: 2026-09-10
 category: fiscalidad
 tags: [irpf, renta, impuestos, retenciones]
-author: Equipo Cifria
+author: Carlos Medina González
 draft: false
 relatedTools:
   - /impuestos/calculadora-irpf-2026/

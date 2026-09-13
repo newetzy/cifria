@@ -5,7 +5,7 @@ description: "Amortizar hipoteca anticipadamente en 2026: compara reducir cuota 
 pubDate: 2026-09-13
 category: vivienda
 tags: [hipoteca, amortización, vivienda, intereses]
-author: Equipo Cifria
+author: Carlos Medina González
 draft: false
 relatedTools:
   - /prestamos/amortizacion-anticipada/

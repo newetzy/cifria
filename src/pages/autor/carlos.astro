@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { author, authorSchema } from '../../data/author';
+
+const description = 'Conoce a Carlos Medina González, creador de Cifria: desarrolla calculadoras y contenidos financieros con fuentes oficiales, límites claros y revisión.';
+---
+
+<Layout title="Carlos Medina González, creador de Cifria | Cifria" description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    ...authorSchema,
+    jobTitle: 'Creador de Cifria',
+    worksFor: { '@type': 'Organization', name: 'Cifria', url: 'https://cifria.es/' },
+    description,
+  })} />
+  <section class="legal-page">
+    <div class="container narrow">
+      <p class="eyebrow">Autor</p>
+      <h1>{author.name}</h1>
+      <div class="prose">
+        <p><strong>{author.name} es el creador de Cifria.</strong> Desarrolla las calculadoras y los contenidos del sitio para hacer más comprensibles decisiones cotidianas sobre ahorro, vivienda, préstamos, impuestos, nómina y costes del coche.</p>
+        <h2>Enfoque y fuentes</h2>
+        <p>Su formación en economía y finanzas personales es autodidacta. Actualmente profundiza en trading como área de aprendizaje personal. Para elaborar las herramientas, consulta y enlaza fuentes oficiales cuando corresponde, como la Agencia Tributaria, el Banco de España y el BOE, y revisa periódicamente los supuestos, límites y periodos de referencia.</p>
+        <h2>Límites del contenido</h2>
+        <p>No es asesor financiero certificado. Los contenidos y resultados de Cifria son informativos y orientativos; no constituyen asesoramiento financiero, fiscal, laboral, jurídico ni una recomendación personalizada. Antes de tomar una decisión con impacto económico, contrasta los datos con su fuente oficial y consulta a un profesional cualificado cuando tu caso lo requiera.</p>
+        <p>Consulta también la <a href="/politica-editorial/">política editorial</a> y las <a href="/fuentes-metodologia/">fuentes y metodología</a> para conocer cómo se revisan los cálculos y contenidos de Cifria.</p>
+      </div>
+    </div>
+  </section>
+</Layout>

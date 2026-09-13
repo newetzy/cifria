@@ -5,7 +5,7 @@ description: "Cómo afecta una subida salarial a la nómina: compara salario bru
 pubDate: 2026-09-13
 category: nomina
 tags: [nómina, salario, IRPF, retenciones]
-author: Equipo Cifria
+author: Carlos Medina González
 draft: false
 relatedTools:
   - /calculadoras/subida-salarial/

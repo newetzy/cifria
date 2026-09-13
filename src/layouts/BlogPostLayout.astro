@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import Layout from './Layout.astro';
 import RelatedTools from '../components/RelatedTools.astro';
 import type { Tool } from '../data/tools';
+import { author, authorSchema, organizationSchema } from '../data/author';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -31,12 +32,8 @@ const blogPosting = {
   url: canonical,
   datePublished: post.data.pubDate.toISOString(),
   ...(post.data.updatedDate && { dateModified: post.data.updatedDate.toISOString() }),
-  author: { '@type': 'Person', name: post.data.author },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Cifria',
-    logo: { '@type': 'ImageObject', url: new URL('/favicon.svg', canonical).toString() },
-  },
+  author: authorSchema,
+  publisher: organizationSchema,
   inLanguage: 'es-ES',
 };
 ---
@@ -49,7 +46,7 @@ const blogPosting = {
       <h1>{post.data.title}</h1>
       <p class="lead"><strong>{post.data.title}</strong>: {post.data.description}</p>
       <p class="blog-post-meta">
-        <span>Por {post.data.author}</span>
+        <span>Por <a href={author.path} rel="author">{post.data.author}</a></span>
         <span><time datetime={post.data.pubDate.toISOString()}>Publicado el {publishedDate}</time></span>
         {updatedDate && <span>Actualizado el {updatedDate}</span>}
         <span>{readingMinutes} min de lectura</span>

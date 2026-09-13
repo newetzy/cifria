@@ -14,6 +14,7 @@ export const paths = [
   "/ahorro-inversion/interes-simple/",
   "/ahorro-inversion/objetivo-ahorro/",
   "/ahorro-inversion/roi/",
+  "/autor/carlos/",
   "/blog/",
   "/blog/alquilar-o-vender-vivienda-heredada/",
   "/blog/amortizar-hipoteca-anticipadamente-2026/",

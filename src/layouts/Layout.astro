@@ -6,6 +6,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import AdSlot from '../components/AdSlot.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import HeadMeta from '../components/HeadMeta.astro';
+import { organizationSchema } from '../data/author';
 interface Props { title: string; description: string; noindex?: boolean; image?: string; metaType?: 'website' | 'article'; }
 const { title, description, noindex = false, image, metaType = 'website' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString();
@@ -66,7 +67,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).to
       url: canonical,
       inLanguage: 'es-ES',
       isPartOf: { '@type': 'WebSite', name: 'Cifria', url: 'https://cifria.es/' },
-      publisher: { '@type': 'Organization', name: 'Cifria' }
+      publisher: organizationSchema
     })} />
     {Astro.url.pathname === '/' && <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
@@ -74,7 +75,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).to
       name: 'Cifria',
       url: 'https://cifria.es/',
       inLanguage: 'es-ES',
-      publisher: { '@type': 'Organization', name: 'Cifria' },
+      publisher: organizationSchema,
       potentialAction: { '@type': 'SearchAction', target: 'https://cifria.es/buscar/?q={search_term_string}', 'query-input': 'required name=search_term_string' }
     })} />}
   </head>
