@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SeoLandingPage from '../../components/SeoLandingPage.astro';
+import RelatedTools from '../../components/RelatedTools.astro';
 ---
 <Layout title='IVA añadido o IVA incluido: cómo distinguirlos | Cifria' description="Distingue un precio más IVA de otro con el impuesto incluido. Aprende a comparar presupuestos y recuperar la base sin confundir IVA y descuento.">
   <SeoLandingPage
@@ -20,4 +21,5 @@ import SeoLandingPage from '../../components/SeoLandingPage.astro';
     { question: '¿Qué tipo de IVA debo utilizar?', answer: 'Depende de la operación y de la normativa aplicable al caso concreto.' },
     { question: '¿La calculadora decide el tipo aplicable?', answer: 'No. Permite hacer la operación matemática; debes elegir el tipo que corresponda a tu producto o servicio.' }
   ]} />
+<RelatedTools tools={[{ href: '/impuestos/calculadora-iva/', title: 'Calculadora de IVA', description: 'Calcula base, IVA y precio final.' }, { href: '/impuestos/escenarios/calculadora-iva-21-por-ciento/', title: 'IVA del 21 %', description: 'Consulta un ejemplo al tipo general.' }, { href: '/impuestos/escenarios/iva-10-por-ciento/', title: 'IVA del 10 %', description: 'Consulta un ejemplo al tipo reducido.' }, { href: '/impuestos/escenarios/iva-4-por-ciento/', title: 'IVA del 4 %', description: 'Consulta un ejemplo al tipo superreducido.' }]} />
 </Layout>
