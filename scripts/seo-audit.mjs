@@ -83,6 +83,9 @@ for (const [route, html] of builtPages) {
   if (!noindex) {
     const description = matchValue(html, /<meta\s+name="description"\s+content="([^"]*)"/i);
     if (!description) failures.push({ rule: 'description-missing', route });
+    if (description.length < 145 || description.length > 155) {
+      failures.push({ rule: 'description-length', route, descriptionLength: description.length, expected: '145-155' });
+    }
     const key = normalize(description);
     if (descriptions.has(key)) failures.push({ rule: 'description-duplicate', routes: [descriptions.get(key), route] });
     descriptions.set(key, route);

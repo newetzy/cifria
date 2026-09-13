@@ -4,7 +4,7 @@ import Disclaimer from '../../components/Disclaimer.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="Calcular amortización anticipada | Cifria" description="Simula un pago extraordinario sobre tu deuda pendiente. Compara reducir cuota o plazo y estima los intereses y meses que podrías ahorrar.">
+<Layout title="Calcular amortización anticipada | Cifria" description="Calcula amortización anticipada con capital pendiente, tipo, plazo e importe extra. Compara la nueva cuota, meses ahorrados e intereses estimados.">
   <section class="calculator-page-section"><CalculatorShell title="Calcular amortización anticipada" description="Calcular amortización anticipada ofrece una estimación orientativa con tus datos.">
     <div class="calculator-layout"><form id="early-repayment-form" class="calculator-form" novalidate><fieldset><legend>Datos del préstamo</legend><div class="calculator-fields">
       <div class="field"><label for="principal">Capital pendiente</label><div class="input-with-suffix"><input id="principal" type="number" min="1" step="0.01" value="150000" /><span>€</span></div></div>
