@@ -1,8 +1,8 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import SeoLandingPage from '../../components/SeoLandingPage.astro';
-import { calculateCompoundInterest } from '../../lib/calculations/compound-interest.ts';
-import { formatEuro } from '../../lib/formatters/currency.ts';
+import Layout from '../../../layouts/Layout.astro';
+import SeoLandingPage from '../../../components/SeoLandingPage.astro';
+import { calculateCompoundInterest } from '../../../lib/calculations/compound-interest.ts';
+import { formatEuro } from '../../../lib/formatters/currency.ts';
 const plain = calculateCompoundInterest({ initialCapital: 0, monthlyContribution: 200, annualReturnPercent: 0, years: 10 });
 const invested = calculateCompoundInterest({ initialCapital: 0, monthlyContribution: 200, annualReturnPercent: 5, years: 10 });
 ---

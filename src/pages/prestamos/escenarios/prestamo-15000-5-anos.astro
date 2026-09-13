@@ -1,8 +1,8 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import SeoLandingPage from '../../components/SeoLandingPage.astro';
-import { calculateLoan } from '../../lib/calculations/loan.ts';
-import { formatEuro } from '../../lib/formatters/currency.ts';
+import Layout from '../../../layouts/Layout.astro';
+import SeoLandingPage from '../../../components/SeoLandingPage.astro';
+import { calculateLoan } from '../../../lib/calculations/loan.ts';
+import { formatEuro } from '../../../lib/formatters/currency.ts';
 const result = calculateLoan({ principal: 15000, annualInterestRate: 6.5, years: 5 });
 ---
 <Layout title="Préstamo de 15.000 euros a 5 años | Cifria" description="Consulta un préstamo de 15.000 euros a 5 años con tipo, cuota e intereses. Valora los sesenta pagos y cómo encajarlos en tu presupuesto mensual real.">

@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 // the sitemap with the rendered robots tags, including future/dynamic routes.
 const excludedPages = new Set([
   '404.astro', 'buscar/index.astro', 'aviso-legal.astro',
-  'cookies.astro', 'privacidad.astro', 'fuentes-metodologia.astro',
+  'cookies.astro', 'privacidad.astro', 'fuentes-metodologia.astro', 'blog/categoria/index.astro',
 ]);
 
 export function collectSitemapPaths(root, blogRoot) {

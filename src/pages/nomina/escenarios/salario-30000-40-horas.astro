@@ -1,8 +1,8 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import SeoLandingPage from '../../components/SeoLandingPage.astro';
-import { calculateHourlyWage } from '../../lib/calculations/hourly-wage.ts';
-import { formatEuro, formatNumber } from '../../lib/formatters/currency.ts';
+import Layout from '../../../layouts/Layout.astro';
+import SeoLandingPage from '../../../components/SeoLandingPage.astro';
+import { calculateHourlyWage } from '../../../lib/calculations/hourly-wage.ts';
+import { formatEuro, formatNumber } from '../../../lib/formatters/currency.ts';
 const result = calculateHourlyWage({ annualGrossSalary: 30000, weeklyHours: 40, vacationWeeks: 4, extraAnnualHours: 0 });
 ---
 <Layout title="Salario de 30.000 euros con 40 horas semanales | Cifria" description="Consulta el valor horario de 30.000 euros brutos anuales con 40 horas semanales. Compara calendarios y comprende qué cambia al repartir el sueldo en pagas.">

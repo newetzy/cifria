@@ -1,8 +1,8 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import SeoLandingPage from '../../components/SeoLandingPage.astro';
-import { calculateMortgage } from '../../lib/calculations/mortgage.ts';
-import { formatEuro } from '../../lib/formatters/currency.ts';
+import Layout from '../../../layouts/Layout.astro';
+import SeoLandingPage from '../../../components/SeoLandingPage.astro';
+import { calculateMortgage } from '../../../lib/calculations/mortgage.ts';
+import { formatEuro } from '../../../lib/formatters/currency.ts';
 const result = calculateMortgage({ propertyPrice: 300000, downPayment: 0, annualInterestRate: 3, years: 30 });
 ---
 <Layout title="Hipoteca de 300.000 euros a 30 años | Cifria" description="Simula una hipoteca de 300.000 euros a 30 años con capital, tipo y entrada. Revisa cuota, intereses, coste total y efecto de aportar más al inicio.">
