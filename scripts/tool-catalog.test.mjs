@@ -29,13 +29,13 @@ test('el catálogo cubre los recursos publicados con su tipo real y sin duplicad
   for (const page of expected) {
     assert.equal(tools.find((tool) => tool.href === page.route)?.type, page.type, page.route);
   }
-  assert.equal(tools.filter((tool) => tool.type === 'comparador').length, 8);
+  assert.equal(tools.filter((tool) => tool.type === 'comparador').length, 7);
 });
 
 test('impuestos incluye IRPF e IVA y todas las calculadoras temáticas tienen categoría', () => {
   const tax = tools.filter((tool) => tool.type === 'calculadora' && tool.category === 'Impuestos');
   assert.deepEqual(tax.map((tool) => tool.href).sort(), [
-    '/impuestos/calculadora-irpf/', '/impuestos/calculadora-iva/',
+    '/impuestos/calculadora-irpf-2026/', '/impuestos/calculadora-iva/',
   ]);
   for (const tool of tools.filter((tool) => tool.type === 'calculadora' && !tool.href.startsWith('/calculadoras/'))) {
     const category = categories.find((category) => tool.href.startsWith(`/${category.slug}/`));
