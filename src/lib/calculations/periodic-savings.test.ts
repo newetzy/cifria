@@ -13,3 +13,7 @@ test('calcula crecimiento con rentabilidad', () => {
   assert.ok(result.finalCapital > 1200);
   assert.ok(result.interestEarned > 0);
 });
+
+test('rechaza plazos positivos que se redondean a cero meses', () => {
+  assert.throws(() => calculatePeriodicSavings({ initialCapital: 100, monthlyContribution: 10, annualRatePercent: 2, years: 0.01 }), /al menos a un mes/);
+});
