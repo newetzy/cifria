@@ -1,5 +1,6 @@
 ---
 import { tools } from '../data/tools';
+import { getBreadcrumbPaths } from '../lib/breadcrumbs';
 const { pathname } = Astro.url;
 const labels: Record<string, string> = {
   vivienda: 'Vivienda',
@@ -15,15 +16,14 @@ const labels: Record<string, string> = {
   glosario: 'Glosario',
   herramientas: 'Herramientas',
 };
-const segments = pathname.split('/').filter(Boolean);
 const pretty = (segment: string) => segment.replace(/-/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());
-const items = segments.map((segment, index) => {
-  const href = `/${segments.slice(0, index + 1).join('/')}/`;
-  const exactTool = index === segments.length - 1 ? tools.find((tool) => tool.href === href) : undefined;
+const items = getBreadcrumbPaths(pathname).map((href) => {
+  const segment = href.split('/').filter(Boolean).at(-1) ?? '';
+  const exactTool = tools.find((tool) => tool.href === href);
   return { href, label: exactTool?.title ?? labels[segment] ?? pretty(segment) };
 });
 ---
-{segments.length > 0 && (
+{items.length > 0 && (
   <nav class="breadcrumbs container" aria-label="Migas de pan">
     <a href="/">Inicio</a>
     {items.map((item, index) => (
@@ -34,7 +34,7 @@ const items = segments.map((segment, index) => {
     ))}
   </nav>
 )}
-{segments.length > 0 && <script type="application/ld+json" set:html={JSON.stringify({
+{items.length > 0 && <script type="application/ld+json" set:html={JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [

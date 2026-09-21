@@ -18,6 +18,7 @@ export function calculatePeriodicSavings(input: PeriodicSavingsInput): PeriodicS
   if (!Number.isFinite(input.years) || input.years <= 0) throw new Error('El plazo debe ser mayor que cero.');
 
   const months = Math.round(input.years * 12);
+  if (months < 1) throw new Error('El plazo debe equivaler al menos a un mes.');
   const monthlyRate = input.annualRatePercent / 100 / 12;
   const finalCapital = monthlyRate === 0
     ? input.initialCapital + input.monthlyContribution * months
