@@ -34,7 +34,7 @@ También puedes traducir el nuevo salario a una referencia por hora si ha cambia
 
 ## Simula sin confundir las herramientas
 
-La [calculadora de subida salarial](/calculadoras/subida-salarial/) calcula nuevo bruto y aumento anual a partir del porcentaje. La [calculadora de IRPF 2026](/impuestos/calculadora-irpf-2026/) ofrece una estimación simplificada con los datos admitidos. Usa el resultado de la primera como un dato de entrada para la segunda, sin asumir que reproduce todos los elementos de una nómina real.
+La [calculadora de subida salarial](/calculadoras/subida-salarial/) calcula nuevo bruto y aumento anual a partir del porcentaje. La [calculadora de IRPF 2025 — campaña Renta 2026](/impuestos/calculadora-irpf-2026/) ofrece una estimación simplificada según la comunidad seleccionada. Usa el resultado de la primera como un dato de entrada para la segunda, sin asumir que reproduce todos los elementos de una nómina real.
 
 ## Preguntas frecuentes
 

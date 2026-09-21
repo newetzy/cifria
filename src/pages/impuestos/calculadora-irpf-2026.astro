@@ -3,34 +3,36 @@ import CalculatorShell from '../../components/CalculatorShell.astro';
 import Disclaimer from '../../components/Disclaimer.astro';
 import RelatedTools from '../../components/RelatedTools.astro';
 import Layout from '../../layouts/Layout.astro';
-
+import { irpf2025 } from '../../data/tax/irpf-2025';
 ---
 
-<Layout title="Calculadora de IRPF 2026 | Cifria" description="Estima el IRPF 2026 y compáralo con tus retenciones. Indica salario, rendimientos y situación familiar en un modelo simplificado; no sustituye a Renta WEB.">
+<Layout title="Calculadora de IRPF 2025 | Renta 2026 | Cifria" description="Calculadora de IRPF 2025 para la campaña Renta 2026: estima cuotas estatal y autonómica según tu comunidad. Modelo simplificado, no sustituye Renta WEB.">
   <section class="calculator-page-section">
-    <CalculatorShell title="Calculadora de IRPF 2026" description="La calculadora de IRPF 2026 ofrece una simulación simplificada, sin aplicar escalas, mínimos ni deducciones autonómicos.">
+    <CalculatorShell title="Calculadora de IRPF 2025 — campaña Renta 2026" description="Estimación simplificada con las escalas estatal y autonómica generales vigentes para el ejercicio fiscal 2025.">
       <div class="calculator-layout">
         <form id="irpf-form" class="calculator-form" aria-describedby="irpf-limitations" novalidate>
-          <p id="irpf-limitations">Modelo de referencia sin cálculo por comunidad autónoma ni regímenes forales. No reproduce tu declaración: confirma el resultado en Renta WEB o en tu hacienda foral.</p>
+          <p id="irpf-limitations">Estimación simplificada del IRPF del ejercicio 2025, cuya campaña de presentación es Renta 2026. Selecciona tu comunidad autónoma: no sustituye la declaración completa ni Renta WEB.</p>
           <fieldset>
             <legend>Datos fiscales</legend>
             <div class="calculator-fields">
-              {[['salary', 'Salario bruto anual', 30000], ['otherIncome', 'Otros ingresos generales', 0], ['savingsIncome', 'Rendimientos del ahorro', 0], ['socialContributions', 'Cotizaciones a la Seguridad Social', 1905], ['pensionContributions', 'Aportaciones a pensiones', 0], ['withheld', 'Retenciones ya practicadas', 4000], ['age', 'Edad', 35], ['children', 'Descendientes', 0], ['childrenUnder3', 'Descendientes menores de 3 años', 0], ['dependantsOver65', 'Ascendientes mayores de 65 años', 0]].map(([id, label, value]) => <div class="field"><label for={String(id)}>{label}</label><input id={String(id)} type="number" min="0" step="1" value={String(value)} /></div>)}
-              <div class="field"><label for="filing">Declaración</label><select id="filing"><option value="individual">Individual</option><option value="joint">Conjunta</option></select></div>
-              <div class="field"><label for="disability">Discapacidad</label><select id="disability"><option value="none">No</option><option value="33">33 % o más</option><option value="65">65 % o más</option></select></div>
+              <div class="field field-full"><label for="community">Comunidad autónoma de residencia</label><select id="community" required><option value="">Selecciona una comunidad autónoma</option>{Object.entries(irpf2025.communities).map(([id, name]) => <option value={id}>{name}</option>)}</select></div>
+              {[['salary', 'Salario bruto anual', 30000], ['otherIncome', 'Otros rendimientos generales netos', 0], ['savingsIncome', 'Rendimientos del ahorro netos', 0], ['socialContributions', 'Cotizaciones a la Seguridad Social', 1905], ['withheld', 'Retenciones ya practicadas', 4000], ['age', 'Edad', 35]].map(([id, label, value]) => <div class="field"><label for={String(id)}>{label}</label><input id={String(id)} type="number" min="0" step="1" value={String(value)} /></div>)}
+              <div class="field"><label for="disability">Discapacidad propia</label><select id="disability"><option value="none">No</option><option value="33">33 % o más</option><option value="65">65 % o más</option></select></div>
             </div>
           </fieldset>
           <button type="submit">Estimar IRPF</button>
         </form>
         <div id="irpf-results" class="calculator-results" hidden>
-          <p class="eyebrow">Simulación simplificada</p>
-          <p>No incluye escalas, mínimos ni deducciones autonómicos. El saldo mostrado no es el resultado de tu declaración.</p>
+          <p class="eyebrow">Estimación simplificada</p>
+          <p>Incluye las escalas general estatal y autonómica de la comunidad elegida. La comparación con retenciones es solo orientativa.</p>
           <section class="result-card result-card-primary"><p data-result="balance-label">Resultado estimado</p><strong data-result="balance">—</strong></section>
           <div class="result-grid">
-            <section class="result-card"><p>Cuota estimada</p><strong data-result="tax">—</strong></section>
-            <section class="result-card"><p>Base general</p><strong data-result="base">—</strong></section>
-            <section class="result-card"><p>Base del ahorro</p><strong data-result="savings">—</strong></section>
-            <section class="result-card"><p>Mínimo personal y familiar</p><strong data-result="minimum">—</strong></section>
+            <section class="result-card"><p>Cuota estatal estimada</p><strong data-result="state-tax">—</strong></section>
+            <section class="result-card"><p>Cuota autonómica estimada</p><strong data-result="autonomous-tax">—</strong></section>
+            <section class="result-card"><p>Total estimado</p><strong data-result="tax">—</strong></section>
+            <section class="result-card"><p>Base general estimada</p><strong data-result="base">—</strong></section>
+            <section class="result-card"><p>Base del ahorro estimada</p><strong data-result="savings">—</strong></section>
+            <section class="result-card"><p>Mínimo personal aplicado</p><strong data-result="minimum">—</strong></section>
           </div>
         </div>
       </div>
@@ -38,19 +40,19 @@ import Layout from '../../layouts/Layout.astro';
       <p id="irpf-error" role="alert" hidden></p>
 
       <section class="content-section prose">
-        <h2>Cómo usar esta estimación de renta</h2>
-        <p>Esta calculadora de IRPF 2026 reúne en un mismo cálculo el salario bruto, otros rendimientos generales, cotizaciones y retenciones. Introduce también los rendimientos del ahorro —por ejemplo, intereses o dividendos— para separarlos de la base general. El resultado ayuda a anticipar si las retenciones practicadas parecen suficientes o si podría haber una cuota pendiente.</p>
-        <p>La estimación tiene en cuenta aportaciones a sistemas de pensiones, edad, descendientes, ascendientes, discapacidad y modalidad de declaración mediante reglas simplificadas. Aplica una única escala de referencia: no calcula la parte autonómica según tu residencia ni incorpora sus mínimos y deducciones. Tampoco reproduce los regímenes forales de Navarra o del País Vasco. Si haces declaración conjunta, revisa que los datos de la unidad familiar y las retenciones correspondan al supuesto que quieres comparar.</p>
-        <h2>Qué significan la base y la cuota estimadas</h2>
-        <p>La base general agrupa, entre otras partidas, los rendimientos del trabajo tras cotizaciones y reducciones aplicables. La base del ahorro recoge las rentas que tributan en su propia escala. Después, los mínimos personales y familiares reducen la carga asociada a las necesidades básicas del contribuyente y de las personas a su cargo. La cuota resultante se contrasta con las retenciones ya ingresadas durante el año.</p>
-        <p>Utiliza esta estimación fiscal para preparar documentación y detectar cambios relevantes, como una subida salarial, nuevos intereses bancarios o el nacimiento de un hijo. No sustituye la revisión de certificados, deducciones autonómicas, inmuebles, actividades económicas ni situaciones especiales. Para presentar la declaración, confirma siempre los datos en <a href="https://sede.agenciatributaria.gob.es/Sede/Renta.html" rel="external">Renta WEB de la Agencia Tributaria</a>.</p>
+        <h2>Qué calcula esta estimación de Renta 2025</h2>
+        <p>Esta calculadora estima el IRPF del <strong>ejercicio fiscal 2025</strong>, presentado durante la campaña Renta 2026. Parte del salario bruto, otros rendimientos generales netos, cotizaciones, rendimientos del ahorro, edad y discapacidad propia. Aplica por separado la escala estatal oficial y la escala autonómica general de la comunidad de residencia seleccionada.</p>
+        <p>El mínimo personal estatal se aplica a ambas cuotas. Se incluyen el mínimo personal por edad y, cuando se indica, el mínimo por discapacidad propia. La cuota del ahorro se muestra repartida entre ambos componentes, porque la escala combinada aplicable es la suma de sus dos mitades.</p>
+        <h2>Qué no calcula</h2>
+        <p>No es una liquidación completa ni sustituye Renta WEB. No incorpora gastos deducibles del trabajo, reducciones por aportaciones a pensiones, mínimos por descendientes o ascendientes, variaciones autonómicas de mínimos, deducciones estatales o autonómicas, inmuebles, actividades económicas, compensaciones, ni otras circunstancias personales. Tampoco calcula los regímenes forales del País Vasco y Navarra, ni los beneficios fiscales específicos de Ceuta y Melilla.</p>
+        <p>Por ello, la comparación entre el total estimado y las retenciones es una orientación, no una previsión de devolución o ingreso. Para presentar la declaración, contrasta siempre tu información fiscal y el resultado en <a href="https://sede.agenciatributaria.gob.es/Sede/Renta.html" rel="external">Renta WEB de la Agencia Tributaria</a>.</p>
         <h2>Preguntas frecuentes</h2>
-        <details><summary>¿La calculadora de IRPF 2026 indica el resultado definitivo?</summary><p>No. Ofrece una referencia con los datos introducidos; Renta WEB incorpora información fiscal, deducciones y circunstancias que pueden cambiar el resultado final.</p></details>
-        <details><summary>¿Debo incluir las retenciones de mi nómina?</summary><p>Sí. Suma las retenciones ya practicadas para compararlas con la cuota estimada y orientarte sobre un posible ingreso o devolución.</p></details>
-        <details><summary>¿Qué ocurre si tengo intereses o dividendos?</summary><p>Inclúyelos como rendimientos del ahorro. Se muestran aparte porque su tributación no se calcula con la misma base que el salario.</p></details>
+        <details><summary>¿Por qué tengo que elegir una comunidad autónoma?</summary><p>La parte autonómica de la cuota general utiliza una escala distinta según la comunidad de residencia. No se aplica ninguna comunidad por defecto.</p></details>
+        <details><summary>¿Incluye aportaciones a planes de pensiones?</summary><p>No. Para aplicar correctamente sus límites hacen falta datos que este formulario no solicita, como el tipo de sistema y los rendimientos netos relevantes.</p></details>
+        <details><summary>¿El total es el resultado definitivo de mi declaración?</summary><p>No. Es una estimación limitada a las partidas indicadas y a las escalas generales. Renta WEB incorpora datos y reglas que pueden modificar el resultado.</p></details>
       </section>
 
-      <Disclaimer>Simulación simplificada para el ejercicio 2025, sin escalas, mínimos ni deducciones autonómicos ni regímenes forales. No incluye todos los gastos, reducciones o supuestos fiscales. Confirma tu declaración con Renta WEB o con la hacienda foral correspondiente.</Disclaimer>
+      <Disclaimer>Estimación simplificada para el ejercicio 2025 y la campaña Renta 2026. Incluye las escalas estatal y autonómica generales; excluye deducciones, reducciones, mínimos familiares y particularidades autonómicas. No sustituye Renta WEB ni las haciendas forales.</Disclaimer>
       <RelatedTools tools={[{ href: '/impuestos/calculadora-iva/', title: 'Calculadora de IVA', description: 'Calcula la base, el IVA y el precio final.' }, { href: '/nomina/salario-por-hora/', title: 'Calculadora de salario por hora', description: 'Convierte tu salario anual en una referencia por hora.' }, { href: '/blog/como-afecta-subida-salarial-nomina-irpf/', title: 'Subida salarial, nómina e IRPF', description: 'Revisa cómo cambian bruto, retenciones y renta.' }]} />
     </CalculatorShell>
   </section>

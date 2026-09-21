@@ -8,7 +8,7 @@ export type Tool = {
 };
 
 export const tools: Tool[] = [
-  { title: 'Calculadora de IRPF 2026', description: 'Estima la cuota de IRPF y el resultado frente a retenciones según tus datos personales y familiares.', href: '/impuestos/calculadora-irpf-2026/', category: 'Impuestos', type: 'calculadora', keywords: ['calculadora', 'irpf', 'renta', '2026', 'impuestos'] },
+  { title: 'Calculadora de IRPF 2025 — Renta 2026', description: 'Estima las cuotas estatal y autonómica del IRPF 2025 según tu comunidad, en un modelo simplificado.', href: '/impuestos/calculadora-irpf-2026/', category: 'Impuestos', type: 'calculadora', keywords: ['calculadora', 'irpf', 'renta', '2025', '2026', 'impuestos'] },
   { title: 'TAE vs TIN: diferencias y comparación', description: 'Guía para entender qué representa el TIN, qué aporta la TAE y cómo comparar financiación.', href: '/guias/tae-vs-tin/', category: 'Guías', type: 'guia', keywords: ['tae', 'tin', 'préstamo', 'hipoteca', 'financiacion'] },
   { title: 'Cómo calcular un porcentaje', description: 'Explicación sencilla para calcular porcentajes, aumentos y reducciones.', href: '/guias/calcular-porcentaje/', category: 'Guías', type: 'guia', keywords: ['porcentaje', 'calcular', 'descuento', 'matematicas'] },
   { title: 'Cómo calcular un descuento', description: 'Aprende a obtener el ahorro y el precio final después de aplicar un descuento.', href: '/guias/calcular-descuento/', category: 'Guías', type: 'guia', keywords: ['descuento', 'porcentaje', 'precio', 'compras'] },

@@ -66,7 +66,7 @@ const targets = [
   ['/guias/salario-por-hora/', 'Cómo calcular tu salario por hora'],
   ['/guias/tae-vs-tin/', 'TAE vs TIN: ¿qué diferencia hay?'],
   ['/impuestos/', 'Calculadoras de impuestos en España'],
-  ['/impuestos/calculadora-irpf-2026/', 'Calculadora de IRPF 2026'],
+  ['/impuestos/calculadora-irpf-2026/', 'Calculadora de IRPF 2025'],
   ['/impuestos/calculadora-iva/', 'Calcular IVA añadido o incluido'],
   ['/impuestos/escenarios/calculadora-iva-21-por-ciento/', 'Calculadora de IVA del 21 %'],
   ['/impuestos/escenarios/iva-10-por-ciento/', 'IVA del 10 %'],
