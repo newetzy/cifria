@@ -1,7 +1,4 @@
-export {};
-
-type ConsentValue = 'granted' | 'denied';
-type ConsentSettings = Record<'analytics_storage' | 'ad_storage' | 'ad_user_data' | 'ad_personalization', ConsentValue>;
+import { consentSettings, loadGoogleTagManager, shouldLoadGoogleTagManager, type ConsentSettings, type ConsentValue } from '../lib/gtm';
 
 declare global {
   interface Window {
@@ -15,13 +12,26 @@ const banner = document.querySelector<HTMLElement>('[data-cookie-consent]');
 const acceptButton = document.querySelector<HTMLButtonElement>('[data-cookie-accept]');
 const rejectButton = document.querySelector<HTMLButtonElement>('[data-cookie-reject]');
 
-function dataLayer(): unknown[] {
+function initializeConsentMode(): void {
   window.dataLayer ??= [];
-  return window.dataLayer;
+  window.gtag ??= function gtag(command, action, settings) {
+    window.dataLayer?.push([command, action, settings]);
+  };
+  window.gtag('consent', 'default', {
+    ...consentSettings('denied'),
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+  });
 }
 
-function updateConsent(values: ConsentSettings): void {
-  window.gtag?.('consent', 'update', values);
+function updateConsent(value: ConsentValue): void {
+  window.gtag?.('consent', 'update', consentSettings(value));
+}
+
+function activateAnalytics(): void {
+  updateConsent('granted');
+  window.dataLayer?.push({ event: 'cifria_consent_granted' });
+  loadGoogleTagManager(window, document);
 }
 
 function showBanner(): void {
@@ -32,18 +42,15 @@ function setConsent(value: ConsentValue): void {
   try {
     localStorage.setItem(storageKey, value);
   } catch {
-    // The consent signal can still be sent for this page view when storage is unavailable.
+    // The preference applies to this page view when storage is unavailable.
   }
 
-  updateConsent({
-    analytics_storage: value,
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-  });
-  if (value === 'granted') dataLayer().push({ event: 'cifria_consent_granted' });
+  if (value === 'granted') activateAnalytics();
+  else updateConsent('denied');
   if (banner) banner.hidden = true;
 }
+
+initializeConsentMode();
 
 let savedConsent: string | null = null;
 try {
@@ -52,7 +59,9 @@ try {
   savedConsent = null;
 }
 
-if (!savedConsent) showBanner();
+if (shouldLoadGoogleTagManager(savedConsent)) activateAnalytics();
+else if (savedConsent !== 'denied') showBanner();
+
 acceptButton?.addEventListener('click', () => setConsent('granted'));
 rejectButton?.addEventListener('click', () => setConsent('denied'));
 document.querySelectorAll<HTMLAnchorElement>('[data-cookie-settings]').forEach((link) => {

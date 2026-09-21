@@ -15,49 +15,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).to
 <html lang="es">
   <head>
     <HeadMeta title={title} description={description} canonical={canonical} noindex={noindex} image={image} type={metaType} />
-    <script is:inline>
-      (() => {
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
-        const cifriaConsentKey = 'cifria_analytics_consent';
-        let cifriaSavedConsent = null;
-        try {
-          cifriaSavedConsent = window.localStorage.getItem(cifriaConsentKey);
-        } catch (_) {
-          cifriaSavedConsent = null;
-        }
-        window.gtag('consent', 'default', {
-          analytics_storage: 'denied',
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-          functionality_storage: 'granted',
-          security_storage: 'granted',
-          wait_for_update: 500
-        });
-        if (cifriaSavedConsent === 'granted') {
-          window.gtag('consent', 'update', {
-            analytics_storage: 'granted',
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied'
-          });
-          window.dataLayer.push({ event: 'cifria_consent_granted' });
-        }
-      })();
-    </script>
-    <script is:inline>
-      (function(w,d,s,l,i){
-        w[l]=w[l]||[];
-        w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-        var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),
-            dl=l!='dataLayer'?'&l='+l:'';
-        j.async=true;
-        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-        f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-N6SL9MLZ');
-    </script>
     {import.meta.env.PUBLIC_ADSENSE_CLIENT && import.meta.env.PUBLIC_ADSENSE_TOP_SLOT && <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${import.meta.env.PUBLIC_ADSENSE_CLIENT}`} crossorigin="anonymous"></script>}
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
